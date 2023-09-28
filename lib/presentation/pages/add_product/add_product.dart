@@ -2,11 +2,19 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:world_commerce/Services/get_list.dart';
 import 'package:world_commerce/bloc/add_product_bloc/add_product_bloc.dart';
+import 'package:world_commerce/bloc/brands_list_bloc/brands_list_bloc.dart';
+import 'package:world_commerce/bloc/categories_list_bloc/categories_list_bloc.dart';
 import 'package:world_commerce/presentation/custom_widgets/form_field.dart';
 import 'package:world_commerce/presentation/pages/main/main.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
+import 'package:world_commerce/presentation/skeletons_loading/drop_down_skeleton.dart';
+import 'package:world_commerce/repository/get_categories_list.dart';
+import '../../../bloc/sub_categories_list_bloc/sub_categories_list_bloc.dart';
 import '../../../repository/add_product.dart';
+import '../../../repository/get_brands_list.dart';
+import '../../../repository/get_subCategories_list.dart';
 
 class AddProduct extends StatefulWidget {
   const AddProduct({super.key});
@@ -16,6 +24,9 @@ class AddProduct extends StatefulWidget {
 }
 
 class _AddProductState extends State<AddProduct> {
+  String? dropdownValue;
+  String? subCategoryDropDown;
+  String? brandsDropDown;
   final TextEditingController nameController =
       TextEditingController(text: 'Nokia x');
 
@@ -30,20 +41,13 @@ class _AddProductState extends State<AddProduct> {
   final TextEditingController priceAfterDiscountController =
       TextEditingController(text: '10');
 
-  final TextEditingController categoryController =
-      TextEditingController(text: '64b7d9979f685a9cdff59a0b');
   final TextEditingController soldController = TextEditingController(text: '1');
-  final TextEditingController subCategoryController =
-      TextEditingController(text: "64b809c2138e0e8781b28392");
 
   final TextEditingController ratingAvgController =
       TextEditingController(text: '2');
 
   final TextEditingController ratingCountController =
       TextEditingController(text: '2');
-
-  final TextEditingController brandController =
-      TextEditingController(text: '64bb9e4cac77717c27d742ef');
 
   final TextEditingController quantityController =
       TextEditingController(text: '100');
@@ -64,14 +68,100 @@ class _AddProductState extends State<AddProduct> {
                 const Icon(Icons.add, color: ColorManager.grey)),
             formField(context, 'Price', priceController,
                 const Icon(Icons.add, color: ColorManager.grey)),
+            BlocProvider(
+              create: (context) => CategoriesListBloc(
+                  getCategoriesRepository: GetCategoriesRepository())
+                ..add(CategoriesEvent()),
+              child: BlocBuilder<CategoriesListBloc, CategoriesListState>(
+                  builder: ((context, state) {
+                if (state.loadingStatus == CategoriesStatus.loading) {
+                  return dropDownSkeleton();
+                } else if (state.loadingStatus == CategoriesStatus.loaded) {
+                  return DropdownButtonFormField(
+                      value: dropdownValue,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          dropdownValue = newValue!;
+                        });
+                      },
+                      items: state.data.map<DropdownMenuItem<String>>((value) {
+                        return DropdownMenuItem<String>(
+                          value: value['_id'],
+                          child: Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                              child: Text(value['name'])),
+                        );
+                      }).toList());
+                } else {
+                  return Text('error');
+                }
+              })),
+            ),
+            BlocProvider(
+              create: (context) => SubCategoriesListBloc(
+                  subCategoriesRepository: GetSubCategoriesRepository())
+                ..add(SubCategoriesEvent()),
+              child: BlocBuilder<SubCategoriesListBloc, SubCategoriesListState>(
+                  builder: ((context, state) {
+                if (state.loadingStatus == SubCategoriesStatus.loading) {
+                  return dropDownSkeleton();
+                } else if (state.loadingStatus == SubCategoriesStatus.loaded) {
+                  return DropdownButtonFormField(
+                      value: subCategoryDropDown,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          subCategoryDropDown = newValue!;
+                        });
+                      },
+                      items: state.data.map<DropdownMenuItem<String>>((value) {
+                        return DropdownMenuItem<String>(
+                          value: value['_id'],
+                          child: Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                              child: Text(value['name'])),
+                        );
+                      }).toList());
+                } else {
+                  return Text('error');
+                }
+              })),
+            ),
+            BlocProvider(
+              create: (context) =>
+                  BrandsListBloc(getBrandsRepository: GetBrandsRepository())
+                    ..add(BrandsEvent()),
+              child: BlocBuilder<BrandsListBloc, BrandsListState>(
+                  builder: ((context, state) {
+                if (state.loadingStatus == BrandsStatus.loading) {
+                  return dropDownSkeleton();
+                } else if (state.loadingStatus == BrandsStatus.loaded) {
+                  return DropdownButtonFormField(
+                      value: brandsDropDown,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          brandsDropDown = newValue!;
+                        });
+                      },
+                      items: state.data.map<DropdownMenuItem<String>>((value) {
+                        return DropdownMenuItem<String>(
+                          value: value['_id'],
+                          child: Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                              child: Text(value['name'])),
+                        );
+                      }).toList());
+                } else {
+                  return Text('error');
+                }
+              })),
+            ),
             formField(
                 context,
                 'Price After Discount',
                 priceAfterDiscountController,
-                const Icon(Icons.add, color: ColorManager.grey)),
-            formField(context, 'Category', categoryController,
-                const Icon(Icons.add, color: ColorManager.grey)),
-            formField(context, 'SubCategory', subCategoryController,
                 const Icon(Icons.add, color: ColorManager.grey)),
             ElevatedButton(
               onPressed: () {
@@ -93,12 +183,6 @@ class _AddProductState extends State<AddProduct> {
             ),
             formField(
               context,
-              'Brand',
-              brandController,
-              const Icon(Icons.add, color: ColorManager.grey),
-            ),
-            formField(
-              context,
               'Quantity',
               quantityController,
               const Icon(Icons.add, color: ColorManager.grey),
@@ -113,22 +197,23 @@ class _AddProductState extends State<AddProduct> {
         ),
         bottomNavigationBar: InkWell(
           onTap: () {
-            context.read<AddProductBloc>().add(
-                  AddProductEv(
-                      title: nameController.text,
-                      description: descriptionController.text,
-                      price: int.parse(priceController.text),
-                      priceAfterDiscount:
-                          int.parse(priceAfterDiscountController.text),
-                      ratingAvg: int.parse(ratingAvgController.text),
-                      quantity: int.parse(quantityController.text),
-                      ratingCount: int.parse(ratingCountController.text),
-                      sold: int.parse(soldController.text),
-                      category: categoryController.text,
-                      subCategory: subCategoryController.text,
-                      brand: brandController.text,
-                      images: selectedImages),
-                );
+            print('==== ${dropdownValue}');
+            // context.read<AddProductBloc>().add(
+            //       AddProductEv(
+            //           title: nameController.text,
+            //           description: descriptionController.text,
+            //           price: int.parse(priceController.text),
+            //           priceAfterDiscount:
+            //               int.parse(priceAfterDiscountController.text),
+            //           ratingAvg: int.parse(ratingAvgController.text),
+            //           quantity: int.parse(quantityController.text),
+            //           ratingCount: int.parse(ratingCountController.text),
+            //           sold: int.parse(soldController.text),
+            //           category: dropdownValue!,
+            //           subCategory: subCategoryDropDown!,
+            //           brand: brandsDropDown!,
+            //           images: selectedImages),
+            //     );
           },
           child: BlocListener<AddProductBloc, AddProductState>(
             listener: (context, state) {

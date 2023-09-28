@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../Services/get_products.dart';
-import '../../../../bloc/bloc/number_of_pages_bloc.dart';
+
 import '../../../../bloc/change_page/increase_page_bloc.dart';
+import '../../../../bloc/number_of_pages_bloc/number_of_pages_bloc.dart';
 import '../../../custom_widgets/custom_button.dart';
 import '../../../custom_widgets/disabled_btn.dart';
 

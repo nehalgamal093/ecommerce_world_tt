@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:world_commerce/presentation/pages/product_details/custom_widgets/reviews_bar.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
+
+import 'custom_widgets/review.dart';
 
 class ProductDetails extends StatelessWidget {
   final String image;
@@ -20,78 +24,98 @@ class ProductDetails extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-                padding: const EdgeInsets.all(5),
-                width: 350,
-                height: 400,
-                child: Image.network(image)),
-            const SizedBox(height: 50.0),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              width: 400,
-              decoration: BoxDecoration(
-                color: Colors.grey[50],
-                borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(10),
-                    topLeft: Radius.circular(10)),
-              ),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          title,
-                          style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                          overflow: TextOverflow.visible,
-                        ),
-                        const Icon(Icons.star, color: Colors.yellow)
-                      ],
-                    ),
-                    Text(
-                      description,
-                      style: const TextStyle(fontSize: 14),
-                    ),
-                    Row(
-                      children: [
-                        const Text('Available Colors: '),
-                        const SizedBox(width: 10),
-                        SizedBox(
-                          width: 200,
-                          height: 100,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            shrinkWrap: true,
-                            children: const [
-                              CircleAvatar(
-                                backgroundColor: Colors.black,
-                                radius: 10,
-                              ),
-                              SizedBox(width: 5),
-                              CircleAvatar(
-                                backgroundColor: Colors.grey,
-                                radius: 10,
-                              ),
-                              SizedBox(width: 5),
-                              CircleAvatar(
-                                backgroundColor: Colors.amber,
-                                radius: 10,
-                              )
-                            ],
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                  padding: const EdgeInsets.all(5),
+                  width: 350,
+                  height: 400,
+                  child: Image.network(image)),
+              const SizedBox(height: 50.0),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                width: 400,
+                decoration: BoxDecoration(
+                  color: Colors.grey[50],
+                  borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(10),
+                      topLeft: Radius.circular(10)),
+                ),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            title,
+                            style: const TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.bold),
+                            overflow: TextOverflow.visible,
                           ),
-                        )
-                      ],
-                    ),
-                  ]),
-            )
-          ],
+                          const Icon(Icons.star, color: Colors.yellow)
+                        ],
+                      ),
+                      Text(
+                        description,
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                      Row(
+                        children: [
+                          const Text('Available Colors: '),
+                          const SizedBox(width: 10),
+                          SizedBox(
+                            width: 200,
+                            height: 100,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              children: const [
+                                CircleAvatar(
+                                  backgroundColor: Colors.black,
+                                  radius: 10,
+                                ),
+                                SizedBox(width: 5),
+                                CircleAvatar(
+                                  backgroundColor: Colors.grey,
+                                  radius: 10,
+                                ),
+                                SizedBox(width: 5),
+                                CircleAvatar(
+                                  backgroundColor: Colors.amber,
+                                  radius: 10,
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      reviewsBar(context),
+                      review(),
+                      review(),
+                      review(),
+                      const SizedBox(height: 20),
+                      Center(
+                        child: Container(
+                          width: 150,
+                          height: 30,
+                          decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 210, 207, 207),
+                              border: Border.all(color: Colors.black)),
+                          child: const Center(
+                            child: Text('Write a review'),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                    ]),
+              )
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: ClipRRect(

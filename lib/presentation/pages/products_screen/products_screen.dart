@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_commerce/presentation/custom_widgets/top_bar.dart';
 import 'package:world_commerce/presentation/pages/custom_product/custom_product.dart';
+import 'package:world_commerce/presentation/pages/product_details/product_details.dart';
 import 'package:world_commerce/presentation/pages/products_screen/widgets/next_prev_btns.dart';
 import '../../../Services/get_products.dart';
 import '../../../bloc/change_page/increase_page_bloc.dart';
@@ -50,13 +51,32 @@ class ProductsScreen extends StatelessWidget {
                             delegate: SliverChildListDelegate(
                               List.generate(
                                 dataFromApi.length,
-                                (index) => CustomProduct(
-                                  title: dataFromApi[index]['title'],
-                                  imgCover: dataFromApi[index]['images'][0]
-                                      ['attachment_file'],
-                                  price: dataFromApi[index]['price'].toString(),
-                                  ratingAvg: dataFromApi[index]['ratingAvg']
-                                      .toString(),
+                                (index) => InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ProductDetails(
+                                          image: dataFromApi[index]['images'][0]
+                                              ['attachment_file'],
+                                          title: dataFromApi[index]['title'],
+                                          description: dataFromApi[index]
+                                              ['description'],
+                                          price: dataFromApi[index]['price']
+                                              .toString(),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: CustomProduct(
+                                    title: dataFromApi[index]['title'],
+                                    imgCover: dataFromApi[index]['images'][0]
+                                        ['attachment_file'],
+                                    price:
+                                        dataFromApi[index]['price'].toString(),
+                                    ratingAvg: dataFromApi[index]['ratingAvg']
+                                        .toString(),
+                                  ),
                                 ),
                               ),
                             ),
