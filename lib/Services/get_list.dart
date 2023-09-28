@@ -8,7 +8,6 @@ class GetLists {
     );
     var data = json.decode(response.body)['result'];
     if (response.statusCode == 200) {
-      print(data);
       return data;
     } else {
       throw Exception('Failed');

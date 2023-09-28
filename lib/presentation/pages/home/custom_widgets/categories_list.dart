@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../resources/color_manager.dart';
-
 final List<Categories> list = [
   Categories(title: 'Electronics', icon: Icons.tv_outlined),
   Categories(title: 'Fashion', icon: Icons.ad_units),

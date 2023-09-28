@@ -10,7 +10,7 @@ sealed class GetProductEvent extends Equatable {
 
 class GetProductsEvent extends GetProductEvent {
   final int pageNumber;
-  GetProductsEvent({
+  const GetProductsEvent({
     required this.pageNumber,
   });
 

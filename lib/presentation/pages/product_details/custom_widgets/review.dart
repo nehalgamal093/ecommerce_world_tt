@@ -4,18 +4,18 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 Widget review() {
   return Column(
     children: [
-      Divider(),
-      SizedBox(height: 10),
+      const Divider(),
+      const SizedBox(height: 10),
       Row(
         children: [
           CircleAvatar(
             radius: 20,
             child: Image.asset('assets/images/cat.png'),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Column(
             children: [
-              Text('Nehal Gamal'),
+              const Text('Nehal Gamal'),
               RatingBar(
                 initialRating: 2,
                 direction: Axis.horizontal,
@@ -40,7 +40,7 @@ Widget review() {
       ),
       const Text(
           'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available'),
-      SizedBox(height: 10),
+      const SizedBox(height: 10),
     ],
   );
 }
