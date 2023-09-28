@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../resources/color_manager.dart';
 
-Widget profileField(String hintText) {
+Widget profileField(String hintText, bool isSecured) {
   return TextField(
+    obscureText: isSecured ? true : false,
     decoration: InputDecoration(
       filled: true,
       fillColor: ColorManager.lightGrey,

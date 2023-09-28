@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:world_commerce/Services/get_user.dart';
 import 'package:world_commerce/bloc/add_product_bloc/add_product_bloc.dart';
 import 'package:world_commerce/bloc/brands_list_bloc/brands_list_bloc.dart';
 import 'package:world_commerce/bloc/categories_list_bloc/categories_list_bloc.dart';
 import 'package:world_commerce/bloc/get_products_bloc/get_product_bloc.dart';
+import 'package:world_commerce/bloc/get_user_bloc/get_user_bloc.dart';
 
 import 'package:world_commerce/bloc/save_login/save_login_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -78,7 +80,8 @@ Future<void> main() async {
         ),
         BlocProvider(
             create: (_) =>
-                BrandsListBloc(getBrandsRepository: GetBrandsRepository()))
+                BrandsListBloc(getBrandsRepository: GetBrandsRepository())),
+        BlocProvider(create: (_) => GetUserBloc(getUser: GetUser()))
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
