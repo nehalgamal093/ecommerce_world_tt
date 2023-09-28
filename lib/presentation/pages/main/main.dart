@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:world_commerce/presentation/pages/add_product/add_product.dart';
 import 'package:world_commerce/presentation/pages/home/home.dart';
-import 'package:world_commerce/presentation/pages/products_screen/products_screen.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 
 import '../signin/signin.dart';

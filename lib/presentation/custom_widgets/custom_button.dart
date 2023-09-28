@@ -23,7 +23,7 @@ Widget customButton(
                 child: Align(
                     alignment:
                         isNext ? Alignment.centerLeft : Alignment.centerRight,
-                    child: Icon(Icons.arrow_back))),
+                    child: const Icon(Icons.arrow_back))),
         Text(
           label,
           style: const TextStyle(
@@ -35,7 +35,7 @@ Widget customButton(
                 child: Align(
                     alignment:
                         isNext ? Alignment.centerLeft : Alignment.centerRight,
-                    child: Icon(Icons.arrow_forward)))
+                    child: const Icon(Icons.arrow_forward)))
             : Container(),
       ],
     ),

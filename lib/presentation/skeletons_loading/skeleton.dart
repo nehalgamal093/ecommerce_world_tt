@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 Widget skeleton() {
-  return Container(
+  return SizedBox(
     width: 200,
     height: 200,
     child: Column(

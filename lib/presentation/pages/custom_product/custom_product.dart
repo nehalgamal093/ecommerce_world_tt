@@ -58,8 +58,8 @@ class CustomProduct extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.star, color: Colors.yellow),
-                  SizedBox(width: 5),
+                  const Icon(Icons.star, color: Colors.yellow),
+                  const SizedBox(width: 5),
                   Text(ratingAvg)
                 ],
               )

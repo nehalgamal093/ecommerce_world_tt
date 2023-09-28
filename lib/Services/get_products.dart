@@ -21,7 +21,6 @@ class GetProducts {
     );
     var data = json.decode(response.body)["pages"];
     if (response.statusCode == 200) {
-      print('dataaaa $data');
       return data;
     } else {
       throw Exception('Failed');

@@ -7,9 +7,9 @@ import 'package:world_commerce/bloc/get_products_bloc/get_product_bloc.dart';
 import 'package:world_commerce/bloc/save_login/save_login_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:world_commerce/bloc/sign_up_bloc/sign_up_bloc.dart';
-import 'package:world_commerce/presentation/pages/error_screen/error_screen.dart';
+
 import 'package:world_commerce/presentation/pages/main/main.dart';
-import 'package:world_commerce/presentation/pages/products_screen/products_screen.dart';
+
 import 'package:world_commerce/presentation/pages/signin/signin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:world_commerce/repository/add_product.dart';
