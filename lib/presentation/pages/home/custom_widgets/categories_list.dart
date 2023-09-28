@@ -24,7 +24,10 @@ Widget categoriesList(BuildContext context) {
   return SizedBox(
     width: MediaQuery.of(context).size.width,
     height: 100,
-    child: ListView.builder(
+    child: ListView.separated(
+        separatorBuilder: (context, index) => const SizedBox(
+              width: 10,
+            ),
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
