@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:world_commerce/presentation/pages/account_page/account_page.dart';
 import 'package:world_commerce/presentation/pages/add_product/add_product.dart';
 import 'package:world_commerce/presentation/pages/home/home.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
@@ -54,9 +55,17 @@ class _MainState extends State<Main> {
                 ),
               ),
               const SizedBox(height: 100),
-              const ListTile(
-                leading: ImageIcon(AssetImage('assets/icons/account.png')),
-                title: Text('Account'),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AccountPage()));
+                },
+                child: const ListTile(
+                  leading: ImageIcon(AssetImage('assets/icons/account.png')),
+                  title: Text('Account'),
+                ),
               ),
               const Divider(),
               const ListTile(

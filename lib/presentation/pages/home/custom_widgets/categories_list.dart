@@ -26,7 +26,7 @@ Widget categoriesList(BuildContext context) {
     height: 100,
     child: ListView.separated(
         separatorBuilder: (context, index) => const SizedBox(
-              width: 10,
+              width: 20,
             ),
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
@@ -39,21 +39,23 @@ Widget categoriesList(BuildContext context) {
                 child: Container(
                   width: 50,
                   height: 50,
-                  decoration: const BoxDecoration(
-                    color: ColorManager.lightOrange,
-                    borderRadius: BorderRadius.all(
+                  decoration: BoxDecoration(
+                    // color: ColorManager.lightOrange,
+                    border: Border.all(color: Colors.purple),
+                    borderRadius: const BorderRadius.all(
                       Radius.circular(10),
                     ),
                   ),
                   child: Icon(
                     list[index].icon,
-                    color: ColorManager.orange,
+                    color: Colors.purple,
                   ),
                 ),
               ),
               Text(
                 list[index].title,
-                style: const TextStyle(fontSize: 10, color: ColorManager.grey),
+                style: const TextStyle(
+                    fontSize: 10, color: Color.fromARGB(255, 199, 163, 205)),
               )
             ],
           );
