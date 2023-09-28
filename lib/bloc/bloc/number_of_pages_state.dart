@@ -10,7 +10,7 @@ class NumberOfPagesState extends Equatable {
 
   factory NumberOfPagesState.initial() {
     return const NumberOfPagesState(
-        pages: 1, loadingStatus: LoadingStatus.initial);
+        pages: 0, loadingStatus: LoadingStatus.initial);
   }
 
   @override

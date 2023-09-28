@@ -45,11 +45,11 @@ Widget horizontalList(bool isError) {
                       );
                     },
                     child: CustomProduct(
-                      title: dataFromApi[index]['title'],
-                      imgCover: dataFromApi[index]['images'][0]
-                          ['attachment_file'],
-                      price: dataFromApi[index]['price'].toString(),
-                    ),
+                        title: dataFromApi[index]['title'],
+                        imgCover: dataFromApi[index]['images'][0]
+                            ['attachment_file'],
+                        price: dataFromApi[index]['price'].toString(),
+                        ratingAvg: dataFromApi[index]['ratingAvg'].toString()),
                   );
                 }),
           );

@@ -55,6 +55,8 @@ class ProductsScreen extends StatelessWidget {
                                   imgCover: dataFromApi[index]['images'][0]
                                       ['attachment_file'],
                                   price: dataFromApi[index]['price'].toString(),
+                                  ratingAvg: dataFromApi[index]['ratingAvg']
+                                      .toString(),
                                 ),
                               ),
                             ),
@@ -67,7 +69,7 @@ class ProductsScreen extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 20),
-                                    child: nextAndPrevBtn(),
+                                    child: nextAndPrevBtn(context),
                                   ),
                                   const SizedBox(height: 10),
                                 ],

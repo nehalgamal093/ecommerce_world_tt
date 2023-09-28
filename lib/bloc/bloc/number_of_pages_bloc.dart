@@ -13,8 +13,7 @@ class NumberOfPagesBloc extends Bloc<NumberOfPagesEvent, NumberOfPagesState> {
     on<TotalPagesEvent>(totalPagesReq);
   }
 
-  FutureOr<void> totalPagesReq(
-      TotalPagesEvent event, Emitter<NumberOfPagesState> emit) async {
+  totalPagesReq(TotalPagesEvent event, Emitter<NumberOfPagesState> emit) async {
     emit(state.copyWith(loadingStatus: LoadingStatus.loading));
     try {
       int data = await getProducts.getTotalPages();

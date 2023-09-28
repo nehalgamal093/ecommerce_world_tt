@@ -5,11 +5,13 @@ class CustomProduct extends StatelessWidget {
   final String title;
   final String imgCover;
   final String price;
+  final String ratingAvg;
   const CustomProduct(
       {super.key,
       required this.title,
       required this.imgCover,
-      required this.price});
+      required this.price,
+      required this.ratingAvg});
 
   @override
   Widget build(BuildContext context) {
@@ -53,30 +55,38 @@ class CustomProduct extends StatelessWidget {
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
-              RatingBar(
-                initialRating: 2,
-                direction: Axis.horizontal,
-                allowHalfRating: true,
-                itemCount: 5,
-                glowColor: Colors.yellow,
-                itemSize: 15,
-                ratingWidget: RatingWidget(
-                  full: Icon(Icons.star, color: Colors.yellow[500]),
-                  half: Icon(Icons.star_half, color: Colors.yellow[500]),
-                  empty: Icon(Icons.star_border_outlined,
-                      color: Colors.yellow[500]),
-                ),
-                itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                onRatingUpdate: (rating) {
-                  // print(rating);
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.star, color: Colors.yellow),
+                  SizedBox(width: 5),
+                  Text(ratingAvg)
+                ],
               )
+              // RatingBar(
+              //   initialRating: 2,
+              //   direction: Axis.horizontal,
+              //   allowHalfRating: true,
+              //   itemCount: 5,
+              //   glowColor: Colors.yellow,
+              //   itemSize: 15,
+              //   ratingWidget: RatingWidget(
+              //     full: Icon(Icons.star, color: Colors.yellow[500]),
+              //     half: Icon(Icons.star_half, color: Colors.yellow[500]),
+              //     empty: Icon(Icons.star_border_outlined,
+              //         color: Colors.yellow[500]),
+              //   ),
+              //   itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+              //   onRatingUpdate: (rating) {
+              //     // print(rating);
+              //   },
+              // )
             ],
           ),
         ),
         Positioned(
-          top: 20,
-          right: 20,
+          top: 13,
+          right: 13,
           child: CircleAvatar(
             radius: 20,
             backgroundColor: Colors.red[300],
