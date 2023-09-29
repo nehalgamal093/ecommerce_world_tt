@@ -26,6 +26,7 @@ class AuthService {
         token = result['token'];
         SharedPreferences prefs = await SharedPreferences.getInstance();
         var saveLogin = prefs.getBool('saveLogin') ?? false;
+
         if (saveLogin) {
           prefs.setString("token", token!);
         }

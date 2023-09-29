@@ -130,9 +130,10 @@ class Signin extends StatelessWidget {
                         );
                     final saveStatus =
                         context.read<SaveLoginBloc>().state.saveLoginStatus;
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    prefs.setString('email', emailController.text);
                     if (saveStatus == SaveLoginStatus.save) {
-                      SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
                       prefs.setBool("saveLogin", true);
                     }
                   },

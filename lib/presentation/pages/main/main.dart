@@ -5,6 +5,7 @@ import 'package:world_commerce/presentation/pages/add_product/add_product.dart';
 import 'package:world_commerce/presentation/pages/home/home.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 
+import '../../../Services/get_user.dart';
 import '../signin/signin.dart';
 
 class Main extends StatefulWidget {
@@ -28,6 +29,13 @@ class _MainState extends State<Main> {
       size: 150,
     ),
   ];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    GetUser().userExit();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,6 +100,8 @@ class _MainState extends State<Main> {
                       await SharedPreferences.getInstance();
                   preferences.remove('token');
                   preferences.remove('saveLogin');
+                  preferences.remove('userId');
+                  preferences.remove('email');
                 },
                 child: const ListTile(
                   leading: ImageIcon(
