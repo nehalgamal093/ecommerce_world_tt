@@ -23,7 +23,9 @@ class WriteReviewPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
                         child: const Text(
                           'Cancel',
                           style: TextStyle(fontSize: 15),
@@ -37,6 +39,7 @@ class WriteReviewPage extends StatelessWidget {
                         onPressed: () async {
                           await Post()
                               .postReview(reviewController.text, rate!, id);
+                          Navigator.of(context).pop();
                           print(reviewController.text);
                         },
                         child: const Text(
