@@ -12,7 +12,8 @@ import '../../skeletons_loading/grid_skeleton.dart';
 import '../error_screen/error_screen.dart';
 
 class ProductsScreen extends StatelessWidget {
-  const ProductsScreen({super.key});
+  final String id;
+  const ProductsScreen({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,8 @@ class ProductsScreen extends StatelessWidget {
                 )..add(
                     GetProductsEvent(
                         pageNumber:
-                            context.read<IncreasePageBloc>().state.pageNumber),
+                            context.read<IncreasePageBloc>().state.pageNumber,
+                        category: id),
                   ),
                 child: BlocBuilder<GetProductBloc, GetProductState>(
                   builder: (context, state) {
@@ -90,7 +92,7 @@ class ProductsScreen extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 20),
-                                    child: nextAndPrevBtn(context),
+                                    child: nextAndPrevBtn(context, id),
                                   ),
                                   const SizedBox(height: 10),
                                 ],

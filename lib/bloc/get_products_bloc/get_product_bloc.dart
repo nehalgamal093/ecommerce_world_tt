@@ -18,14 +18,15 @@ class GetProductBloc extends Bloc<GetProductEvent, GetProductState> {
       : super(GetProductState.initial()) {
     increaseSubscription =
         changePageBloc.stream.listen((IncreasePageState increaseState) {
-      add(GetProductsEvent(pageNumber: increaseState.pageNumber));
+      add(GetProductsEvent(
+          pageNumber: increaseState.pageNumber, category: state.category));
     });
     on<GetProductsEvent>(
         (GetProductsEvent event, Emitter<GetProductState> emit) async {
       emit(state.copyWith(loadingStatus: ProductsStatus.loading));
       try {
         ProductModel fromApi =
-            await getProducts.fetchProducts(event.pageNumber);
+            await getProducts.fetchProducts(event.pageNumber, event.category);
 
         emit(state.copyWith(
             loadingStatus: ProductsStatus.loaded, productModel: fromApi));

@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              navToProducts(context),
+              // navToProducts(context),
               horizontalList(false)
             ]),
           ),

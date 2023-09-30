@@ -6,31 +6,15 @@ import '../models/Product.dart';
 import '../models/ProductModel.dart';
 
 class GetProducts {
-  Future<ProductModel> fetchProducts(int page) async {
+  Future<ProductModel> fetchProducts(int page, String category) async {
     final response = await http.get(
-      Uri.parse('${dotenv.env['PRODUCT_URL']}?page=$page'),
+      Uri.parse('${dotenv.env['PRODUCT_URL']}?page=$page&category=$category'),
     );
     ProductModel productModel =
         ProductModel.fromJson(json.decode(response.body));
-    // int totalPages = json.decode(response.body)["pages"];
-    // Product data = json.decode(response.body)["result"].map((e) => e).toList();
+
     if (response.statusCode == 200) {
-      print('===${response}');
       return productModel;
-    } else {
-      print('err===${response}');
-
-      throw Exception('Failed');
-    }
-  }
-
-  Future<dynamic> getTotalPages() async {
-    final response = await http.get(
-      Uri.parse(dotenv.env['PRODUCT_URL'].toString()),
-    );
-    var data = json.decode(response.body)["pages"];
-    if (response.statusCode == 200) {
-      return data;
     } else {
       throw Exception('Failed');
     }

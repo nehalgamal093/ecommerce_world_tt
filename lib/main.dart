@@ -27,7 +27,6 @@ import 'Services/get_products.dart';
 
 import 'bloc/change_page/increase_page_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
-import 'bloc/number_of_pages_bloc/number_of_pages_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -63,11 +62,6 @@ Future<void> main() async {
         ),
         BlocProvider(
           create: (_) => IncreasePageBloc(),
-        ),
-        BlocProvider(
-          create: (_) => NumberOfPagesBloc(
-            getProducts: GetProducts(),
-          ),
         ),
         BlocProvider(
           create: (_) => CategoriesListBloc(

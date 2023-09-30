@@ -16,7 +16,8 @@ Widget horizontalList(bool isError) {
       changePageBloc: context.read<IncreasePageBloc>(),
     )..add(
         GetProductsEvent(
-            pageNumber: context.read<IncreasePageBloc>().state.pageNumber),
+            pageNumber: context.read<IncreasePageBloc>().state.pageNumber,
+            category: '6512f4557452b0f914b19229'),
       ),
     child: BlocBuilder<GetProductBloc, GetProductState>(
       builder: (context, state) {

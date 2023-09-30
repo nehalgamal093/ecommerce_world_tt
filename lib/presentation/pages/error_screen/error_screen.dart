@@ -34,7 +34,9 @@ class ErrorScreen extends StatelessWidget {
             InkWell(
                 onTap: () {
                   context.read<GetProductBloc>().add(
-                        GetProductsEvent(pageNumber: 1),
+                        GetProductsEvent(
+                            pageNumber: 1,
+                            category: '65154a10445160954746cfc9'),
                       );
                 },
                 child: btn('Try Again'))

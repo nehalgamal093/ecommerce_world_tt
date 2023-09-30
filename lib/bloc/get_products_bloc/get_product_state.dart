@@ -6,18 +6,22 @@ enum ProductsStatus { initial, loading, loaded, error }
 class GetProductState extends Equatable {
   final ProductsStatus loadingStatus;
   ProductModel productModel;
-  // final dynamic data;
-  // final int totalPages;
-  GetProductState({required this.loadingStatus, required this.productModel});
+  String category;
+
+  GetProductState(
+      {required this.loadingStatus,
+      required this.productModel,
+      required this.category});
 
   factory GetProductState.initial() {
     return GetProductState(
         loadingStatus: ProductsStatus.initial,
-        productModel: ProductModel(totalPages: 0, products: []));
+        productModel: ProductModel(totalPages: 0, products: []),
+        category: '');
   }
 
   @override
-  List<Object?> get props => [loadingStatus, productModel];
+  List<Object?> get props => [loadingStatus, productModel, category];
 
   @override
   String toString() =>
@@ -27,6 +31,7 @@ class GetProductState extends Equatable {
       {ProductsStatus? loadingStatus, ProductModel? productModel}) {
     return GetProductState(
         loadingStatus: loadingStatus ?? this.loadingStatus,
-        productModel: productModel ?? this.productModel);
+        productModel: productModel ?? this.productModel,
+        category: category ?? this.category);
   }
 }

@@ -4,11 +4,10 @@ import 'package:world_commerce/bloc/get_products_bloc/get_product_bloc.dart';
 import '../../../../Services/get_products.dart';
 
 import '../../../../bloc/change_page/increase_page_bloc.dart';
-import '../../../../bloc/number_of_pages_bloc/number_of_pages_bloc.dart';
 import '../../../custom_widgets/custom_button.dart';
 import '../../../custom_widgets/disabled_btn.dart';
 
-Widget nextAndPrevBtn(BuildContext context) {
+Widget nextAndPrevBtn(BuildContext context, String id) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceAround,
     crossAxisAlignment: CrossAxisAlignment.end,
@@ -27,7 +26,8 @@ Widget nextAndPrevBtn(BuildContext context) {
           changePageBloc: context.read<IncreasePageBloc>(),
         )..add(
             GetProductsEvent(
-                pageNumber: context.read<IncreasePageBloc>().state.pageNumber),
+                pageNumber: context.read<IncreasePageBloc>().state.pageNumber,
+                category: id),
           ),
         child: BlocBuilder<GetProductBloc, GetProductState>(
           builder: (context, state) {
