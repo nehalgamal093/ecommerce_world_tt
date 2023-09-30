@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:world_commerce/Services/get_products.dart';
+import 'package:world_commerce/Services/get_reviews.dart';
 import 'package:world_commerce/presentation/pages/account_page/account_page.dart';
 import 'package:world_commerce/presentation/pages/add_product/add_product.dart';
 import 'package:world_commerce/presentation/pages/home/home.dart';
@@ -32,9 +33,8 @@ class _MainState extends State<Main> {
   ];
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    GetProducts().fetchProducts(1);
+    Reviews().getReviews();
   }
 
   @override

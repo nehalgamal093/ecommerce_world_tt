@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:world_commerce/models/review.dart';
+import 'package:world_commerce/models/reviews.dart';
 
 import 'package:world_commerce/presentation/pages/product_details/custom_widgets/reviews_bar.dart';
 import 'package:world_commerce/presentation/pages/write_review_page/write_review_page.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 
+import '../../../Services/get_reviews.dart';
 import 'custom_widgets/review.dart';
 
 class ProductDetails extends StatelessWidget {
@@ -98,9 +101,25 @@ class ProductDetails extends StatelessWidget {
                         ],
                       ),
                       reviewsBar(context),
-                      review(),
-                      review(),
-                      review(),
+                      FutureBuilder<ReviewsList>(
+                          future: Reviews().getReviews(),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              var reviews = snapshot.data!.reviews!
+                                  .where((e) => e.productId == id)
+                                  .toList();
+                              return ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: reviews.length,
+                                  itemBuilder: (context, index) {
+                                    return review(
+                                        reviews[index].userReview!.name!,
+                                        reviews[index].comment!);
+                                  });
+                            } else {
+                              return CircularProgressIndicator();
+                            }
+                          }),
                       const SizedBox(height: 20),
                       InkWell(
                         onTap: () {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-Widget review() {
+Widget review(String username, String comment) {
   return Column(
     children: [
       const Divider(),
@@ -15,7 +15,7 @@ Widget review() {
           const SizedBox(width: 10),
           Column(
             children: [
-              const Text('Nehal Gamal'),
+              Text(username),
               RatingBar(
                 initialRating: 2,
                 direction: Axis.horizontal,
@@ -38,8 +38,11 @@ Widget review() {
           )
         ],
       ),
-      const Text(
-          'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available'),
+      const SizedBox(height: 10),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Align(alignment: Alignment.centerLeft, child: Text(comment)),
+      ),
       const SizedBox(height: 10),
     ],
   );
