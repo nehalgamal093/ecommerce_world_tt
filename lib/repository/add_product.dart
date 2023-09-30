@@ -2,11 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http_parser/http_parser.dart';
-import 'package:world_commerce/Services/add_service.dart';
+
 import 'package:http/http.dart' as http;
 
 class AddProductRepo {
-  AddService addService = AddService();
   static String errMsg = '';
   Future<dynamic> addProduct(
       String title,

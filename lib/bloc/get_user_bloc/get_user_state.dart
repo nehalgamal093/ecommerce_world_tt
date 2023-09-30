@@ -4,14 +4,16 @@ enum UserStatus { initial, loading, loaded, error }
 
 class GetUserState extends Equatable {
   final UserStatus loadingStatus;
-  final dynamic data;
-  const GetUserState({
+  User data;
+  GetUserState({
     required this.loadingStatus,
     required this.data,
   });
 
   factory GetUserState.initial() {
-    return const GetUserState(loadingStatus: UserStatus.initial, data: {});
+    return GetUserState(
+        loadingStatus: UserStatus.initial,
+        data: User(email: '', password: '', phone: '', userName: ''));
   }
 
   @override

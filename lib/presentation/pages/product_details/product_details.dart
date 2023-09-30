@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:world_commerce/presentation/pages/product_details/custom_widgets/reviews_bar.dart';
+import 'package:world_commerce/presentation/pages/write_review_page/write_review_page.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 
 import 'custom_widgets/review.dart';
@@ -10,13 +11,15 @@ class ProductDetails extends StatelessWidget {
   final String title;
   final String description;
   final String price;
+  final String id;
 
   const ProductDetails(
       {super.key,
       required this.image,
       required this.title,
       required this.description,
-      required this.price});
+      required this.price,
+      required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -99,15 +102,27 @@ class ProductDetails extends StatelessWidget {
                       review(),
                       review(),
                       const SizedBox(height: 20),
-                      Center(
-                        child: Container(
-                          width: 150,
-                          height: 30,
-                          decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 210, 207, 207),
-                              border: Border.all(color: Colors.black)),
-                          child: const Center(
-                            child: Text('Write a review'),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => WriteReviewPage(
+                                id: id,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Center(
+                          child: Container(
+                            width: 150,
+                            height: 30,
+                            decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 210, 207, 207),
+                                border: Border.all(color: Colors.black)),
+                            child: const Center(
+                              child: Text('Write a review'),
+                            ),
                           ),
                         ),
                       ),

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:world_commerce/Services/get_products.dart';
+import 'package:world_commerce/models/ProductModel.dart';
 
 import '../change_page/increase_page_bloc.dart';
 
@@ -23,8 +24,11 @@ class GetProductBloc extends Bloc<GetProductEvent, GetProductState> {
         (GetProductsEvent event, Emitter<GetProductState> emit) async {
       emit(state.copyWith(loadingStatus: ProductsStatus.loading));
       try {
-        List<dynamic> data = await getProducts.fetchProducts(event.pageNumber);
-        emit(state.copyWith(loadingStatus: ProductsStatus.loaded, data: data));
+        ProductModel fromApi =
+            await getProducts.fetchProducts(event.pageNumber);
+
+        emit(state.copyWith(
+            loadingStatus: ProductsStatus.loaded, productModel: fromApi));
       } catch (e) {
         emit(state.copyWith(loadingStatus: ProductsStatus.error));
       }

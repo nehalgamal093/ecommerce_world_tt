@@ -2,15 +2,24 @@ import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
+import '../models/Product.dart';
+import '../models/ProductModel.dart';
+
 class GetProducts {
-  Future<List<dynamic>> fetchProducts(int page) async {
+  Future<ProductModel> fetchProducts(int page) async {
     final response = await http.get(
       Uri.parse('${dotenv.env['PRODUCT_URL']}?page=$page'),
     );
-    var data = json.decode(response.body)["result"].map((e) => e).toList();
+    ProductModel productModel =
+        ProductModel.fromJson(json.decode(response.body));
+    // int totalPages = json.decode(response.body)["pages"];
+    // Product data = json.decode(response.body)["result"].map((e) => e).toList();
     if (response.statusCode == 200) {
-      return data;
+      print('===${response}');
+      return productModel;
     } else {
+      print('err===${response}');
+
       throw Exception('Failed');
     }
   }

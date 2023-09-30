@@ -1,19 +1,21 @@
+import 'package:world_commerce/models/Image.dart';
+
 class Product {
+  String? id;
   String? title;
   String? slug;
-  int? price;
-  int? priceAfterDiscount;
-  int? ratingAvg;
-  int? ratingCount;
+  num? price;
+  num? priceAfterDiscount;
+  num? ratingAvg;
+  num? ratingCount;
   String? description;
-  int? quantity;
-  int? sold;
+  num? quantity;
+  num? sold;
   String? category;
   String? brand;
   String? subCategory;
   List<String>? images;
-  List<String>? myReviews;
-  String? error;
+
   Product(
       {this.title,
       this.slug,
@@ -28,26 +30,26 @@ class Product {
       this.brand,
       this.subCategory,
       this.images,
-      this.myReviews,
-      this.error});
-  Product.withError(String errorMessage) {
-    error = errorMessage;
-  }
+      this.id});
+
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
-        title: json['title'],
-        slug: json['slug'],
-        price: json['price'],
-        priceAfterDiscount: json['priceAfterDiscount'],
-        ratingAvg: json['ratingAvg'],
-        ratingCount: json['ratingCount'],
-        description: json['description'],
-        quantity: json['quantity'],
-        sold: json['sold'],
-        category: json['category'],
-        brand: json['brand'],
-        subCategory: json['subCategory'],
-        images: json['images'],
-        myReviews: json['myReviews']);
+      id: json['_id'],
+      title: json['title'],
+      slug: json['slug'],
+      price: json['price'],
+      priceAfterDiscount: json['priceAfterDiscount'],
+      ratingAvg: json['ratingAvg'],
+      ratingCount: json['ratingCount'],
+      description: json['description'],
+      quantity: json['quantity'],
+      sold: json['sold'],
+      category: json['category'],
+      brand: json['brand'],
+      subCategory: json['subCategory'],
+      images: List.from(json['images'])
+          .map((e) => e['attachment_file'].toString())
+          .toList(),
+    );
   }
 }

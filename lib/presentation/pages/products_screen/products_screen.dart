@@ -7,6 +7,7 @@ import 'package:world_commerce/presentation/pages/products_screen/widgets/next_p
 import '../../../Services/get_products.dart';
 import '../../../bloc/change_page/increase_page_bloc.dart';
 import '../../../bloc/get_products_bloc/get_product_bloc.dart';
+import '../../../models/Product.dart';
 import '../../skeletons_loading/grid_skeleton.dart';
 import '../error_screen/error_screen.dart';
 
@@ -33,7 +34,7 @@ class ProductsScreen extends StatelessWidget {
                   ),
                 child: BlocBuilder<GetProductBloc, GetProductState>(
                   builder: (context, state) {
-                    List<dynamic> dataFromApi = state.data;
+                    List<Product> dataFromApi = state.productModel.products!;
                     if (state.loadingStatus == ProductsStatus.loading) {
                       return gridSkeleton();
                     } else if (state.loadingStatus == ProductsStatus.loaded) {
@@ -49,36 +50,36 @@ class ProductsScreen extends StatelessWidget {
                               childAspectRatio: 635 / 889,
                             ),
                             delegate: SliverChildListDelegate(
-                              List.generate(
-                                dataFromApi.length,
-                                (index) => InkWell(
+                              List.generate(dataFromApi.length, (index) {
+                                return InkWell(
                                   onTap: () {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => ProductDetails(
-                                          image: dataFromApi[index]['images'][0]
-                                              ['attachment_file'],
-                                          title: dataFromApi[index]['title'],
-                                          description: dataFromApi[index]
-                                              ['description'],
-                                          price: dataFromApi[index]['price']
-                                              .toString(),
-                                        ),
+                                            image:
+                                                dataFromApi[index].images![0],
+                                            title: dataFromApi[index].title!,
+                                            description:
+                                                dataFromApi[index].description!,
+                                            price: dataFromApi[index]
+                                                .price
+                                                .toString(),
+                                            id: dataFromApi[index]
+                                                .id
+                                                .toString()),
                                       ),
                                     );
                                   },
                                   child: CustomProduct(
-                                    title: dataFromApi[index]['title'],
-                                    imgCover: dataFromApi[index]['images'][0]
-                                        ['attachment_file'],
-                                    price:
-                                        dataFromApi[index]['price'].toString(),
-                                    ratingAvg: dataFromApi[index]['ratingAvg']
-                                        .toString(),
+                                    title: dataFromApi[index].title!,
+                                    imgCover: dataFromApi[index].images![0],
+                                    price: dataFromApi[index].price.toString(),
+                                    ratingAvg:
+                                        dataFromApi[index].ratingAvg.toString(),
                                   ),
-                                ),
-                              ),
+                                );
+                              }),
                             ),
                           ),
                           SliverList(

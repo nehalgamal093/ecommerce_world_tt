@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:world_commerce/bloc/get_products_bloc/get_product_bloc.dart';
 import '../../../../Services/get_products.dart';
 
 import '../../../../bloc/change_page/increase_page_bloc.dart';
@@ -21,18 +22,24 @@ Widget nextAndPrevBtn(BuildContext context) {
               child: customButton('Prev', false),
             ),
       BlocProvider(
-        create: (context) => NumberOfPagesBloc(
+        create: (context) => GetProductBloc(
           getProducts: GetProducts(),
+          changePageBloc: context.read<IncreasePageBloc>(),
         )..add(
-            TotalPagesEvent(),
+            GetProductsEvent(
+                pageNumber: context.read<IncreasePageBloc>().state.pageNumber),
           ),
-        child: BlocBuilder<NumberOfPagesBloc, NumberOfPagesState>(
+        child: BlocBuilder<GetProductBloc, GetProductState>(
           builder: (context, state) {
-            if (state.loadingStatus == LoadingStatus.loading) {
+            if (state.loadingStatus == ProductsStatus.loading) {
               return customButton('Next', true);
-            } else if (state.loadingStatus == LoadingStatus.loaded) {
+            } else if (state.loadingStatus == ProductsStatus.loaded) {
               return context.read<IncreasePageBloc>().state.pageNumber >=
-                      context.read<NumberOfPagesBloc>().state.pages
+                      context
+                          .read<GetProductBloc>()
+                          .state
+                          .productModel
+                          .totalPages!
                   ? disabledBtn('Next', true)
                   : InkWell(
                       onTap: () {
