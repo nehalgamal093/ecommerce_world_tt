@@ -16,7 +16,7 @@ class GetProductState extends Equatable {
   factory GetProductState.initial() {
     return GetProductState(
         loadingStatus: ProductsStatus.initial,
-        productModel: ProductModel(totalPages: 0, products: []),
+        productModel: ProductModel(products: [], pagesPerCategory: 1),
         category: '');
   }
 
@@ -28,7 +28,9 @@ class GetProductState extends Equatable {
       'LoadingStatusGetProducts(loadingStatus: $loadingStatus)';
 
   GetProductState copyWith(
-      {ProductsStatus? loadingStatus, ProductModel? productModel}) {
+      {ProductsStatus? loadingStatus,
+      ProductModel? productModel,
+      String? category}) {
     return GetProductState(
         loadingStatus: loadingStatus ?? this.loadingStatus,
         productModel: productModel ?? this.productModel,

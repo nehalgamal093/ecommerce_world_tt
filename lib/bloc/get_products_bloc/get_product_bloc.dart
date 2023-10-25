@@ -12,15 +12,15 @@ part 'get_product_state.dart';
 
 class GetProductBloc extends Bloc<GetProductEvent, GetProductState> {
   GetProducts getProducts;
-  final IncreasePageBloc changePageBloc;
-  late final StreamSubscription increaseSubscription;
-  GetProductBloc({required this.getProducts, required this.changePageBloc})
+  // final IncreasePageBloc changePageBloc;
+  // late final StreamSubscription increaseSubscription;
+  GetProductBloc({required this.getProducts})
       : super(GetProductState.initial()) {
-    increaseSubscription =
-        changePageBloc.stream.listen((IncreasePageState increaseState) {
-      add(GetProductsEvent(
-          pageNumber: increaseState.pageNumber, category: state.category));
-    });
+    // increaseSubscription =
+    //     changePageBloc.stream.listen((IncreasePageState increaseState) {
+    //   add(GetProductsEvent(
+    //       pageNumber: increaseState.pageNumber, category: state.category));
+    // });
     on<GetProductsEvent>(
         (GetProductsEvent event, Emitter<GetProductState> emit) async {
       emit(state.copyWith(loadingStatus: ProductsStatus.loading));
@@ -35,9 +35,9 @@ class GetProductBloc extends Bloc<GetProductEvent, GetProductState> {
       }
     });
   }
-  @override
-  Future<void> close() {
-    increaseSubscription.cancel();
-    return super.close();
-  }
+  // @override
+  // Future<void> close() {
+  //   increaseSubscription.cancel();
+  //   return super.close();
+  // }
 }

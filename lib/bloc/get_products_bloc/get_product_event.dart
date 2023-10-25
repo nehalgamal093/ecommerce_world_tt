@@ -14,5 +14,5 @@ class GetProductsEvent extends GetProductEvent {
   const GetProductsEvent({required this.pageNumber, required this.category});
 
   @override
-  List<Object> get props => [pageNumber];
+  List<Object> get props => [pageNumber, category];
 }

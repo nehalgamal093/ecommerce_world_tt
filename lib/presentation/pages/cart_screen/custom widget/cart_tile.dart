@@ -2,15 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 
 class CartTile extends StatelessWidget {
-  const CartTile({super.key});
+  final String title;
+  final String price;
+  final String image;
+  const CartTile(
+      {super.key,
+      required this.title,
+      required this.price,
+      required this.image});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width * .90,
       height: 110,
-      padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(3),
+      margin: const EdgeInsets.all(5),
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(
@@ -23,24 +30,28 @@ class CartTile extends StatelessWidget {
             padding: const EdgeInsets.all(5),
             width: 100,
             height: 120,
-            decoration: BoxDecoration(
-                color: Colors.red[50],
-                borderRadius: const BorderRadius.all(Radius.circular(50))),
-            child: Image.asset('assets/images/iphone.png', fit: BoxFit.cover),
+            child: Image.network(image, fit: BoxFit.cover),
           ),
           const SizedBox(
-            width: 10,
+            width: 3,
           ),
-          const Column(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'Iphone x5 Pro',
-                style: TextStyle(fontSize: 20),
+              SizedBox(
+                width: 250,
+                child: Text(
+                  title,
+                  style: const TextStyle(fontSize: 15),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  softWrap: false,
+                ),
               ),
               Text(
-                '764 \$',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                '$price \$',
+                style:
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
             ],
           ),

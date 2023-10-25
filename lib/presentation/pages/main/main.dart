@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:world_commerce/Services/get_cart_list.dart';
 import 'package:world_commerce/Services/get_products.dart';
 import 'package:world_commerce/Services/get_reviews.dart';
 import 'package:world_commerce/presentation/pages/account_page/account_page.dart';
@@ -34,7 +35,7 @@ class _MainState extends State<Main> {
   @override
   void initState() {
     super.initState();
-    Reviews().getReviews();
+    GetCartList().fetchCartList();
   }
 
   @override

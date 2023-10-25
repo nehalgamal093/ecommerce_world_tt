@@ -57,8 +57,7 @@ Future<void> main() async {
           ),
         ),
         BlocProvider(
-          create: (_) => GetProductBloc(
-              getProducts: GetProducts(), changePageBloc: IncreasePageBloc()),
+          create: (_) => GetProductBloc(getProducts: GetProducts()),
         ),
         BlocProvider(
           create: (_) => IncreasePageBloc(),

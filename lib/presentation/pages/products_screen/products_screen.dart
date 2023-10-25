@@ -27,7 +27,7 @@ class ProductsScreen extends StatelessWidget {
               child: BlocProvider(
                 create: (context) => GetProductBloc(
                   getProducts: GetProducts(),
-                  changePageBloc: context.read<IncreasePageBloc>(),
+                  // changePageBloc: context.read<IncreasePageBloc>(),
                 )..add(
                     GetProductsEvent(
                         pageNumber:
@@ -37,6 +37,7 @@ class ProductsScreen extends StatelessWidget {
                 child: BlocBuilder<GetProductBloc, GetProductState>(
                   builder: (context, state) {
                     List<Product> dataFromApi = state.productModel.products!;
+
                     if (state.loadingStatus == ProductsStatus.loading) {
                       return gridSkeleton();
                     } else if (state.loadingStatus == ProductsStatus.loaded) {
@@ -92,7 +93,7 @@ class ProductsScreen extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 20),
-                                    child: nextAndPrevBtn(context, id),
+                                    child: NextAndPrevBtn(id: id),
                                   ),
                                   const SizedBox(height: 10),
                                 ],

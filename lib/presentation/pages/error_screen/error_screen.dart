@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_commerce/bloc/get_products_bloc/get_product_bloc.dart';
 
+import '../../../bloc/change_page/increase_page_bloc.dart';
 import '../../custom_widgets/btn.dart';
 
 class ErrorScreen extends StatelessWidget {
@@ -35,8 +36,11 @@ class ErrorScreen extends StatelessWidget {
                 onTap: () {
                   context.read<GetProductBloc>().add(
                         GetProductsEvent(
-                            pageNumber: 1,
-                            category: '65154a10445160954746cfc9'),
+                            pageNumber: context
+                                .read<IncreasePageBloc>()
+                                .state
+                                .pageNumber,
+                            category: '6512f4557452b0f914b19229'),
                       );
                 },
                 child: btn('Try Again'))

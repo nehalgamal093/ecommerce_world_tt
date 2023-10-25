@@ -3,26 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_commerce/presentation/pages/products_screen/products_screen.dart';
 
 import '../../../../bloc/categories_list_bloc/categories_list_bloc.dart';
+import '../../../../bloc/change_page/increase_page_bloc.dart';
+import '../../../../bloc/get_products_bloc/get_product_bloc.dart';
 import '../../../../repository/get_categories_list.dart';
 import '../../../skeletons_loading/drop_down_skeleton.dart';
-
-final List<Categories> list = [
-  Categories(title: 'Electronics', icon: Icons.tv_outlined),
-  Categories(title: 'Fashion', icon: Icons.ad_units),
-  Categories(title: 'Home', icon: Icons.home),
-  Categories(title: 'Books', icon: Icons.book),
-  Categories(title: 'Beauty', icon: Icons.beach_access),
-  Categories(title: 'Electronics', icon: Icons.tv_outlined),
-];
-
-class Categories {
-  String title;
-  IconData icon;
-  Categories({
-    required this.title,
-    required this.icon,
-  });
-}
 
 Widget categoriesList(BuildContext context) {
   return SizedBox(
@@ -47,11 +31,9 @@ Widget categoriesList(BuildContext context) {
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                ProductsScreen(id: state.data[index]['_id'])));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            ProductsScreen(id: state.data[index]['_id'])));
                   },
                   child: Column(
                     children: [
