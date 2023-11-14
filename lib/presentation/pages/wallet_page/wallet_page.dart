@@ -15,7 +15,7 @@ class WalletPage extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             width: MediaQuery.of(context).size.width,
             height: 200,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomLeft,
@@ -78,9 +78,55 @@ class WalletPage extends StatelessWidget {
                 )
               ],
             ),
-          )
+          ),
+          transTitle(context),
+          listOfTransactions(context)
         ],
       ),
     );
   }
+}
+
+Widget transTitle(BuildContext context) {
+  return Container(
+    margin: const EdgeInsets.all(8),
+    padding: const EdgeInsets.all(10),
+    width: MediaQuery.of(context).size.width,
+    child: const Text(
+      'Recent Transactions',
+      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+      textAlign: TextAlign.start,
+    ),
+  );
+}
+
+Widget listOfTransactions(BuildContext context) {
+  return ListView.builder(
+      shrinkWrap: true,
+      itemCount: 4,
+      itemBuilder: (context, index) {
+        return Container(
+          margin: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(20),
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(color: Colors.white),
+          child: Row(
+            children: [
+              CircleAvatar(
+                child: Icon(Icons.account_balance_wallet_outlined),
+              ),
+              SizedBox(width: 10),
+              Text(
+                '19-11-2023',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+              Spacer(),
+              Text(
+                '+200 \$',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        );
+      });
 }
