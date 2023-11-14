@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:world_commerce/Services/get_cart_list.dart';
 import 'package:world_commerce/Services/get_user.dart';
 import 'package:world_commerce/bloc/add_product_bloc/add_product_bloc.dart';
 import 'package:world_commerce/bloc/brands_list_bloc/brands_list_bloc.dart';
 import 'package:world_commerce/bloc/categories_list_bloc/categories_list_bloc.dart';
+import 'package:world_commerce/bloc/get_cart_list/get_cart_list_bloc.dart';
 import 'package:world_commerce/bloc/get_products_bloc/get_product_bloc.dart';
 import 'package:world_commerce/bloc/get_user_bloc/get_user_bloc.dart';
 
@@ -58,6 +60,9 @@ Future<void> main() async {
         ),
         BlocProvider(
           create: (_) => GetProductBloc(getProducts: GetProducts()),
+        ),
+        BlocProvider(
+          create: (_) => GetCartListBloc(getCartList: GetCartList()),
         ),
         BlocProvider(
           create: (_) => IncreasePageBloc(),

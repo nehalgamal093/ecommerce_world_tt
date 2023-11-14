@@ -86,6 +86,7 @@ flutter:
     - assets/icons/setting.png
     - assets/icons/wallet.png
     - assets/icons/signout.png
+    - assets/icons/visa.png
     - assets/images/robot.png
     - .env
   # An image asset can refer to one or more resolution-specific "variants", see

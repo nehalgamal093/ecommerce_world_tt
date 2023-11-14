@@ -6,6 +6,8 @@ import 'package:world_commerce/Services/get_reviews.dart';
 import 'package:world_commerce/presentation/pages/account_page/account_page.dart';
 import 'package:world_commerce/presentation/pages/add_product/add_product.dart';
 import 'package:world_commerce/presentation/pages/home/home.dart';
+import 'package:world_commerce/presentation/pages/settings_page/settings_page.dart';
+import 'package:world_commerce/presentation/pages/wallet_page/wallet_page.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 
 import '../../../Services/get_user.dart';
@@ -78,14 +80,30 @@ class _MainState extends State<Main> {
                 ),
               ),
               const Divider(),
-              const ListTile(
-                leading: ImageIcon(AssetImage('assets/icons/setting.png')),
-                title: Text('Setting'),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SettingsPage()));
+                },
+                child: const ListTile(
+                  leading: ImageIcon(AssetImage('assets/icons/setting.png')),
+                  title: Text('Setting'),
+                ),
               ),
               const Divider(),
-              const ListTile(
-                leading: ImageIcon(AssetImage('assets/icons/wallet.png')),
-                title: Text('Wallet'),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const WalletPage()));
+                },
+                child: const ListTile(
+                  leading: ImageIcon(AssetImage('assets/icons/wallet.png')),
+                  title: Text('Wallet'),
+                ),
               ),
               const Divider(),
               InkWell(

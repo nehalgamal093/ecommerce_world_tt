@@ -19,7 +19,7 @@ class ProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: topBar('Our Products', true, context),
+        appBar: topBar('Our Products', true, context, false),
         body: Column(
           children: [
             SizedBox(

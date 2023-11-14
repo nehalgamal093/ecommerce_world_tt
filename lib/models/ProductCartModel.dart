@@ -7,8 +7,9 @@ class ProductCartModel {
   ProductCartModel({this.products});
   factory ProductCartModel.fromJson(Map<String, dynamic> json) {
     return ProductCartModel(
-      products:
-          List.from(json['product']).map((e) => Product.fromJson(e)).toList(),
+      products: List.from(json['cart']['cartItems'])
+          .map((e) => Product.fromJson(e['product']))
+          .toList(),
     );
   }
 }

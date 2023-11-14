@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:world_commerce/models/review.dart';
 import 'package:world_commerce/models/reviews.dart';
+import 'package:world_commerce/presentation/pages/add_product/add_product.dart';
 
 import 'package:world_commerce/presentation/pages/product_details/custom_widgets/reviews_bar.dart';
 import 'package:world_commerce/presentation/pages/write_review_page/write_review_page.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 
+import '../../../Services/add_to_cart.dart';
 import '../../../Services/get_reviews.dart';
 import 'custom_widgets/review.dart';
 
@@ -152,32 +154,39 @@ class ProductDetails extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          topRight: Radius.circular(40),
-          topLeft: Radius.circular(40),
-        ),
-        child: BottomAppBar(
-          color: Colors.white,
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text(
-              price,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: const BoxDecoration(
-                  color: ColorManager.lightGrey,
-                  borderRadius: BorderRadius.all(Radius.circular(20))),
-              child: const Row(
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          AddProductToCart().addToCart(id);
+        },
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topRight: Radius.circular(40),
+            topLeft: Radius.circular(40),
+          ),
+          child: BottomAppBar(
+            color: Colors.white,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.shopping_cart_outlined),
-                  Text('Add To Cart'),
-                ],
-              ),
-            )
-          ]),
+                  Text(
+                    price,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(
+                        color: ColorManager.lightGrey,
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    child: const Row(
+                      children: [
+                        Icon(Icons.shopping_cart_outlined),
+                        Text('Add To Cart'),
+                      ],
+                    ),
+                  )
+                ]),
+          ),
         ),
       ),
     );

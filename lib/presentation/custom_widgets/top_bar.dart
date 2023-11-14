@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-topBar(String title, bool isBack, BuildContext context) {
+topBar(String title, bool isBack, BuildContext context, bool centerTitle) {
   return PreferredSize(
     preferredSize: const Size.fromHeight(80.0),
     child: Padding(
@@ -15,7 +15,7 @@ topBar(String title, bool isBack, BuildContext context) {
                 },
                 child: const Icon(Icons.arrow_back))
             : const SizedBox(),
-        centerTitle: true,
+        centerTitle: centerTitle,
       ),
     ),
   );

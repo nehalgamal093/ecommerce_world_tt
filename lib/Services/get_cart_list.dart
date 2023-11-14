@@ -13,10 +13,10 @@ class GetCartList {
       "token":
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZ2luZ2VyIiwidXNlcklkIjoiNjUxNzEwNDNhMmI1OTk3Njk0ODU0NzRiIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2OTgxNDQ1MzZ9.diGGwpM996BBx_6G7fKOumapMX4INsHB66Gu0SzIqwA"
     });
-    var productModel = jsonDecode(response.body)['cart']['cartItems'];
+    ProductCartModel productModel =
+        ProductCartModel.fromJson(json.decode(response.body));
 
     if (response.statusCode == 201) {
-      print('cartList ${productModel}');
       return productModel;
     } else {
       throw Exception('Failed');
