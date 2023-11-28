@@ -45,6 +45,21 @@ class CartScreen extends StatelessWidget {
             }),
           ),
         ),
+        bottomNavigationBar: const ClipRRect(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(40),
+            topLeft: Radius.circular(40),
+          ),
+          child: BottomAppBar(
+            color: Colors.pink,
+            child: Center(
+              child: Text(
+                'Proceed',
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -21,6 +21,7 @@ class GetUserBloc extends Bloc<GetUserEvent, GetUserState> {
       User data = await getUser.getUserData();
       emit(state.copyWith(loadingStatus: UserStatus.loaded, data: data));
     } catch (e) {
+      print(e);
       emit(state.copyWith(loadingStatus: UserStatus.error));
     }
   }

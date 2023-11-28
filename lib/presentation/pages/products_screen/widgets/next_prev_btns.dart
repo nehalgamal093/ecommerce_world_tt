@@ -101,26 +101,12 @@ class _NextAndPrevBtnState extends State<NextAndPrevBtn> {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         context.read<IncreasePageBloc>().state.pageNumber <= 1
-            ? disabledBtn(
-                context
-                    .watch<GetProductBloc>()
-                    .state
-                    .productModel
-                    .pagesPerCategory!
-                    .toString(),
-                false)
+            ? disabledBtn('Prev', false)
             : InkWell(
                 onTap: () {
                   context.read<IncreasePageBloc>().add(DecrementEvent());
                 },
-                child: customButton(
-                    context
-                        .watch<GetProductBloc>()
-                        .state
-                        .productModel
-                        .pagesPerCategory!
-                        .toString(),
-                    false),
+                child: customButton('Prev', false),
               ),
         pagek >=
                 context
@@ -128,14 +114,7 @@ class _NextAndPrevBtnState extends State<NextAndPrevBtn> {
                     .state
                     .productModel
                     .pagesPerCategory!
-            ? disabledBtn(
-                context
-                    .watch<GetProductBloc>()
-                    .state
-                    .productModel
-                    .pagesPerCategory!
-                    .toString(),
-                true)
+            ? disabledBtn('Next', true)
             : InkWell(
                 onTap: () async {
                   print(
@@ -151,14 +130,7 @@ class _NextAndPrevBtnState extends State<NextAndPrevBtn> {
                         );
                   }
                 },
-                child: customButton(
-                    context
-                        .watch<GetProductBloc>()
-                        .state
-                        .productModel
-                        .pagesPerCategory!
-                        .toString(),
-                    true),
+                child: customButton('Next', true),
               )
       ],
     );

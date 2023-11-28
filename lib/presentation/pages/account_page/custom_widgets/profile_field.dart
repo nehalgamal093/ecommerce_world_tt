@@ -14,19 +14,19 @@ Widget profileField(String hintText, bool isSecured) {
           fontSize: 15, fontWeight: FontWeight.normal, color: Colors.black),
       border: const OutlineInputBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(20),
+          Radius.circular(5),
         ),
         borderSide: BorderSide(color: ColorManager.lightGrey, width: 5),
       ),
       enabledBorder: const OutlineInputBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(20),
+          Radius.circular(5),
         ),
         borderSide: BorderSide(color: ColorManager.lightGrey, width: 5),
       ),
       focusedBorder: const OutlineInputBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(20),
+          Radius.circular(5),
         ),
         borderSide: BorderSide(color: ColorManager.lightGrey, width: 5),
       ),

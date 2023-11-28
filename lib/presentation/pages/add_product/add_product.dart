@@ -199,22 +199,37 @@ class _AddProductState extends State<AddProduct> {
         bottomNavigationBar: InkWell(
           onTap: () {
             print('==== ${dropdownValue}');
-            // context.read<AddProductBloc>().add(
-            //       AddProductEv(
-            //           title: nameController.text,
-            //           description: descriptionController.text,
-            //           price: int.parse(priceController.text),
-            //           priceAfterDiscount:
-            //               int.parse(priceAfterDiscountController.text),
-            //           ratingAvg: int.parse(ratingAvgController.text),
-            //           quantity: int.parse(quantityController.text),
-            //           ratingCount: int.parse(ratingCountController.text),
-            //           sold: int.parse(soldController.text),
-            //           category: dropdownValue!,
-            //           subCategory: subCategoryDropDown!,
-            //           brand: brandsDropDown!,
-            //           images: selectedImages),
-            //     );
+            context.read<AddProductBloc>().add(
+                  AddProductEv(
+                      title: nameController.text,
+                      description: descriptionController.text,
+                      price: int.parse(priceController.text),
+                      priceAfterDiscount:
+                          int.parse(priceAfterDiscountController.text),
+                      ratingAvg: int.parse(ratingAvgController.text),
+                      quantity: int.parse(quantityController.text),
+                      ratingCount: int.parse(ratingCountController.text),
+                      sold: int.parse(soldController.text),
+                      category: dropdownValue!,
+                      subCategory: subCategoryDropDown!,
+                      brand: brandsDropDown!,
+                      images: selectedImages),
+                );
+            print({
+              'title': nameController.text,
+              'description': descriptionController.text,
+              'price': int.parse(priceController.text),
+              'priceAfterDiscount':
+                  int.parse(priceAfterDiscountController.text),
+              'ratingAvg': int.parse(ratingAvgController.text),
+              'quantity': int.parse(quantityController.text),
+              'ratingCount': int.parse(ratingCountController.text),
+              'sold': int.parse(soldController.text),
+              'category': dropdownValue!,
+              'subCategory': subCategoryDropDown!,
+              'brand': brandsDropDown!,
+              'images': selectedImages
+            });
           },
           child: BlocListener<AddProductBloc, AddProductState>(
             listener: (context, state) {
