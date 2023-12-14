@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_commerce/presentation/pages/home/custom_widgets/nav_to_products.dart';
-import 'custom_widgets/banners.dart';
-import 'custom_widgets/categories_list.dart';
-import 'custom_widgets/home_banner.dart';
-import 'custom_widgets/horizontal_list.dart';
-import 'custom_widgets/searchBar.dart';
+import 'sections/banners.dart';
+import 'sections/categories_list.dart';
+import 'sections/home_banner.dart';
+import 'sections/product_list_home.dart';
+import 'sections/searchBar.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -41,7 +41,7 @@ class Home extends StatelessWidget {
                 height: 20,
               ),
               // navToProducts(context),
-              horizontalList(false)
+              productListHome(false)
             ]),
           ),
         ),

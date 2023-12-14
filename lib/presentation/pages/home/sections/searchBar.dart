@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../resources/color_manager.dart';
+import '../../../resources/strings_manager.dart';
 import '../../cart_screen/cart_screen.dart';
 
 Widget searchBar(BuildContext context) {
@@ -15,7 +16,7 @@ Widget searchBar(BuildContext context) {
               Icons.search,
               color: ColorManager.grey,
             ),
-            hintText: 'Search Product',
+            hintText: StringsManager.searchProduct,
             hintStyle: TextStyle(color: ColorManager.grey),
             filled: true,
             fillColor: ColorManager.lightGrey,
