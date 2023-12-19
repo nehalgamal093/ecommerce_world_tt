@@ -22,9 +22,10 @@ class AddProductRepo {
       String brand,
       List<File> images) async {
     try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String token = prefs.getString("token").toString();
       var headers = {
-        'token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibmVoYWwiLCJ1c2VySWQiOiI2NTE0MTMzOTgwYmYzNmMyZDU2NDRjYjgiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTk5NjUwNTd9.BvFmY_lSxkenjRrcG6kEczvILLEI6rdDr5dcQVn_9bM',
+        'token': token,
       };
       var request = http.MultipartRequest(
           'POST', Uri.parse(dotenv.env['PRODUCT_URL'].toString()));

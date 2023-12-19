@@ -9,8 +9,9 @@ class GetUser {
   Future<User> getUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? id = prefs.getString('userId');
+
     final response = await http.get(
-      Uri.parse(dotenv.env['USER_URL'].toString() + id!),
+      Uri.parse(dotenv.env['USER_URL'].toString() + id.toString()),
     );
     User data = User.fromJson(json.decode(response.body)["result"]);
     if (response.statusCode == 200) {
@@ -34,6 +35,7 @@ class GetUser {
         var currentUser = data.where((e) => e['email'] == email).toList();
         var currentEmail = currentUser.map((e) => e['_id']).toList();
         prefs.setString('userId', currentEmail[0]);
+        print('data=== ${prefs.getString('userId')}');
       } else {
         prefs.remove('token');
       }
