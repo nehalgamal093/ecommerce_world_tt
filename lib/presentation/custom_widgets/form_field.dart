@@ -6,8 +6,9 @@ Widget formField(BuildContext context, String title,
     TextEditingController controller, Icon icon) {
   return Container(
     width: MediaQuery.of(context).size.width,
-    padding: const EdgeInsets.all(10),
-    margin: const EdgeInsets.symmetric(vertical: 5),
+    height: 60,
+    padding: const EdgeInsets.all(3),
+    margin: const EdgeInsets.symmetric(vertical: 2),
     child: TextField(
       controller: controller,
       decoration: InputDecoration(
@@ -20,11 +21,11 @@ Widget formField(BuildContext context, String title,
         fillColor: Colors.white,
         suffixIcon: icon,
         border: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white24, width: 5)),
+            borderSide: BorderSide(color: Color.fromARGB(207, 215, 213, 212))),
         enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white24, width: 5)),
+            borderSide: BorderSide(color: Color.fromARGB(207, 215, 213, 212))),
         focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white24, width: 5)),
+            borderSide: BorderSide(color: Color.fromARGB(207, 215, 213, 212))),
       ),
     ),
   );

@@ -22,14 +22,11 @@ class _MainState extends State<Main> {
   final List _pages = [
     const Home(),
     const Icon(
-      Icons.chat,
+      Icons.favorite,
       size: 150,
     ),
-    const AddProduct(),
-    const Icon(
-      Icons.chat,
-      size: 150,
-    ),
+    const Icon(Icons.chat, size: 150),
+    AccountPage()
   ];
   @override
   void initState() {
@@ -69,19 +66,6 @@ class _MainState extends State<Main> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const AccountPage()));
-                },
-                child: const ListTile(
-                  leading: ImageIcon(AssetImage('assets/icons/account.png')),
-                  title: Text('Account'),
-                ),
-              ),
-              const Divider(),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
                           builder: (context) => const SettingsPage()));
                 },
                 child: const ListTile(
@@ -100,6 +84,19 @@ class _MainState extends State<Main> {
                 child: const ListTile(
                   leading: ImageIcon(AssetImage('assets/icons/wallet.png')),
                   title: Text('Wallet'),
+                ),
+              ),
+              const Divider(),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AddProduct()));
+                },
+                child: const ListTile(
+                  leading: ImageIcon(AssetImage('assets/icons/product.png')),
+                  title: Text('Add Product'),
                 ),
               ),
               const Divider(),

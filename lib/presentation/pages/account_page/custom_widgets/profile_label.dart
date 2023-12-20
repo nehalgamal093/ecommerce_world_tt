@@ -5,7 +5,8 @@ Widget profileLabel(String title) {
     alignment: Alignment.centerLeft,
     child: Text(
       title,
-      style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+      style: const TextStyle(
+          fontSize: 13, fontWeight: FontWeight.w400, color: Colors.black26),
     ),
   );
 }

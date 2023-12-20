@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_commerce/bloc/get_cart_list/get_cart_list_bloc.dart';
+import 'package:world_commerce/presentation/pages/cart_screen/sections/total_price_cart.dart';
 import 'package:world_commerce/presentation/pages/error_screen/error_screen.dart';
 
 import '../../../Services/get_cart_list.dart';
@@ -45,17 +46,22 @@ class CartScreen extends StatelessWidget {
             }),
           ),
         ),
-        bottomNavigationBar: const ClipRRect(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(40),
-            topLeft: Radius.circular(40),
-          ),
-          child: BottomAppBar(
-            color: Colors.pink,
-            child: Center(
-              child: Text(
-                'Proceed',
-                style: TextStyle(fontSize: 20, color: Colors.white),
+        bottomNavigationBar: InkWell(
+          onTap: () {
+            totalPriceCard(context);
+          },
+          child: const ClipRRect(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(40),
+              topLeft: Radius.circular(40),
+            ),
+            child: BottomAppBar(
+              color: Colors.pink,
+              child: Center(
+                child: Text(
+                  'Proceed',
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
               ),
             ),
           ),

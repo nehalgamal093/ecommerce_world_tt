@@ -3,6 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../exception/loading_exception.dart';
 import '../models/User.dart';
 
 class GetUser {
@@ -41,6 +42,36 @@ class GetUser {
       }
     } else {
       throw Exception('Failed');
+    }
+  }
+
+  Future<void> updateUser(String name, String email, String phoneNum) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? id = prefs.getString('userId');
+
+    try {
+      final response = await http.put(
+          Uri.parse(dotenv.env['USER_URL'].toString() + id.toString()),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(
+            <String, String>{"name": name, "email": email, "phone": phoneNum},
+          ));
+      final result = jsonDecode(response.body);
+      if (response.statusCode != 200) {
+        // print(errMsg);
+        print(result);
+        // throw Exception(httpErrorHandler(response));
+      }
+
+      if (result.isEmpty) {
+        throw LoadingException('Something went wrong');
+      }
+      print('----${result}');
+      return result;
+    } catch (e) {
+      print(e);
     }
   }
 }
