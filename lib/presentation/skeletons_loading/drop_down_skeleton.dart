@@ -4,7 +4,7 @@ Widget dropDownSkeleton() {
   return Column(
     children: [
       Container(
-        width: 300,
+        width: 500,
         height: 50,
         decoration: const BoxDecoration(
             color: Color.fromARGB(255, 244, 229, 247),

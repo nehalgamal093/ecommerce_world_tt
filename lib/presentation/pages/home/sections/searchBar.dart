@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../Services/get_cart_list.dart';
+import '../../../../bloc/get_cart_list/get_cart_list_bloc.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/strings_manager.dart';
 import '../../cart_screen/cart_screen.dart';
+import '../../error_screen/error_screen.dart';
 
 Widget searchBar(BuildContext context) {
   return Row(
@@ -37,9 +41,43 @@ Widget searchBar(BuildContext context) {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const CartScreen()));
         },
-        child: const CircleAvatar(
-          backgroundColor: ColorManager.lightGrey,
-          child: Icon(Icons.shopping_cart_outlined, color: ColorManager.grey),
+        child: BlocProvider(
+          create: (context) =>
+              GetCartListBloc(getCartList: GetCartList())..add(CartEvent()),
+          child: BlocBuilder<GetCartListBloc, GetCartListState>(
+              builder: (context, state) {
+            if (state.loadingStatus == ProductsStatus.loading) {
+              return const CircleAvatar(
+                radius: 20,
+                backgroundColor: Color.fromARGB(255, 244, 229, 247),
+              );
+            } else if (state.loadingStatus == ProductsStatus.loaded) {
+              return Stack(
+                children: [
+                  const CircleAvatar(
+                    radius: 20,
+                    backgroundColor: ColorManager.lightGrey,
+                    child: Icon(Icons.shopping_cart_outlined,
+                        color: ColorManager.grey),
+                  ),
+                  Positioned(
+                    right: 1,
+                    top: 1,
+                    child: CircleAvatar(
+                      radius: 8,
+                      backgroundColor: Colors.pink,
+                      child: Text(
+                        state.productCartModel.products!.length.toString(),
+                        style: TextStyle(color: Colors.white, fontSize: 10),
+                      ),
+                    ),
+                  )
+                ],
+              );
+            } else {
+              return const ErrorScreen();
+            }
+          }),
         ),
       ),
       const SizedBox(

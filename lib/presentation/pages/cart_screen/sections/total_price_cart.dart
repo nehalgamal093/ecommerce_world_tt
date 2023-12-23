@@ -1,9 +1,18 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:world_commerce/presentation/pages/cart_screen/custom%20widget/product_and_price.dart';
 
+import '../../../../models/Product.dart';
 import '../../../custom_widgets/main_btn.dart';
 
-Future<dynamic> totalPriceCard(BuildContext context) {
+Future<dynamic> totalPriceCard(BuildContext context, List<Product> products) {
+  double totalPrice = 0.0;
+
+  products.forEach((item) {
+    totalPrice += double.parse(item.price.toString());
+  });
+
   return showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -30,25 +39,25 @@ Future<dynamic> totalPriceCard(BuildContext context) {
                     ],
                   ),
                   const SizedBox(height: 14),
-                  productAndPrice('Samsung Galaxy Z', '100'),
-                  const SizedBox(height: 10),
-                  productAndPrice('Samsung Galaxy Z', '100'),
-                  const SizedBox(height: 10),
-                  productAndPrice('Samsung Galaxy Z', '100'),
-                  const SizedBox(height: 10),
-                  productAndPrice('Samsung Galaxy Z', '100'),
+                  ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: products.length,
+                      itemBuilder: (context, index) {
+                        return productAndPrice(products[index].title.toString(),
+                            products[index].price.toString());
+                      }),
                   const Divider(),
-                  const Row(
+                  Row(
                     children: [
-                      Text(
+                      const Text(
                         'Total',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Text(
-                        '400',
-                        style: TextStyle(
+                        totalPrice != null ? totalPrice.toString() : '0',
+                        style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       )
                     ],

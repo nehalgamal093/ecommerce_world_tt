@@ -27,7 +27,7 @@ class Home extends StatelessWidget {
                 height: 20,
               ),
               categoriesList(context),
-              const SizedBox(height: 20),
+              const SizedBox(height: 5),
               const Row(
                 children: [
                   Text(

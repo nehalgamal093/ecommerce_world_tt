@@ -38,7 +38,8 @@ Widget categoriesList(BuildContext context) {
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 3, vertical: 3),
                         child: Container(
                           width: 50,
                           height: 50,
@@ -49,8 +50,8 @@ Widget categoriesList(BuildContext context) {
                               Radius.circular(10),
                             ),
                           ),
-                          child: const Icon(
-                            Icons.tv_outlined,
+                          child: Icon(
+                            iconCategory(state.data[index]['name']),
                             color: Colors.purple,
                           ),
                         ),
@@ -58,7 +59,7 @@ Widget categoriesList(BuildContext context) {
                       Text(
                         state.data[index]['name'],
                         style: const TextStyle(
-                          fontSize: 10,
+                          fontSize: 13,
                           color: Color.fromARGB(255, 199, 163, 205),
                         ),
                       )
@@ -72,4 +73,21 @@ Widget categoriesList(BuildContext context) {
       })),
     ),
   );
+}
+
+IconData iconCategory(String category) {
+  switch (category) {
+    case "Fashion":
+      return Icons.shopping_basket_outlined;
+    case "Electronics":
+      return Icons.tv_outlined;
+    case "Gaming":
+      return Icons.gamepad_outlined;
+    case "Home":
+      return Icons.home_outlined;
+    case "Pets":
+      return Icons.pets;
+    default:
+      return Icons.account_balance_wallet;
+  }
 }
