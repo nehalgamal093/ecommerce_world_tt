@@ -50,38 +50,41 @@ class CartListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: topBar('My Cart', true, context, false),
-        body: Container(
-          padding: const EdgeInsets.all(5),
-          child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: itemsCount,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ProductDetails(
-                                image: productsCart[index].images![0],
-                                title: productsCart[index].title.toString(),
-                                description:
-                                    productsCart[index].description.toString(),
-                                price: productsCart[index].price.toString(),
-                                id: productsCart[index].id.toString())));
-                  },
-                  child: CartTile(
-                    title: productsCart[index].title.toString(),
-                    price: productsCart[index].price.toString(),
-                    image: productsCart[index].images![0],
-                  ),
-                );
-              }),
-        ),
-        bottomNavigationBar: InkWell(
-          onTap: () {
-            totalPriceCard(context, productsCart);
-          },
+      appBar: topBar('My Cart', true, context, false),
+      body: Container(
+        padding: const EdgeInsets.all(5),
+        child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: itemsCount,
+            itemBuilder: (context, index) {
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ProductDetails(
+                              image: productsCart[index].images![0],
+                              title: productsCart[index].title.toString(),
+                              description:
+                                  productsCart[index].description.toString(),
+                              price: productsCart[index].price.toString(),
+                              id: productsCart[index].id.toString())));
+                },
+                child: CartTile(
+                  title: productsCart[index].title.toString(),
+                  price: productsCart[index].price.toString(),
+                  image: productsCart[index].images![0],
+                ),
+              );
+            }),
+      ),
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          totalPriceCard(context, productsCart);
+        },
+        child: Container(
+          width: 200,
+          height: 70,
           child: const ClipRRect(
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(40),
@@ -97,7 +100,9 @@ class CartListScreen extends StatelessWidget {
               ),
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 //89

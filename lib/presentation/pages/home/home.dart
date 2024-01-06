@@ -18,6 +18,7 @@ class Home extends StatelessWidget {
         body: SingleChildScrollView(
           child: Container(
             width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             margin: const EdgeInsets.all(12),
             child: Column(children: [
               searchBar(context),

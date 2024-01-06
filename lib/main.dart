@@ -5,28 +5,25 @@ import 'package:world_commerce/Services/get_user.dart';
 import 'package:world_commerce/bloc/add_product_bloc/add_product_bloc.dart';
 import 'package:world_commerce/bloc/brands_list_bloc/brands_list_bloc.dart';
 import 'package:world_commerce/bloc/categories_list_bloc/categories_list_bloc.dart';
+import 'package:world_commerce/bloc/change_theme_bloc/change_theme_bloc.dart';
 import 'package:world_commerce/bloc/get_cart_list/get_cart_list_bloc.dart';
 import 'package:world_commerce/bloc/get_products_bloc/get_product_bloc.dart';
 import 'package:world_commerce/bloc/get_user_bloc/get_user_bloc.dart';
-
 import 'package:world_commerce/bloc/save_login/save_login_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:world_commerce/bloc/sign_up_bloc/sign_up_bloc.dart';
 import 'package:world_commerce/bloc/sub_categories_list_bloc/sub_categories_list_bloc.dart';
-
 import 'package:world_commerce/presentation/pages/main/main.dart';
-
 import 'package:world_commerce/presentation/pages/signin/signin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:world_commerce/presentation/resources/theme_manager.dart';
 import 'package:world_commerce/repository/add_product.dart';
 import 'package:world_commerce/repository/get_brands_list.dart';
 import 'package:world_commerce/repository/get_categories_list.dart';
 import 'package:world_commerce/repository/get_subCategories_list.dart';
 import 'package:world_commerce/repository/login_repo.dart';
 import 'package:world_commerce/repository/signup_repo.dart';
-
 import 'Services/get_products.dart';
-
 import 'bloc/change_page/increase_page_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
 
@@ -35,8 +32,9 @@ Future<void> main() async {
   dotenv.load(fileName: '.env');
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var token = prefs.getString("token");
+  var isDark = prefs.getBool("isDark");
+  print("isChanged, ${isDark}");
 
-// print('email is ${email}');
   runApp(
     MultiBlocProvider(
       providers: [
@@ -59,10 +57,14 @@ Future<void> main() async {
           ),
         ),
         BlocProvider(
-          create: (_) => GetProductBloc(getProducts: GetProducts()),
+          create: (_) => GetProductBloc(
+            getProducts: GetProducts(),
+          ),
         ),
         BlocProvider(
-          create: (_) => GetCartListBloc(getCartList: GetCartList()),
+          create: (_) => GetCartListBloc(
+            getCartList: GetCartList(),
+          ),
         ),
         BlocProvider(
           create: (_) => IncreasePageBloc(),
@@ -74,21 +76,37 @@ Future<void> main() async {
         ),
         BlocProvider(
           create: (_) => SubCategoriesListBloc(
-              subCategoriesRepository: GetSubCategoriesRepository()),
+            subCategoriesRepository: GetSubCategoriesRepository(),
+          ),
         ),
         BlocProvider(
-            create: (_) =>
-                BrandsListBloc(getBrandsRepository: GetBrandsRepository())),
-        BlocProvider(create: (_) => GetUserBloc(getUser: GetUser()))
-      ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+          create: (_) => BrandsListBloc(
+            getBrandsRepository: GetBrandsRepository(),
+          ),
         ),
-        home: token == null ? Signin() : const Main(),
+        BlocProvider(
+          create: (_) => GetUserBloc(
+            getUser: GetUser(),
+          ),
+        ),
+        BlocProvider(
+          create: (_) => ChangeThemeBloc(isDark: isDark!)
+            ..add(
+              InitialThemeEvent(),
+            ),
+        )
+      ],
+      child: BlocBuilder<ChangeThemeBloc, ChangeThemeState>(
+        builder: (context, state) {
+          return MaterialApp(
+            title: 'Ecommerce World',
+            debugShowCheckedModeBanner: false,
+            theme: state.changeThemeStatus == ChangeThemeStatus.dark
+                ? getAppTheme(true)
+                : getAppTheme(false),
+            home: token == null ? Signin() : const Main(),
+          );
+        },
       ),
     ),
   );

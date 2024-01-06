@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:world_commerce/bloc/change_theme_bloc/change_theme_bloc.dart';
 import 'package:world_commerce/presentation/pages/account_page/account_page.dart';
 import 'package:world_commerce/presentation/pages/add_product/add_product.dart';
 import 'package:world_commerce/presentation/pages/home/home.dart';
@@ -71,6 +73,16 @@ class _MainState extends State<Main> {
                 child: const ListTile(
                   leading: ImageIcon(AssetImage('assets/icons/setting.png')),
                   title: Text('Setting'),
+                ),
+              ),
+              const Divider(),
+              InkWell(
+                onTap: () async {
+                  context.read<ChangeThemeBloc>().add(ThemeChanged());
+                },
+                child: const ListTile(
+                  leading: ImageIcon(AssetImage('assets/icons/setting.png')),
+                  title: Text('Dark Mode'),
                 ),
               ),
               const Divider(),
