@@ -6,7 +6,6 @@ topBar(String title, bool isBack, BuildContext context, bool centerTitle) {
     child: Padding(
       padding: const EdgeInsets.all(8.0),
       child: AppBar(
-        backgroundColor: Colors.white,
         title: Text(title),
         leading: isBack
             ? InkWell(

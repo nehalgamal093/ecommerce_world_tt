@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:world_commerce/bloc/change_language_bloc/change_language_bloc.dart';
+import 'package:world_commerce/generated/l10n.dart';
 import 'package:world_commerce/presentation/custom_widgets/top_bar.dart';
 import 'package:world_commerce/presentation/pages/privacy_policy_page/privacy_policy_page.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
@@ -33,14 +36,20 @@ class SettingsPage extends StatelessWidget {
             margin: const EdgeInsets.all(8.0),
             decoration:
                 BoxDecoration(border: Border.all(color: ColorManager.grey)),
-            child: const Row(
+            child: Row(
               children: [
-                Text(
-                  'Language',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                InkWell(
+                  child: Text(
+                    S.of(context).appTitle,
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  onTap: () {
+                    context.read<ChangeLanguageBloc>().add(LanguageEvent());
+                  },
                 ),
-                Spacer(),
-                Text(
+                const Spacer(),
+                const Text(
                   'English',
                   style: TextStyle(
                       fontSize: 15,

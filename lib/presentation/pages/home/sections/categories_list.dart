@@ -5,6 +5,7 @@ import 'package:world_commerce/presentation/pages/products_screen/products_scree
 import '../../../../bloc/categories_list_bloc/categories_list_bloc.dart';
 import '../../../../bloc/change_page/increase_page_bloc.dart';
 import '../../../../bloc/get_products_bloc/get_product_bloc.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../repository/get_categories_list.dart';
 import '../../../skeletons_loading/drop_down_skeleton.dart';
 
@@ -40,24 +41,18 @@ Widget categoriesList(BuildContext context) {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 3, vertical: 3),
-                        child: Container(
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            // color: ColorManager.lightOrange,
-                            border: Border.all(color: Colors.purple),
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(10),
+                        child: Card(
+                          child: SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: Icon(
+                              iconCategory(state.data[index]['name']),
                             ),
-                          ),
-                          child: Icon(
-                            iconCategory(state.data[index]['name']),
-                            color: Colors.purple,
                           ),
                         ),
                       ),
                       Text(
-                        state.data[index]['name'],
+                        titleCategory(state.data[index]['name'], context),
                         style: const TextStyle(
                           fontSize: 13,
                           color: Color.fromARGB(255, 199, 163, 205),
@@ -89,5 +84,22 @@ IconData iconCategory(String category) {
       return Icons.pets;
     default:
       return Icons.account_balance_wallet;
+  }
+}
+
+String titleCategory(String category, BuildContext context) {
+  switch (category) {
+    case "Fashion":
+      return S.of(context).fashion;
+    case "Electronics":
+      return S.of(context).electronics;
+    case "Gaming":
+      return S.of(context).gaming;
+    case "Home":
+      return S.of(context).home;
+    case "Pets":
+      return S.of(context).pets;
+    default:
+      return 'Empty';
   }
 }

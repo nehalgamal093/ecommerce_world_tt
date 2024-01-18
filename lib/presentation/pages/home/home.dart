@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:world_commerce/generated/l10n.dart';
 import 'package:world_commerce/presentation/pages/home/custom_widgets/nav_to_products.dart';
 import 'sections/banners.dart';
 import 'sections/categories_list.dart';
@@ -15,12 +16,9 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            margin: const EdgeInsets.all(12),
-            child: Column(children: [
+        body: ListView(
+          children: [
+            Column(children: [
               searchBar(context),
               const SizedBox(height: 20),
               homeBanner(context),
@@ -29,11 +27,12 @@ class Home extends StatelessWidget {
               ),
               categoriesList(context),
               const SizedBox(height: 5),
-              const Row(
+              Row(
                 children: [
                   Text(
-                    'Special for you',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    S.of(context).specialForYou,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -44,7 +43,7 @@ class Home extends StatelessWidget {
               // navToProducts(context),
               productListHome(false)
             ]),
-          ),
+          ],
         ),
       ),
     );

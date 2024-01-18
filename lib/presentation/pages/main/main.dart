@@ -149,13 +149,10 @@ class _MainState extends State<Main> {
           topLeft: Radius.circular(40),
         ),
         child: BottomNavigationBar(
-            backgroundColor: Colors.white,
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
-            selectedItemColor: ColorManager.orange,
             showSelectedLabels: false,
             showUnselectedLabels: false,
-            unselectedItemColor: Colors.black,
             type: BottomNavigationBarType.fixed,
             items: const [
               BottomNavigationBarItem(
@@ -181,3 +178,4 @@ class _MainState extends State<Main> {
     });
   }
 }
+//181

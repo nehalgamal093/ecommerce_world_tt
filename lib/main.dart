@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:world_commerce/Services/get_cart_list.dart';
 import 'package:world_commerce/Services/get_user.dart';
 import 'package:world_commerce/bloc/add_product_bloc/add_product_bloc.dart';
 import 'package:world_commerce/bloc/brands_list_bloc/brands_list_bloc.dart';
 import 'package:world_commerce/bloc/categories_list_bloc/categories_list_bloc.dart';
+import 'package:world_commerce/bloc/change_language_bloc/change_language_bloc.dart';
 import 'package:world_commerce/bloc/change_theme_bloc/change_theme_bloc.dart';
 import 'package:world_commerce/bloc/get_cart_list/get_cart_list_bloc.dart';
 import 'package:world_commerce/bloc/get_products_bloc/get_product_bloc.dart';
@@ -13,6 +15,7 @@ import 'package:world_commerce/bloc/save_login/save_login_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:world_commerce/bloc/sign_up_bloc/sign_up_bloc.dart';
 import 'package:world_commerce/bloc/sub_categories_list_bloc/sub_categories_list_bloc.dart';
+import 'package:world_commerce/generated/l10n.dart';
 import 'package:world_commerce/presentation/pages/main/main.dart';
 import 'package:world_commerce/presentation/pages/signin/signin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,6 +29,7 @@ import 'package:world_commerce/repository/signup_repo.dart';
 import 'Services/get_products.dart';
 import 'bloc/change_page/increase_page_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
+import 'package:intl/intl.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -94,12 +98,26 @@ Future<void> main() async {
             ..add(
               InitialThemeEvent(),
             ),
-        )
+        ),
+        BlocProvider(
+          create: (_) => ChangeLanguageBloc()..add(SavedLanguageEvent()),
+        ),
       ],
       child: BlocBuilder<ChangeThemeBloc, ChangeThemeState>(
         builder: (context, state) {
           return MaterialApp(
-            title: 'Ecommerce World',
+            locale: context.watch<ChangeLanguageBloc>().state.langStatus ==
+                    LangStatus.en
+                ? const Locale("ar")
+                : const Locale("en"),
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
+            title: 'World Ecommerce',
             debugShowCheckedModeBanner: false,
             theme: state.changeThemeStatus == ChangeThemeStatus.dark
                 ? getAppTheme(true)
