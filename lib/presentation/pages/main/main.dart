@@ -76,15 +76,6 @@ class _MainState extends State<Main> {
                 ),
               ),
               const Divider(),
-              InkWell(
-                onTap: () async {
-                  context.read<ChangeThemeBloc>().add(ThemeChanged());
-                },
-                child: const ListTile(
-                  leading: ImageIcon(AssetImage('assets/icons/setting.png')),
-                  title: Text('Dark Mode'),
-                ),
-              ),
               const Divider(),
               InkWell(
                 onTap: () {

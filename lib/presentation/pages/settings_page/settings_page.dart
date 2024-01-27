@@ -6,6 +6,8 @@ import 'package:world_commerce/presentation/custom_widgets/top_bar.dart';
 import 'package:world_commerce/presentation/pages/privacy_policy_page/privacy_policy_page.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 
+import '../../../bloc/change_theme_bloc/change_theme_bloc.dart';
+
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
@@ -27,7 +29,15 @@ class SettingsPage extends StatelessWidget {
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
                 const Spacer(),
-                Switch(value: true, onChanged: (val) {})
+                Switch(
+                    value: context
+                            .watch<ChangeThemeBloc>()
+                            .state
+                            .changeThemeStatus ==
+                        ChangeThemeStatus.dark,
+                    onChanged: (val) {
+                      context.read<ChangeThemeBloc>().add(ThemeChanged());
+                    })
               ],
             ),
           ),
