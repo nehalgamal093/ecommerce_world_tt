@@ -67,7 +67,7 @@ Future<void> main() async {
         ),
         BlocProvider(
           create: (_) => GetCartListBloc(
-            getCartList: GetCartList(),
+            getCartList: GetCartList())..add(CartEvent(),
           ),
         ),
         BlocProvider(
