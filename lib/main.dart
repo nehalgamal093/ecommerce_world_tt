@@ -11,6 +11,7 @@ import 'package:world_commerce/bloc/change_theme_bloc/change_theme_bloc.dart';
 import 'package:world_commerce/bloc/get_cart_list/get_cart_list_bloc.dart';
 import 'package:world_commerce/bloc/get_products_bloc/get_product_bloc.dart';
 import 'package:world_commerce/bloc/get_user_bloc/get_user_bloc.dart';
+import 'package:world_commerce/bloc/like_bloc/like_bloc.dart';
 import 'package:world_commerce/bloc/save_login/save_login_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:world_commerce/bloc/sign_up_bloc/sign_up_bloc.dart';
@@ -100,6 +101,9 @@ Future<void> main() async {
         ),
         BlocProvider(
           create: (_) => ChangeLanguageBloc()..add(SavedLanguageEvent()),
+        ),
+        BlocProvider(
+          create: (_) => LikeBloc()..add(FavoriteEvent()),
         ),
       ],
       child: BlocBuilder<ChangeThemeBloc, ChangeThemeState>(

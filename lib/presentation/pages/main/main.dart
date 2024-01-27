@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:world_commerce/bloc/change_theme_bloc/change_theme_bloc.dart';
 import 'package:world_commerce/presentation/pages/account_page/account_page.dart';
 import 'package:world_commerce/presentation/pages/add_product/add_product.dart';
 import 'package:world_commerce/presentation/pages/home/home.dart';
 import 'package:world_commerce/presentation/pages/settings_page/settings_page.dart';
 import 'package:world_commerce/presentation/pages/wallet_page/wallet_page.dart';
-import 'package:world_commerce/presentation/resources/color_manager.dart';
-
 import '../../../Services/get_user.dart';
 import '../signin/signin.dart';
 

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:world_commerce/bloc/like_bloc/like_bloc.dart';
 
-class CustomProduct extends StatelessWidget {
+class CustomProduct extends StatefulWidget {
   final String title;
   final String imgCover;
   final String price;
@@ -13,6 +15,11 @@ class CustomProduct extends StatelessWidget {
       required this.price,
       required this.ratingAvg});
 
+  @override
+  State<CustomProduct> createState() => _CustomProductState();
+}
+
+class _CustomProductState extends State<CustomProduct> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -34,18 +41,18 @@ class CustomProduct extends StatelessWidget {
                       Radius.circular(50),
                     ),
                   ),
-                  child: Image.network(imgCover, fit: BoxFit.contain),
+                  child: Image.network(widget.imgCover, fit: BoxFit.contain),
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  title,
+                  widget.title,
                   style: const TextStyle(
                       fontSize: 15, fontWeight: FontWeight.bold),
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  '$price \$',
+                  '${widget.price} \$',
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.bold),
                 ),
@@ -72,7 +79,7 @@ class CustomProduct extends StatelessWidget {
                       },
                     ),
                     const SizedBox(width: 5),
-                    Text(ratingAvg)
+                    Text(widget.ratingAvg)
                   ],
                 )
               ],
@@ -82,14 +89,20 @@ class CustomProduct extends StatelessWidget {
         Positioned(
           top: 13,
           right: 13,
-          child: CircleAvatar(
-            radius: 20,
-            backgroundColor: Colors.red[300],
-            child: const ImageIcon(
-              AssetImage('assets/images/heart.png'),
-              color: Colors.white,
-            ),
-          ),
+          child: IconButton(
+              onPressed: () {
+                context.read<LikeBloc>().add(FavoriteEvent());
+              },
+              icon: context.watch<LikeBloc>().state.favProductStatus ==
+                      FavoriteStatus.favorite
+                  ? const Icon(
+                      Icons.favorite_border_outlined,
+                      color: Colors.grey,
+                    )
+                  : const Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                    )),
         )
       ],
     );
