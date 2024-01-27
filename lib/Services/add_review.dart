@@ -26,15 +26,13 @@ class Post {
           ));
       final result = jsonDecode(response.body);
       if (response.statusCode != 200) {
-        // print(errMsg);
-        print(result);
-        // throw Exception(httpErrorHandler(response));
+        throw Exception(httpErrorHandler(response));
       }
 
       if (result.isEmpty) {
         throw LoadingException('Something went wrong');
       }
-      print('----${result}');
+
       return result;
     } catch (e) {
       print(e);

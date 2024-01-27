@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:world_commerce/models/User.dart';
+import 'package:world_commerce/models/user.dart';
 
 import '../../Services/get_user.dart';
 
@@ -21,7 +21,6 @@ class GetUserBloc extends Bloc<GetUserEvent, GetUserState> {
       User data = await getUser.getUserData();
       emit(state.copyWith(loadingStatus: UserStatus.loaded, data: data));
     } catch (e) {
-      print(e);
       emit(state.copyWith(loadingStatus: UserStatus.error));
     }
   }

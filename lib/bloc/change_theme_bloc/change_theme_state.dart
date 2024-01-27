@@ -3,17 +3,17 @@ part of 'change_theme_bloc.dart';
 enum ChangeThemeStatus { light, dark, initial }
 
 class ChangeThemeState extends Equatable {
-  ChangeThemeStatus changeThemeStatus;
+  final ChangeThemeStatus changeThemeStatus;
 
-  ChangeThemeState({
+  const ChangeThemeState({
     this.changeThemeStatus = ChangeThemeStatus.light,
   });
 
   factory ChangeThemeState.initial() {
-    return ChangeThemeState(changeThemeStatus: ChangeThemeStatus.light);
+    return const ChangeThemeState(changeThemeStatus: ChangeThemeStatus.light);
   }
   factory ChangeThemeState.inDark() {
-    return ChangeThemeState(changeThemeStatus: ChangeThemeStatus.dark);
+    return const ChangeThemeState(changeThemeStatus: ChangeThemeStatus.dark);
   }
 
   @override

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:world_commerce/presentation/custom_widgets/custom_banner.dart';
 import '../../../../generated/l10n.dart';
 import '../../../resources/images_manager.dart';
-import '../../../resources/strings_manager.dart';
 
 Widget banners(BuildContext context) {
   return SizedBox(

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_commerce/bloc/get_products_bloc/get_product_bloc.dart';
-import '../../../../Services/get_products.dart';
-
 import '../../../../bloc/change_page/increase_page_bloc.dart';
 import '../../../custom_widgets/custom_button.dart';
 import '../../../custom_widgets/disabled_btn.dart';
@@ -117,12 +115,12 @@ class _NextAndPrevBtnState extends State<NextAndPrevBtn> {
             ? disabledBtn('Next', true)
             : InkWell(
                 onTap: () async {
-                  print(
-                      '===pagePerCategory ${context.read<GetProductBloc>().state.productModel.pagesPerCategory!}');
+                  // print(
+                  //     '===pagePerCategory ${context.read<GetProductBloc>().state.productModel.pagesPerCategory!}');
                   // context.read<IncreasePageBloc>().add(IncrementEvent());
                   // int number = context.read<IncreasePageBloc>().state.pageNumber;
                   increment();
-                  print('===pageNumber ${pagek}');
+                  // print('===pageNumber ${pagek}');
                   if (pagek > 1) {
                     context.read<GetProductBloc>().add(
                           GetProductsEvent(

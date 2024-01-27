@@ -8,7 +8,7 @@ class WriteReviewPage extends StatelessWidget {
   final String id;
   WriteReviewPage({super.key, required this.id});
   double? rate;
-  TextEditingController reviewController = TextEditingController();
+  final TextEditingController reviewController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -40,7 +40,6 @@ class WriteReviewPage extends StatelessWidget {
                           await Post()
                               .postReview(reviewController.text, rate!, id);
                           Navigator.of(context).pop();
-                          print(reviewController.text);
                         },
                         child: const Text(
                           'Send',

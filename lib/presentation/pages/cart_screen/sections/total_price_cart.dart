@@ -1,17 +1,14 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:world_commerce/presentation/pages/cart_screen/custom%20widget/product_and_price.dart';
-
 import '../../../../models/Product.dart';
 import '../../../custom_widgets/main_btn.dart';
 
 Future<dynamic> totalPriceCard(BuildContext context, List<Product> products) {
   double totalPrice = 0.0;
 
-  products.forEach((item) {
+  for (var item in products) {
     totalPrice += double.parse(item.price.toString());
-  });
+  }
 
   return showModalBottomSheet(
       context: context,

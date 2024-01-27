@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../Services/get_cart_list.dart';
 import '../../../../bloc/get_cart_list/get_cart_list_bloc.dart';
 import '../../../../generated/l10n.dart';
 import '../../../resources/color_manager.dart';
 import '../../cart_screen/cart_screen.dart';
-import '../../error_screen/error_screen.dart';
 
 Widget searchBar(BuildContext context) {
-  return Container(
+  return SizedBox(
     width: MediaQuery.of(context).size.width * .9,
     height: 70,
     child: Row(
@@ -27,7 +25,7 @@ Widget searchBar(BuildContext context) {
               hintStyle: const TextStyle(color: ColorManager.grey),
               filled: true,
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               fillColor: ColorManager.lightGrey,
               border: const OutlineInputBorder(
                 borderSide: BorderSide.none,

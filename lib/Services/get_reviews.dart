@@ -1,9 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
-
-import '../models/ProductModel.dart';
-import '../models/review.dart';
 import '../models/reviews.dart';
 
 class Reviews {
@@ -14,11 +11,8 @@ class Reviews {
     ReviewsList reviewsModel = ReviewsList.fromJson(json.decode(response.body));
 
     if (response.statusCode == 200) {
-      print(reviewsModel);
       return reviewsModel;
     } else {
-      print('err===${response}');
-
       throw Exception('Failed');
     }
   }

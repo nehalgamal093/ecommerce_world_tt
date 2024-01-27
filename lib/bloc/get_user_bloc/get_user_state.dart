@@ -4,8 +4,8 @@ enum UserStatus { initial, loading, loaded, error }
 
 class GetUserState extends Equatable {
   final UserStatus loadingStatus;
-  User data;
-  GetUserState({
+  final User data;
+  const GetUserState({
     required this.loadingStatus,
     required this.data,
   });

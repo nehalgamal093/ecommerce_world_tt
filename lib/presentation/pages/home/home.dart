@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:world_commerce/generated/l10n.dart';
-import 'package:world_commerce/presentation/pages/home/custom_widgets/nav_to_products.dart';
+
 import 'sections/banners.dart';
 import 'sections/categories_list.dart';
 import 'sections/home_banner.dart';

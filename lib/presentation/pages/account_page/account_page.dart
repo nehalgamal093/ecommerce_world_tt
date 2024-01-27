@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_commerce/bloc/get_user_bloc/get_user_bloc.dart';
-import 'package:world_commerce/presentation/custom_widgets/top_bar.dart';
 import 'package:world_commerce/presentation/pages/account_page/custom_widgets/profile_field.dart';
 import 'package:world_commerce/presentation/pages/edit_account/screens/edit_account.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
@@ -108,7 +107,7 @@ class AccountPage extends StatelessWidget {
                     ],
                   );
                 } else {
-                  return Text('Error');
+                  return const Text('Error');
                 }
               },
             ),

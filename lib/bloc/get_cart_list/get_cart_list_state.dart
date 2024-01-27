@@ -4,9 +4,9 @@ enum ProductsStatus { initial, loading, loaded, error }
 
 class GetCartListState extends Equatable {
   final ProductsStatus loadingStatus;
-  ProductCartModel productCartModel;
+  final ProductCartModel productCartModel;
 
-  GetCartListState({
+  const GetCartListState({
     required this.loadingStatus,
     required this.productCartModel,
   });

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:world_commerce/bloc/get_user_bloc/get_user_bloc.dart';
+
 import 'package:world_commerce/presentation/custom_widgets/btn.dart';
 import 'package:world_commerce/presentation/custom_widgets/top_bar.dart';
 import 'package:world_commerce/presentation/pages/account_page/custom_widgets/profile_field.dart';
@@ -8,22 +7,19 @@ import 'package:world_commerce/presentation/resources/color_manager.dart';
 
 import '../../../../Services/get_user.dart';
 import '../../account_page/custom_widgets/profile_label.dart';
-import '../../account_page/custom_widgets/skeleton_profile.dart';
 
 class EditAccount extends StatelessWidget {
-  String name;
+  final String name;
 
-  String email;
-  String phone;
+  final String email;
+  final String phone;
   EditAccount(
       {super.key,
       required this.name,
       required this.email,
       required this.phone});
 
-  //  TextEditingController nameController = TextEditingController(text: name.toString());
-
-  TextEditingController addressController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

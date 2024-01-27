@@ -29,7 +29,6 @@ import 'package:world_commerce/repository/signup_repo.dart';
 import 'Services/get_products.dart';
 import 'bloc/change_page/increase_page_bloc.dart';
 import 'bloc/login_bloc/login_bloc.dart';
-import 'package:intl/intl.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +36,6 @@ Future<void> main() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var token = prefs.getString("token");
   var isDark = prefs.getBool("isDark");
-  print("isChanged, ${isDark}");
 
   runApp(
     MultiBlocProvider(
@@ -66,9 +64,10 @@ Future<void> main() async {
           ),
         ),
         BlocProvider(
-          create: (_) => GetCartListBloc(
-            getCartList: GetCartList())..add(CartEvent(),
-          ),
+          create: (_) => GetCartListBloc(getCartList: GetCartList())
+            ..add(
+              CartEvent(),
+            ),
         ),
         BlocProvider(
           create: (_) => IncreasePageBloc(),

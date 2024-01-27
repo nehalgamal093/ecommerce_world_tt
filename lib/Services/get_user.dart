@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../exception/loading_exception.dart';
-import '../models/User.dart';
+import '../models/user.dart';
 
 class GetUser {
   Future<User> getUserData() async {
@@ -68,10 +68,10 @@ class GetUser {
       if (result.isEmpty) {
         throw LoadingException('Something went wrong');
       }
-      print('----${result}');
+
       return result;
     } catch (e) {
-      print(e);
+      throw LoadingException('failed');
     }
   }
 }

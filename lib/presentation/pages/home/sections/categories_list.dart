@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_commerce/presentation/pages/products_screen/products_screen.dart';
-
 import '../../../../bloc/categories_list_bloc/categories_list_bloc.dart';
-import '../../../../bloc/change_page/increase_page_bloc.dart';
-import '../../../../bloc/get_products_bloc/get_product_bloc.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../repository/get_categories_list.dart';
 import '../../../skeletons_loading/drop_down_skeleton.dart';
@@ -63,7 +60,7 @@ Widget categoriesList(BuildContext context) {
                 );
               });
         } else {
-          return Text('error');
+          return const Text('error');
         }
       })),
     ),

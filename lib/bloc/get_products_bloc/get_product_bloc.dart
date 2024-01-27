@@ -1,11 +1,7 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:world_commerce/Services/get_products.dart';
 import 'package:world_commerce/models/ProductModel.dart';
-
-import '../change_page/increase_page_bloc.dart';
 
 part 'get_product_event.dart';
 part 'get_product_state.dart';

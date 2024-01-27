@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:world_commerce/models/review.dart';
 import 'package:world_commerce/models/reviews.dart';
-import 'package:world_commerce/presentation/pages/add_product/add_product.dart';
-
 import 'package:world_commerce/presentation/pages/product_details/custom_widgets/reviews_bar.dart';
 import 'package:world_commerce/presentation/pages/write_review_page/write_review_page.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
@@ -119,7 +116,7 @@ class ProductDetails extends StatelessWidget {
                                         reviews[index].comment!);
                                   });
                             } else {
-                              return CircularProgressIndicator();
+                              return const CircularProgressIndicator();
                             }
                           }),
                       const SizedBox(height: 20),

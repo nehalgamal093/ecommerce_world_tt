@@ -3,6 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:world_commerce/exception/loading_exception.dart';
+
 import 'http_error_handler.dart';
 
 class AddProductToCart {
@@ -23,15 +24,13 @@ class AddProductToCart {
           ));
       final result = jsonDecode(response.body);
       if (response.statusCode != 200) {
-        // print(errMsg);
-        print(result);
-        // throw Exception(httpErrorHandler(response));
+        throw Exception(httpErrorHandler(response));
       }
 
       if (result.isEmpty) {
         throw LoadingException('Something went wrong');
       }
-      print('----${result}');
+
       return result;
     } catch (e) {
       print(e);

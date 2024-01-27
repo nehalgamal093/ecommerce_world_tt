@@ -1,5 +1,3 @@
-import 'package:world_commerce/models/Image.dart';
-
 class Product {
   String? id;
   String? title;
