@@ -28,6 +28,17 @@
     "editProfit":"Edit Profile",
     "wishlist":"Wishlist",
     "settings":"Settings",
-    "changeLang":"العربيه"
+    "changeLang":"العربيه",
+    "wallet":"Wallet",
+    "addProdct":"Add Product",
+    "signOut":"Sign out",
+    "dontHavAccount":"Don't Have an Account?",
+    "pleaseEnterYourData":"Please Enter your data to continue",
+    "email":"Email",
+    "password":"Password",
+    "rememberMe":"Remember Me",
+    "login":"Login",
+    "siginup":"Sign up",
+    "signedUpSuccessfully": "You Signed up Successfully! Now Sign in"
     
 }

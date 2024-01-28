@@ -8,6 +8,7 @@ import 'package:world_commerce/presentation/pages/signup/custom_widgets/input_te
 import 'package:world_commerce/presentation/pages/signup/signup.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 import '../../../bloc/login_bloc/login_bloc.dart';
+import '../../../generated/l10n.dart';
 import '../../resources/strings_manager.dart';
 import '../custom_product/span_text.dart';
 import '../main/main.dart';
@@ -61,9 +62,10 @@ class Signin extends StatelessWidget {
                 ),
                 const SizedBox(height: 50),
                 isRegisteredSuccess
-                    ? const Text(
-                        'You Signed up Successfully! Now Sign in',
-                        style: TextStyle(color: Colors.green, fontSize: 17),
+                    ? Text(
+                        S.of(context).signedUpSuccessfully,
+                        style:
+                            const TextStyle(color: Colors.green, fontSize: 17),
                       )
                     : Container(),
                 const SizedBox(height: 50),
@@ -75,22 +77,23 @@ class Signin extends StatelessWidget {
                       fontSize: 25,
                       fontWeight: FontWeight.bold),
                 ),
-                const Text(
-                  StringsManager.pleaseEnterData,
-                  style: TextStyle(color: ColorManager.grey, fontSize: 15),
+                Text(
+                  S.of(context).pleaseEnterYourData,
+                  style:
+                      const TextStyle(color: ColorManager.grey, fontSize: 15),
                 ),
                 const SizedBox(height: 20),
                 //starting form email and password
                 InputText(
                   controller: emailController,
-                  labelText: StringsManager.email,
+                  labelText: S.of(context).email,
                   icon: Icons.person_outline,
                   hintText: 'nehalgamal',
                   isPassword: false,
                 ),
                 InputText(
                   controller: passwordController,
-                  labelText: StringsManager.password,
+                  labelText: S.of(context).password,
                   icon: Icons.lock_outline,
                   hintText: '•••••••',
                   isPassword: true,
@@ -174,9 +177,9 @@ class Signin extends StatelessWidget {
                             ? const CircularProgressIndicator(
                                 color: Colors.white,
                               )
-                            : const Text(
-                                StringsManager.login,
-                                style: TextStyle(color: Colors.white),
+                            : Text(
+                                S.of(context).login,
+                                style: const TextStyle(color: Colors.white),
                               ),
                       ),
                     ),
@@ -193,8 +196,12 @@ class Signin extends StatelessWidget {
                       ),
                     );
                   },
-                  child: spanText(context, 'Don\'t Have an Account? ',
-                      'Sign Up', ColorManager.black, ColorManager.blue),
+                  child: spanText(
+                      context,
+                      S.of(context).dontHavAccount,
+                      S.of(context).siginup,
+                      ColorManager.black,
+                      ColorManager.blue),
                 ),
               ],
             ),

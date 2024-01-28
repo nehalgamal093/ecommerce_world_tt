@@ -28,5 +28,17 @@
     "editProfit":"تعديل الحساب",
     "wishlist":"قائمة الامنيات",
     "settings":"الضبط",
-    "changeLang":"English"
+    "changeLang":"English",
+    "wallet":"المحفظة",
+    "addProdct":"اضف منتج",
+    "signOut":"خروج",
+    "dontHavAccount":"ليس لديك حساب ؟",
+    "pleaseEnterYourData":"من فضلك ادخل بياناتك للاستمرار",
+    "email":"العنوان البريدي",
+    "password":"الباسورد",
+    "rememberMe":"تذكرني",
+    "login":"تسجيل دخول",
+    "siginup":"تسجيل حساب",
+    "signedUpSuccessfully": "تم التسجيل بنجاح ..ادخل حسابك الان"
+    
 }

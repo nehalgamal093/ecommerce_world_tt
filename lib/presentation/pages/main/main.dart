@@ -8,6 +8,7 @@ import 'package:world_commerce/presentation/pages/settings_page/settings_page.da
 import 'package:world_commerce/presentation/pages/wallet_page/wallet_page.dart';
 import 'package:world_commerce/presentation/resources/assets_manager.dart';
 import '../../../Services/get_user.dart';
+import '../../../generated/l10n.dart';
 import '../signin/signin.dart';
 
 class Main extends StatefulWidget {
@@ -67,12 +68,14 @@ class _MainState extends State<Main> {
                       MaterialPageRoute(
                           builder: (context) => const SettingsPage()));
                 },
-                child: const ListTile(
-                  leading: ImageIcon(AssetImage(AssetsManager.setting)),
-                  title: Text('Setting'),
+                child: ListTile(
+                  leading: const ImageIcon(AssetImage(AssetsManager.setting)),
+                  title: Text(
+                    S.of(context).settings,
+                    style: const TextStyle(fontSize: 15),
+                  ),
                 ),
               ),
-              const Divider(),
               const Divider(),
               InkWell(
                 onTap: () {
@@ -81,9 +84,12 @@ class _MainState extends State<Main> {
                       MaterialPageRoute(
                           builder: (context) => const WalletPage()));
                 },
-                child: const ListTile(
-                  leading: ImageIcon(AssetImage(AssetsManager.wallet)),
-                  title: Text('Wallet'),
+                child: ListTile(
+                  leading: const ImageIcon(AssetImage(AssetsManager.wallet)),
+                  title: Text(
+                    S.of(context).wallet,
+                    style: const TextStyle(fontSize: 15),
+                  ),
                 ),
               ),
               const Divider(),
@@ -94,9 +100,12 @@ class _MainState extends State<Main> {
                       MaterialPageRoute(
                           builder: (context) => const AddProduct()));
                 },
-                child: const ListTile(
-                  leading: ImageIcon(AssetImage(AssetsManager.product)),
-                  title: Text('Add Product'),
+                child: ListTile(
+                  leading: const ImageIcon(AssetImage(AssetsManager.product)),
+                  title: Text(
+                    S.of(context).addProdct,
+                    style: const TextStyle(fontSize: 15),
+                  ),
                 ),
               ),
               const Divider(),
@@ -117,11 +126,14 @@ class _MainState extends State<Main> {
                   preferences.remove('userId');
                   preferences.remove('email');
                 },
-                child: const ListTile(
-                  leading: ImageIcon(
+                child: ListTile(
+                  leading: const ImageIcon(
                     AssetImage(AssetsManager.signout),
                   ),
-                  title: Text('Sign out'),
+                  title: Text(
+                    S.of(context).signOut,
+                    style: const TextStyle(fontSize: 15),
+                  ),
                 ),
               ),
             ],

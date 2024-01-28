@@ -16,34 +16,40 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: ListView(
-          children: [
-            Column(children: [
-              searchBar(context),
-              const SizedBox(height: 20),
-              homeBanner(context),
-              const SizedBox(
-                height: 20,
-              ),
-              categoriesList(context),
-              const SizedBox(height: 5),
-              Row(
-                children: [
-                  Text(
-                    S.of(context).specialForYou,
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-              banners(context),
-              const SizedBox(
-                height: 20,
-              ),
-              // navToProducts(context),
-              productListHome(false)
-            ]),
-          ],
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView(
+            children: [
+              Column(children: [
+                searchBar(context),
+                const SizedBox(height: 20),
+                homeBanner(context),
+                const SizedBox(
+                  height: 20,
+                ),
+                categoriesList(context),
+                const SizedBox(height: 5),
+                Row(
+                  children: [
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      S.of(context).specialForYou,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                banners(context),
+                const SizedBox(
+                  height: 20,
+                ),
+                // navToProducts(context),
+                productListHome(false)
+              ]),
+            ],
+          ),
         ),
       ),
     );

@@ -349,6 +349,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Wallet`
+  String get wallet {
+    return Intl.message(
+      'Wallet',
+      name: 'wallet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Product`
+  String get addProdct {
+    return Intl.message(
+      'Add Product',
+      name: 'addProdct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign out`
+  String get signOut {
+    return Intl.message(
+      'Sign out',
+      name: 'signOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't Have an Account?`
+  String get dontHavAccount {
+    return Intl.message(
+      'Don\'t Have an Account?',
+      name: 'dontHavAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter your data to continue`
+  String get pleaseEnterYourData {
+    return Intl.message(
+      'Please Enter your data to continue',
+      name: 'pleaseEnterYourData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remember Me`
+  String get rememberMe {
+    return Intl.message(
+      'Remember Me',
+      name: 'rememberMe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up`
+  String get siginup {
+    return Intl.message(
+      'Sign up',
+      name: 'siginup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You Signed up Successfully! Now Sign in`
+  String get signedUpSuccessfully {
+    return Intl.message(
+      'You Signed up Successfully! Now Sign in',
+      name: 'signedUpSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

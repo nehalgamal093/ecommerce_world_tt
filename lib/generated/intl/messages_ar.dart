@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addProdct": MessageLookupByLibrary.simpleMessage("اضف منتج"),
         "addToCart": MessageLookupByLibrary.simpleMessage("اضف الى العربه"),
         "appTitle": MessageLookupByLibrary.simpleMessage("عالم التجاره"),
         "availableColors":
@@ -31,8 +32,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "brand18": MessageLookupByLibrary.simpleMessage("18 براند"),
         "changeLang": MessageLookupByLibrary.simpleMessage("English"),
         "darkMode": MessageLookupByLibrary.simpleMessage("مود مظلم"),
+        "dontHavAccount":
+            MessageLookupByLibrary.simpleMessage("ليس لديك حساب ؟"),
         "editProfit": MessageLookupByLibrary.simpleMessage("تعديل الحساب"),
         "electronics": MessageLookupByLibrary.simpleMessage("الالكترونيات"),
+        "email": MessageLookupByLibrary.simpleMessage("العنوان البريدي"),
         "excellent": MessageLookupByLibrary.simpleMessage("ممتاز"),
         "fashion": MessageLookupByLibrary.simpleMessage("الموضه"),
         "gaming": MessageLookupByLibrary.simpleMessage("الالعاب الالكترونيه"),
@@ -40,17 +44,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "helpSupport": MessageLookupByLibrary.simpleMessage("المساعدة والدعم"),
         "home": MessageLookupByLibrary.simpleMessage("المنزل"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+        "login": MessageLookupByLibrary.simpleMessage("تسجيل دخول"),
         "myCart": MessageLookupByLibrary.simpleMessage("عربتي"),
         "ourProducts": MessageLookupByLibrary.simpleMessage("منتجاتنا"),
+        "password": MessageLookupByLibrary.simpleMessage("الباسورد"),
         "pets": MessageLookupByLibrary.simpleMessage("الحيوانات الاليفه"),
+        "pleaseEnterYourData": MessageLookupByLibrary.simpleMessage(
+            "من فضلك ادخل بياناتك للاستمرار"),
         "poor": MessageLookupByLibrary.simpleMessage("جوده ضعيفه"),
         "privacyAndPolicy":
             MessageLookupByLibrary.simpleMessage("الخصوصية والحماية"),
         "proceed": MessageLookupByLibrary.simpleMessage("استمر"),
+        "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
         "reviews": MessageLookupByLibrary.simpleMessage("التقييمات"),
         "searchProduct": MessageLookupByLibrary.simpleMessage("ابحث عن المنتج"),
         "settings": MessageLookupByLibrary.simpleMessage("الضبط"),
+        "siginup": MessageLookupByLibrary.simpleMessage("تسجيل حساب"),
+        "signOut": MessageLookupByLibrary.simpleMessage("خروج"),
+        "signedUpSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "تم التسجيل بنجاح ..ادخل حسابك الان"),
         "specialForYou": MessageLookupByLibrary.simpleMessage("مخصص لك"),
+        "wallet": MessageLookupByLibrary.simpleMessage("المحفظة"),
         "watches": MessageLookupByLibrary.simpleMessage("الساعات"),
         "wishlist": MessageLookupByLibrary.simpleMessage("قائمة الامنيات"),
         "writeReview": MessageLookupByLibrary.simpleMessage("ضع تقييم")
