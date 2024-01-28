@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:world_commerce/presentation/resources/assets_manager.dart';
 
 Widget review(String username, String comment) {
   return Column(
@@ -10,7 +11,7 @@ Widget review(String username, String comment) {
         children: [
           CircleAvatar(
             radius: 20,
-            child: Image.asset('assets/images/cat.png'),
+            child: Image.asset(AssetsManager.cat),
           ),
           const SizedBox(width: 10),
           Column(

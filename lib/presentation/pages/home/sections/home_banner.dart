@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../resources/images_manager.dart';
+import 'package:world_commerce/presentation/resources/assets_manager.dart';
 
 Widget homeBanner(BuildContext context) {
   return Container(
@@ -8,7 +7,7 @@ Widget homeBanner(BuildContext context) {
     height: 100,
     decoration: const BoxDecoration(
       image: DecorationImage(
-          image: AssetImage(ImagesManager.pplImg), fit: BoxFit.cover),
+          image: AssetImage(AssetsManager.pplImage), fit: BoxFit.cover),
       borderRadius: BorderRadius.all(
         Radius.circular(20),
       ),

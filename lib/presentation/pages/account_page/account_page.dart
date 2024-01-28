@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_commerce/bloc/get_user_bloc/get_user_bloc.dart';
 import 'package:world_commerce/presentation/pages/account_page/custom_widgets/profile_field.dart';
 import 'package:world_commerce/presentation/pages/edit_account/screens/edit_account.dart';
+import 'package:world_commerce/presentation/resources/assets_manager.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 import '../../../Services/get_user.dart';
 import 'custom_widgets/profile_label.dart';
@@ -36,8 +37,7 @@ class AccountPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       CircleAvatar(
-                          radius: 60,
-                          child: Image.asset('assets/images/cat.png')),
+                          radius: 60, child: Image.asset(AssetsManager.cat)),
                       const Text(
                         'Nehal Gamal',
                         style: TextStyle(

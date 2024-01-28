@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:world_commerce/presentation/custom_widgets/btn.dart';
 import 'package:world_commerce/presentation/custom_widgets/top_bar.dart';
 import 'package:world_commerce/presentation/pages/account_page/custom_widgets/profile_field.dart';
+import 'package:world_commerce/presentation/resources/assets_manager.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 
 import '../../../../Services/get_user.dart';
@@ -34,8 +35,7 @@ class EditAccount extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                CircleAvatar(
-                    radius: 60, child: Image.asset('assets/images/cat.png')),
+                CircleAvatar(radius: 60, child: Image.asset(AssetsManager.cat)),
                 const Text(
                   'Nehal Gamal',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

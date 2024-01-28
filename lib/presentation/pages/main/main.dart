@@ -6,6 +6,7 @@ import 'package:world_commerce/presentation/pages/add_product/add_product.dart';
 import 'package:world_commerce/presentation/pages/home/home.dart';
 import 'package:world_commerce/presentation/pages/settings_page/settings_page.dart';
 import 'package:world_commerce/presentation/pages/wallet_page/wallet_page.dart';
+import 'package:world_commerce/presentation/resources/assets_manager.dart';
 import '../../../Services/get_user.dart';
 import '../signin/signin.dart';
 
@@ -49,8 +50,7 @@ class _MainState extends State<Main> {
               Center(
                 child: Column(
                   children: [
-                    Image.asset('assets/images/cat.png',
-                        width: 100, height: 100),
+                    Image.asset(AssetsManager.cat, width: 100, height: 100),
                     const Text(
                       'Nehal Gamal',
                       style:
@@ -68,7 +68,7 @@ class _MainState extends State<Main> {
                           builder: (context) => const SettingsPage()));
                 },
                 child: const ListTile(
-                  leading: ImageIcon(AssetImage('assets/icons/setting.png')),
+                  leading: ImageIcon(AssetImage(AssetsManager.setting)),
                   title: Text('Setting'),
                 ),
               ),
@@ -82,7 +82,7 @@ class _MainState extends State<Main> {
                           builder: (context) => const WalletPage()));
                 },
                 child: const ListTile(
-                  leading: ImageIcon(AssetImage('assets/icons/wallet.png')),
+                  leading: ImageIcon(AssetImage(AssetsManager.wallet)),
                   title: Text('Wallet'),
                 ),
               ),
@@ -95,7 +95,7 @@ class _MainState extends State<Main> {
                           builder: (context) => const AddProduct()));
                 },
                 child: const ListTile(
-                  leading: ImageIcon(AssetImage('assets/icons/product.png')),
+                  leading: ImageIcon(AssetImage(AssetsManager.product)),
                   title: Text('Add Product'),
                 ),
               ),
@@ -119,7 +119,7 @@ class _MainState extends State<Main> {
                 },
                 child: const ListTile(
                   leading: ImageIcon(
-                    AssetImage('assets/icons/signout.png'),
+                    AssetImage(AssetsManager.signout),
                   ),
                   title: Text('Sign out'),
                 ),
@@ -144,16 +144,16 @@ class _MainState extends State<Main> {
             type: BottomNavigationBarType.fixed,
             items: const [
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/icons/store.png')),
+                  icon: ImageIcon(AssetImage(AssetsManager.store)),
                   label: 'Home'),
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/icons/heart100.png')),
+                  icon: ImageIcon(AssetImage(AssetsManager.heart100)),
                   label: 'Home'),
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/icons/message.png')),
+                  icon: ImageIcon(AssetImage(AssetsManager.message)),
                   label: 'Home'),
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/icons/person.png')),
+                  icon: ImageIcon(AssetImage(AssetsManager.person)),
                   label: 'Home'),
             ]),
       ),

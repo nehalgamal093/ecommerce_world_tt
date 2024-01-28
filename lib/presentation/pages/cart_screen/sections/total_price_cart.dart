@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:world_commerce/presentation/pages/cart_screen/custom%20widget/product_and_price.dart';
+import 'package:world_commerce/presentation/resources/assets_manager.dart';
 import '../../../../models/Product.dart';
 import '../../../custom_widgets/main_btn.dart';
 
@@ -29,7 +30,7 @@ Future<dynamic> totalPriceCard(BuildContext context, List<Product> products) {
                       ),
                       const Spacer(),
                       Image.asset(
-                        'assets/icons/visa.png',
+                        AssetsManager.visa,
                         width: 100,
                         height: 80,
                       )
