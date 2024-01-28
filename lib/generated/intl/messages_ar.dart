@@ -22,15 +22,37 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addToCart": MessageLookupByLibrary.simpleMessage("اضف الى العربه"),
         "appTitle": MessageLookupByLibrary.simpleMessage("عالم التجاره"),
+        "availableColors":
+            MessageLookupByLibrary.simpleMessage("الالوان المتاحه:"),
+        "average": MessageLookupByLibrary.simpleMessage("متوسط"),
+        "belowAverage": MessageLookupByLibrary.simpleMessage("تحت المتوسط"),
         "brand18": MessageLookupByLibrary.simpleMessage("18 براند"),
+        "changeLang": MessageLookupByLibrary.simpleMessage("English"),
+        "darkMode": MessageLookupByLibrary.simpleMessage("مود مظلم"),
+        "editProfit": MessageLookupByLibrary.simpleMessage("تعديل الحساب"),
         "electronics": MessageLookupByLibrary.simpleMessage("الالكترونيات"),
+        "excellent": MessageLookupByLibrary.simpleMessage("ممتاز"),
         "fashion": MessageLookupByLibrary.simpleMessage("الموضه"),
         "gaming": MessageLookupByLibrary.simpleMessage("الالعاب الالكترونيه"),
+        "good": MessageLookupByLibrary.simpleMessage("جيد"),
+        "helpSupport": MessageLookupByLibrary.simpleMessage("المساعدة والدعم"),
         "home": MessageLookupByLibrary.simpleMessage("المنزل"),
+        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+        "myCart": MessageLookupByLibrary.simpleMessage("عربتي"),
+        "ourProducts": MessageLookupByLibrary.simpleMessage("منتجاتنا"),
         "pets": MessageLookupByLibrary.simpleMessage("الحيوانات الاليفه"),
+        "poor": MessageLookupByLibrary.simpleMessage("جوده ضعيفه"),
+        "privacyAndPolicy":
+            MessageLookupByLibrary.simpleMessage("الخصوصية والحماية"),
+        "proceed": MessageLookupByLibrary.simpleMessage("استمر"),
+        "reviews": MessageLookupByLibrary.simpleMessage("التقييمات"),
         "searchProduct": MessageLookupByLibrary.simpleMessage("ابحث عن المنتج"),
+        "settings": MessageLookupByLibrary.simpleMessage("الضبط"),
         "specialForYou": MessageLookupByLibrary.simpleMessage("مخصص لك"),
-        "watches": MessageLookupByLibrary.simpleMessage("الساعات")
+        "watches": MessageLookupByLibrary.simpleMessage("الساعات"),
+        "wishlist": MessageLookupByLibrary.simpleMessage("قائمة الامنيات"),
+        "writeReview": MessageLookupByLibrary.simpleMessage("ضع تقييم")
       };
 }

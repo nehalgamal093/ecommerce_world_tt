@@ -149,6 +149,206 @@ class S {
       args: [],
     );
   }
+
+  /// `Add To Cart`
+  String get addToCart {
+    return Intl.message(
+      'Add To Cart',
+      name: 'addToCart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write a review`
+  String get writeReview {
+    return Intl.message(
+      'Write a review',
+      name: 'writeReview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Available Colors:`
+  String get availableColors {
+    return Intl.message(
+      'Available Colors:',
+      name: 'availableColors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reviews`
+  String get reviews {
+    return Intl.message(
+      'Reviews',
+      name: 'reviews',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Excellent`
+  String get excellent {
+    return Intl.message(
+      'Excellent',
+      name: 'excellent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good`
+  String get good {
+    return Intl.message(
+      'Good',
+      name: 'good',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Average`
+  String get average {
+    return Intl.message(
+      'Average',
+      name: 'average',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Below Average`
+  String get belowAverage {
+    return Intl.message(
+      'Below Average',
+      name: 'belowAverage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Poor`
+  String get poor {
+    return Intl.message(
+      'Poor',
+      name: 'poor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Our Products`
+  String get ourProducts {
+    return Intl.message(
+      'Our Products',
+      name: 'ourProducts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Cart`
+  String get myCart {
+    return Intl.message(
+      'My Cart',
+      name: 'myCart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Proceed`
+  String get proceed {
+    return Intl.message(
+      'Proceed',
+      name: 'proceed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark Mode`
+  String get darkMode {
+    return Intl.message(
+      'Dark Mode',
+      name: 'darkMode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy And Policy`
+  String get privacyAndPolicy {
+    return Intl.message(
+      'Privacy And Policy',
+      name: 'privacyAndPolicy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help & Support`
+  String get helpSupport {
+    return Intl.message(
+      'Help & Support',
+      name: 'helpSupport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Profile`
+  String get editProfit {
+    return Intl.message(
+      'Edit Profile',
+      name: 'editProfit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wishlist`
+  String get wishlist {
+    return Intl.message(
+      'Wishlist',
+      name: 'wishlist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `العربيه`
+  String get changeLang {
+    return Intl.message(
+      'العربيه',
+      name: 'changeLang',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

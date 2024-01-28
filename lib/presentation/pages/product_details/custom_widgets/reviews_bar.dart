@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 
+import '../../../../generated/l10n.dart';
+
 Widget reviewsBar(BuildContext context) {
   return SizedBox(
     width: MediaQuery.of(context).size.width,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Text(
-          'Reviews',
-          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+        Text(
+          S.of(context).reviews,
+          style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
         ),
         const Text(
           '4.0',
@@ -40,7 +42,7 @@ Widget reviewsBar(BuildContext context) {
         const SizedBox(height: 40),
         Row(
           children: [
-            const Text('Excellent'),
+            Text(S.of(context).excellent),
             const SizedBox(width: 10),
             Container(
               padding: const EdgeInsets.all(4),
@@ -53,7 +55,7 @@ Widget reviewsBar(BuildContext context) {
         ),
         Row(
           children: [
-            const Text('Good'),
+            Text(S.of(context).good),
             const SizedBox(width: 10),
             Container(
               padding: const EdgeInsets.all(4),
@@ -66,7 +68,7 @@ Widget reviewsBar(BuildContext context) {
         ),
         Row(
           children: [
-            const Text('Average'),
+            Text(S.of(context).average),
             const SizedBox(width: 10),
             Container(
               padding: const EdgeInsets.all(4),
@@ -79,7 +81,7 @@ Widget reviewsBar(BuildContext context) {
         ),
         Row(
           children: [
-            const Text('Below Average'),
+            Text(S.of(context).belowAverage),
             const SizedBox(width: 10),
             Container(
               padding: const EdgeInsets.all(4),
@@ -92,7 +94,7 @@ Widget reviewsBar(BuildContext context) {
         ),
         Row(
           children: [
-            const Text('Poor'),
+            Text(S.of(context).poor),
             const SizedBox(width: 10),
             Container(
               padding: const EdgeInsets.all(4),

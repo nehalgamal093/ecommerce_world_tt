@@ -8,6 +8,26 @@
     "electronics":"Electronics",
     "fashion":"Fashion",
     "watches":"Watches",
-    "brand18":"18 Brand"
+    "brand18":"18 Brand",
+    "addToCart":"Add To Cart",
+    "writeReview":"Write a review",
+    "availableColors":"Available Colors:",
+    "reviews":"Reviews",
+    "excellent":"Excellent",
+    "good":"Good",
+    "average":"Average",
+    "belowAverage":"Below Average",
+    "poor":"Poor",
+    "ourProducts":"Our Products",
+    "myCart":"My Cart",
+    "proceed":"Proceed",
+    "darkMode":"Dark Mode",
+    "language":"Language",
+    "privacyAndPolicy":"Privacy And Policy",
+    "helpSupport":"Help & Support",
+    "editProfit":"Edit Profile",
+    "wishlist":"Wishlist",
+    "settings":"Settings",
+    "changeLang":"العربيه"
     
 }

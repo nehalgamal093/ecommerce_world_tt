@@ -7,6 +7,7 @@ import 'package:world_commerce/presentation/pages/products_screen/widgets/next_p
 import '../../../Services/get_products.dart';
 import '../../../bloc/change_page/increase_page_bloc.dart';
 import '../../../bloc/get_products_bloc/get_product_bloc.dart';
+import '../../../generated/l10n.dart';
 import '../../../models/Product.dart';
 import '../../skeletons_loading/grid_skeleton.dart';
 import '../error_screen/error_screen.dart';
@@ -19,7 +20,7 @@ class ProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: topBar('Our Products', true, context, false),
+        appBar: topBar(S.of(context).ourProducts, true, context, false),
         body: Column(
           children: [
             SizedBox(

@@ -14,7 +14,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: topBar('Settings', true, context, false),
+      appBar: topBar(S.of(context).settings, true, context, false),
       body: ListView(
         children: [
           Container(
@@ -24,9 +24,10 @@ class SettingsPage extends StatelessWidget {
                 BoxDecoration(border: Border.all(color: ColorManager.grey)),
             child: Row(
               children: [
-                const Text(
-                  'Dark Mode',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                Text(
+                  S.of(context).darkMode,
+                  style: const TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.bold),
                 ),
                 const Spacer(),
                 Switch(
@@ -59,9 +60,9 @@ class SettingsPage extends StatelessWidget {
                   },
                 ),
                 const Spacer(),
-                const Text(
-                  'English',
-                  style: TextStyle(
+                Text(
+                  S.of(context).changeLang,
+                  style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
                       color: ColorManager.grey),
@@ -81,14 +82,15 @@ class SettingsPage extends StatelessWidget {
               margin: const EdgeInsets.all(8.0),
               decoration:
                   BoxDecoration(border: Border.all(color: ColorManager.grey)),
-              child: const Row(
+              child: Row(
                 children: [
                   Text(
-                    'Privacy and Policy',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    S.of(context).privacyAndPolicy,
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold),
                   ),
-                  Spacer(),
-                  Icon(Icons.arrow_forward_ios_outlined,
+                  const Spacer(),
+                  const Icon(Icons.arrow_forward_ios_outlined,
                       color: ColorManager.grey)
                 ],
               ),
@@ -99,14 +101,15 @@ class SettingsPage extends StatelessWidget {
             margin: const EdgeInsets.all(8.0),
             decoration:
                 BoxDecoration(border: Border.all(color: ColorManager.grey)),
-            child: const Row(
+            child: Row(
               children: [
                 Text(
-                  'Help & Support',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  S.of(context).helpSupport,
+                  style: const TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                Spacer(),
-                Icon(Icons.chat_bubble_outline, color: ColorManager.grey)
+                const Spacer(),
+                const Icon(Icons.chat_bubble_outline, color: ColorManager.grey)
               ],
             ),
           ),
@@ -115,14 +118,14 @@ class SettingsPage extends StatelessWidget {
             margin: const EdgeInsets.all(8.0),
             decoration:
                 BoxDecoration(border: Border.all(color: ColorManager.grey)),
-            child: const Row(
+            child:  Row(
               children: [
                 Text(
-                  'Edit Profile',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  S.of(context).editProfit,
+                  style:const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                Spacer(),
-                Icon(Icons.person_2_outlined, color: ColorManager.grey)
+              const  Spacer(),
+             const   Icon(Icons.person_2_outlined, color: ColorManager.grey)
               ],
             ),
           ),
@@ -131,14 +134,14 @@ class SettingsPage extends StatelessWidget {
             margin: const EdgeInsets.all(8.0),
             decoration:
                 BoxDecoration(border: Border.all(color: ColorManager.grey)),
-            child: const Row(
+            child:  Row(
               children: [
                 Text(
-                  'Wishlist',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  S.of(context).wishlist,
+                  style:const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                Spacer(),
-                Icon(Icons.favorite, color: ColorManager.grey)
+                const Spacer(),
+              const  Icon(Icons.favorite, color: ColorManager.grey)
               ],
             ),
           )

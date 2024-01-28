@@ -6,6 +6,7 @@ import 'package:world_commerce/presentation/resources/color_manager.dart';
 
 import '../../../Services/add_to_cart.dart';
 import '../../../Services/get_reviews.dart';
+import '../../../generated/l10n.dart';
 import 'custom_widgets/review.dart';
 
 class ProductDetails extends StatelessWidget {
@@ -71,7 +72,7 @@ class ProductDetails extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          const Text('Available Colors: '),
+                          Text(S.of(context).availableColors),
                           const SizedBox(width: 10),
                           SizedBox(
                             width: 200,
@@ -138,8 +139,8 @@ class ProductDetails extends StatelessWidget {
                             decoration: BoxDecoration(
                                 color: const Color.fromARGB(255, 210, 207, 207),
                                 border: Border.all(color: Colors.black)),
-                            child: const Center(
-                              child: Text('Write a review'),
+                            child: Center(
+                              child: Text(S.of(context).writeReview),
                             ),
                           ),
                         ),
@@ -162,30 +163,41 @@ class ProductDetails extends StatelessWidget {
           ),
           child: BottomAppBar(
             color: Colors.white,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    price,
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: const BoxDecoration(
-                        color: ColorManager.lightGrey,
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
-                    child: const Row(
-                      children: [
-                        Icon(Icons.shopping_cart_outlined),
-                        Text('Add To Cart'),
-                      ],
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              decoration: const BoxDecoration(
+                  color: ColorManager.orangeMain,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20))),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      price,
+                      style: const TextStyle(
+                          color: ColorManager.whiteMain,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
                     ),
-                  )
-                ]),
+                    Row(
+                      children: [
+                        Text(S.of(context).addToCart,
+                            style: const TextStyle(
+                              color: ColorManager.whiteMain,
+                              fontSize: 20,
+                            )),
+                        const SizedBox(width: 5),
+                        const Icon(Icons.shopping_cart_outlined,
+                            color: ColorManager.whiteMain),
+                      ],
+                    )
+                  ]),
+            ),
           ),
         ),
       ),
     );
   }
 }
+//194

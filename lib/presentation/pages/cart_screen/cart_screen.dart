@@ -8,6 +8,7 @@ import 'package:world_commerce/presentation/pages/error_screen/error_screen.dart
 import 'package:world_commerce/presentation/pages/product_details/product_details.dart';
 
 import '../../../Services/get_cart_list.dart';
+import '../../../generated/l10n.dart';
 import '../../../models/Product.dart';
 import '../../custom_widgets/top_bar.dart';
 import 'custom widget/cart_tile.dart';
@@ -50,7 +51,7 @@ class CartListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: topBar('My Cart', true, context, false),
+      appBar: topBar(S.of(context).myCart, true, context, false),
       body: Container(
         padding: const EdgeInsets.all(5),
         child: ListView.builder(
@@ -85,8 +86,8 @@ class CartListScreen extends StatelessWidget {
         child: Container(
           width: 200,
           height: 70,
-          child: const ClipRRect(
-            borderRadius: BorderRadius.only(
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
               topRight: Radius.circular(40),
               topLeft: Radius.circular(40),
             ),
@@ -94,8 +95,8 @@ class CartListScreen extends StatelessWidget {
               color: Colors.pink,
               child: Center(
                 child: Text(
-                  'Proceed',
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+                  S.of(context).proceed,
+                  style: const TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
             ),
