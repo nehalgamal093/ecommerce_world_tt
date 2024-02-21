@@ -35,79 +35,80 @@ class ProductsScreen extends StatelessWidget {
                             context.read<IncreasePageBloc>().state.pageNumber,
                         category: id),
                   ),
-                child: BlocBuilder<GetProductBloc, GetProductState>(
-                  builder: (context, state) {
-                    List<Product> dataFromApi = state.productModel.products!;
+                child: BlocConsumer<GetProductBloc, GetProductState>(
+                    builder: (context, state) {
+                  List<Product>? dataFromApi =
+                      state.productModel.products ?? [];
 
-                    if (state.loadingStatus == ProductsStatus.loading) {
-                      return gridSkeleton();
-                    } else if (state.loadingStatus == ProductsStatus.loaded) {
-                      return CustomScrollView(
-                        semanticChildCount: 2,
-                        slivers: [
-                          SliverGrid(
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: 2.0,
-                              crossAxisSpacing: 16.0,
-                              childAspectRatio: 635 / 889,
-                            ),
-                            delegate: SliverChildListDelegate(
-                              List.generate(dataFromApi.length, (index) {
-                                return InkWell(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => ProductDetails(
-                                            image:
-                                                dataFromApi[index].images![0],
-                                            title: dataFromApi[index].title!,
-                                            description:
-                                                dataFromApi[index].description!,
-                                            price: dataFromApi[index]
-                                                .price
-                                                .toString(),
-                                            id: dataFromApi[index]
-                                                .id
-                                                .toString()),
-                                      ),
-                                    );
-                                  },
-                                  child: CustomProduct(
-                                    title: dataFromApi[index].title!,
-                                    imgCover: dataFromApi[index].images![0],
-                                    price: dataFromApi[index].price.toString(),
-                                    ratingAvg:
-                                        dataFromApi[index].ratingAvg.toString(),
-                                  ),
-                                );
-                              }),
-                            ),
+                  if (state.loadingStatus == ProductStatus.loading) {
+                    return gridSkeleton();
+                  } else if (state.loadingStatus == ProductStatus.loaded) {
+                    return CustomScrollView(
+                      semanticChildCount: 2,
+                      slivers: [
+                        SliverGrid(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 2.0,
+                            crossAxisSpacing: 16.0,
+                            childAspectRatio: 635 / 889,
                           ),
-                          SliverList(
-                            delegate: SliverChildListDelegate([
-                              Column(
-                                children: [
-                                  const SizedBox(height: 10),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20),
-                                    child: NextAndPrevBtn(id: id),
-                                  ),
-                                  const SizedBox(height: 10),
-                                ],
-                              )
-                            ]),
+                          delegate: SliverChildListDelegate(
+                            List.generate(dataFromApi.length, (index) {
+                              return InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ProductDetails(
+                                          image: dataFromApi[index].images![0],
+                                          title: dataFromApi[index].title!,
+                                          description:
+                                              dataFromApi[index].description!,
+                                          price: dataFromApi[index]
+                                              .price
+                                              .toString(),
+                                          id: dataFromApi[index].id.toString()),
+                                    ),
+                                  );
+                                },
+                                child: CustomProduct(
+                                  title: dataFromApi[index].title!,
+                                  imgCover: dataFromApi[index].images![0],
+                                  price: dataFromApi[index].price.toString(),
+                                  ratingAvg:
+                                      dataFromApi[index].ratingAvg.toString(),
+                                ),
+                              );
+                            }),
                           ),
-                        ],
-                      );
-                    } else {
-                      return const ErrorScreen();
-                    }
-                  },
-                ),
+                        ),
+                        SliverList(
+                          delegate: SliverChildListDelegate([
+                            Column(
+                              children: [
+                                const SizedBox(height: 10),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: nextPrev(context, id),
+                                ),
+                                const SizedBox(height: 10),
+                              ],
+                            )
+                          ]),
+                        ),
+                      ],
+                    );
+                  } else {
+                    return const ErrorScreen();
+                  }
+                }, listener: (context, state) {
+                  if (state.loadingStatus == ProductStatus.error) {
+                    const ErrorScreen();
+                  }
+                }),
               ),
             )
           ],

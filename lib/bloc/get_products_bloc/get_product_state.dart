@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'get_product_bloc.dart';
 
-enum ProductsStatus { initial, loading, loaded, error }
+enum ProductStatus { initial, loading, loaded, error }
 
 class GetProductState extends Equatable {
-  final ProductsStatus loadingStatus;
+  final ProductStatus loadingStatus;
   ProductModel productModel;
   String category;
 
@@ -15,7 +15,7 @@ class GetProductState extends Equatable {
 
   factory GetProductState.initial() {
     return GetProductState(
-        loadingStatus: ProductsStatus.initial,
+        loadingStatus: ProductStatus.initial,
         productModel: ProductModel(products: [], pagesPerCategory: 1),
         category: '');
   }
@@ -28,7 +28,7 @@ class GetProductState extends Equatable {
       'LoadingStatusGetProducts(loadingStatus: $loadingStatus)';
 
   GetProductState copyWith(
-      {ProductsStatus? loadingStatus,
+      {ProductStatus? loadingStatus,
       ProductModel? productModel,
       String? category}) {
     return GetProductState(

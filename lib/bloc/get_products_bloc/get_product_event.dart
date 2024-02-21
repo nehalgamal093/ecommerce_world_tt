@@ -11,7 +11,11 @@ sealed class GetProductEvent extends Equatable {
 class GetProductsEvent extends GetProductEvent {
   final int pageNumber;
   final String category;
-  const GetProductsEvent({required this.pageNumber, required this.category});
+
+  const GetProductsEvent({
+    required this.pageNumber,
+    required this.category,
+  });
 
   @override
   List<Object> get props => [pageNumber, category];

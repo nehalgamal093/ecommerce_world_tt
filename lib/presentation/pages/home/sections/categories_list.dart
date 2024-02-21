@@ -29,6 +29,7 @@ Widget categoriesList(BuildContext context) {
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
+                    print('id is ${state.data[index]['_id']}');
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) =>
                             ProductsScreen(id: state.data[index]['_id'])));

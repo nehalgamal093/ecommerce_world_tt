@@ -6,8 +6,7 @@ enum LoadingStatus { initial, loading, loaded, error }
 class IncreasePageState extends Equatable {
   final int pageNumber;
   final LoadingStatus loadingStatus;
-  const IncreasePageState(
-      {required this.pageNumber, required this.loadingStatus});
+  const IncreasePageState({this.pageNumber = 1, required this.loadingStatus});
   @override
   String toString() => 'PageNumberStatus(pageNumber: $pageNumber)';
   factory IncreasePageState.initial() {

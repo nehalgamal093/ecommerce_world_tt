@@ -37,11 +37,10 @@ class ErrorScreen extends StatelessWidget {
                 onTap: () {
                   context.read<GetProductBloc>().add(
                         GetProductsEvent(
-                            pageNumber: context
-                                .read<IncreasePageBloc>()
-                                .state
-                                .pageNumber,
-                            category: '6512f4557452b0f914b19229'),
+                          pageNumber:
+                              context.read<IncreasePageBloc>().state.pageNumber,
+                          category: '6512f4557452b0f914b19229',
+                        ),
                       );
                 },
                 child: btn('Try Again'))

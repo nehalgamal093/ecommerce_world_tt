@@ -39,95 +39,101 @@ Future<void> main() async {
   var isDark = prefs.getBool("isDark");
 
   runApp(
-    MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) => LoginBloc(
-            loginRepo: LoginRepo(),
-          ),
-        ),
-        BlocProvider(
-          create: (_) => SaveLoginBloc(),
-        ),
-        BlocProvider(
-          create: (_) => SignUpBloc(
-            singUpRepo: SingUpRepo(),
-          ),
-        ),
-        BlocProvider(
-          create: (_) => AddProductBloc(
-            addProductRepo: AddProductRepo(),
-          ),
-        ),
-        BlocProvider(
-          create: (_) => GetProductBloc(
-            getProducts: GetProducts(),
-          ),
-        ),
-        BlocProvider(
-          create: (_) => GetCartListBloc(getCartList: GetCartList())
-            ..add(
-              CartEvent(),
+    RepositoryProvider(
+      create: (context) => GetProducts(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (_) => LoginBloc(
+              loginRepo: LoginRepo(),
             ),
-        ),
-        BlocProvider(
-          create: (_) => IncreasePageBloc(),
-        ),
-        BlocProvider(
-          create: (_) => CategoriesListBloc(
-            getCategoriesRepository: GetCategoriesRepository(),
           ),
-        ),
-        BlocProvider(
-          create: (_) => SubCategoriesListBloc(
-            subCategoriesRepository: GetSubCategoriesRepository(),
+          BlocProvider(
+            create: (_) => SaveLoginBloc(),
           ),
-        ),
-        BlocProvider(
-          create: (_) => BrandsListBloc(
-            getBrandsRepository: GetBrandsRepository(),
-          ),
-        ),
-        BlocProvider(
-          create: (_) => GetUserBloc(
-            getUser: GetUser(),
-          ),
-        ),
-        BlocProvider(
-          create: (_) => ChangeThemeBloc(isDark: isDark!)
-            ..add(
-              InitialThemeEvent(),
+          BlocProvider(
+            create: (_) => SignUpBloc(
+              singUpRepo: SingUpRepo(),
             ),
+          ),
+          BlocProvider(
+            create: (_) => AddProductBloc(
+              addProductRepo: AddProductRepo(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => GetProductBloc(
+              getProducts: GetProducts(),
+            )..add(GetProductsEvent(
+                pageNumber: context.read<IncreasePageBloc>().state.pageNumber,
+                category: '',
+              )),
+          ),
+          BlocProvider(
+            create: (_) => GetCartListBloc(getCartList: GetCartList())
+              ..add(
+                CartEvent(),
+              ),
+          ),
+          BlocProvider(
+            create: (_) => IncreasePageBloc(),
+          ),
+          BlocProvider(
+            create: (_) => CategoriesListBloc(
+              getCategoriesRepository: GetCategoriesRepository(),
+            ),
+          ),
+          BlocProvider(
+            create: (_) => SubCategoriesListBloc(
+              subCategoriesRepository: GetSubCategoriesRepository(),
+            ),
+          ),
+          BlocProvider(
+            create: (_) => BrandsListBloc(
+              getBrandsRepository: GetBrandsRepository(),
+            ),
+          ),
+          BlocProvider(
+            create: (_) => GetUserBloc(
+              getUser: GetUser(),
+            ),
+          ),
+          BlocProvider(
+            create: (_) => ChangeThemeBloc(isDark: isDark!)
+              ..add(
+                InitialThemeEvent(),
+              ),
+          ),
+          BlocProvider(
+            create: (_) => ChangeLanguageBloc()..add(SavedLanguageEvent()),
+          ),
+          BlocProvider(
+            create: (_) => LikeBloc()..add(FavoriteEvent()),
+          ),
+        ],
+        child: BlocBuilder<ChangeThemeBloc, ChangeThemeState>(
+          builder: (context, state) {
+            return MaterialApp(
+              locale: context.watch<ChangeLanguageBloc>().state.langStatus ==
+                      LangStatus.en
+                  ? const Locale("ar")
+                  : const Locale("en"),
+              localizationsDelegates: const [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: S.delegate.supportedLocales,
+              title: 'World Ecommerce',
+              debugShowCheckedModeBanner: false,
+              theme: state.changeThemeStatus == ChangeThemeStatus.dark
+                  ? getAppTheme(true)
+                  : getAppTheme(false),
+              home: token == null ? Signin() : const Main(),
+            );
+          },
         ),
-        BlocProvider(
-          create: (_) => ChangeLanguageBloc()..add(SavedLanguageEvent()),
-        ),
-        BlocProvider(
-          create: (_) => LikeBloc()..add(FavoriteEvent()),
-        ),
-      ],
-      child: BlocBuilder<ChangeThemeBloc, ChangeThemeState>(
-        builder: (context, state) {
-          return MaterialApp(
-            locale: context.watch<ChangeLanguageBloc>().state.langStatus ==
-                    LangStatus.en
-                ? const Locale("ar")
-                : const Locale("en"),
-            localizationsDelegates: const [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-            title: 'World Ecommerce',
-            debugShowCheckedModeBanner: false,
-            theme: state.changeThemeStatus == ChangeThemeStatus.dark
-                ? getAppTheme(true)
-                : getAppTheme(false),
-            home: token == null ? Signin() : const Main(),
-          );
-        },
       ),
     ),
   );

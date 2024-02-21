@@ -19,15 +19,16 @@ class GetProductBloc extends Bloc<GetProductEvent, GetProductState> {
     // });
     on<GetProductsEvent>(
         (GetProductsEvent event, Emitter<GetProductState> emit) async {
-      emit(state.copyWith(loadingStatus: ProductsStatus.loading));
+      emit(state.copyWith(loadingStatus: ProductStatus.loading));
       try {
         ProductModel fromApi =
             await getProducts.fetchProducts(event.pageNumber, event.category);
+        print('page  ${event.pageNumber}');
 
         emit(state.copyWith(
-            loadingStatus: ProductsStatus.loaded, productModel: fromApi));
+            loadingStatus: ProductStatus.loaded, productModel: fromApi));
       } catch (e) {
-        emit(state.copyWith(loadingStatus: ProductsStatus.error));
+        emit(state.copyWith(loadingStatus: ProductStatus.error));
       }
     });
   }
