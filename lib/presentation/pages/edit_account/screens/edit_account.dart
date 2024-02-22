@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'package:world_commerce/presentation/custom_widgets/btn.dart';
 import 'package:world_commerce/presentation/custom_widgets/top_bar.dart';
 import 'package:world_commerce/presentation/pages/account_page/custom_widgets/profile_field.dart';
 import 'package:world_commerce/presentation/resources/assets_manager.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
-
 import '../../../../Services/get_user.dart';
 import '../../account_page/custom_widgets/profile_label.dart';
 
@@ -25,58 +22,66 @@ class EditAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: topBar('Account', true, context, false),
+      appBar: topBar('Edit Account', true, context, false),
       body: SingleChildScrollView(
-        child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CircleAvatar(radius: 60, child: Image.asset(AssetsManager.cat)),
-                const Text(
-                  'Nehal Gamal',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                const Text(
-                  '@nehalGamal',
-                  style: TextStyle(fontSize: 15, color: ColorManager.grey),
-                ),
-                const SizedBox(height: 40),
-                profileLabel('Name'),
-                const SizedBox(height: 10),
-                profileField(name, false, false,
-                    TextEditingController(text: name.toString())),
-                const SizedBox(height: 15),
-                profileLabel('Email Address'),
-                const SizedBox(height: 10),
-                profileField(
-                    email, false, false, TextEditingController(text: email)),
-                const SizedBox(height: 15),
-                const SizedBox(height: 15),
-                profileLabel('Phone Number'),
-                const SizedBox(height: 10),
-                profileField(
-                    phone, false, false, TextEditingController(text: phone)),
-                const SizedBox(height: 15),
-                profileLabel('Address'),
-                const SizedBox(height: 10),
-                profileField(
-                    'Milky way St 23 ', false, false, addressController),
-                const SizedBox(height: 40),
-                InkWell(
-                    onTap: () {
-                      GetUser().updateUser(
-                          TextEditingController(text: name).text,
-                          TextEditingController(text: email).text,
-                          TextEditingController(text: phone).text);
-                    },
-                    child: btn('Edit Account'))
-              ],
-            )),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                      radius: 60, child: Image.asset(AssetsManager.cat)),
+                  const Text(
+                    'Nehal Gamal',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  const Text(
+                    '@nehalGamal',
+                    style: TextStyle(fontSize: 15, color: ColorManager.grey),
+                  ),
+                  const SizedBox(height: 40),
+                  profileLabel('Name'),
+                  const SizedBox(height: 10),
+                  profileField(name, false, false,
+                      TextEditingController(text: name.toString()), context),
+                  const SizedBox(height: 15),
+                  profileLabel('Email Address'),
+                  const SizedBox(height: 10),
+                  profileField(email, false, false,
+                      TextEditingController(text: email), context),
+                  const SizedBox(height: 15),
+                  const SizedBox(height: 15),
+                  profileLabel('Phone Number'),
+                  const SizedBox(height: 10),
+                  profileField(phone, false, false,
+                      TextEditingController(text: phone), context),
+                  const SizedBox(height: 15),
+                  profileLabel('Address'),
+                  const SizedBox(height: 10),
+                  profileField('Milky way St 23 ', false, false,
+                      addressController, context),
+                  const SizedBox(height: 70),
+                  ElevatedButton(
+                      onPressed: () {
+                        GetUser().updateUser(
+                            TextEditingController(text: name).text,
+                            TextEditingController(text: email).text,
+                            TextEditingController(text: phone).text);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 50, vertical: 15),
+                        child: const Text('Edit Account'),
+                      ))
+                ],
+              )),
+        ),
       ),
     );
   }
 }
+//83

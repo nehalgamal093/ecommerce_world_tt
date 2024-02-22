@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../bloc/get_cart_list/get_cart_list_bloc.dart';
 import '../../../../generated/l10n.dart';
 import '../../../resources/color_manager.dart';
@@ -23,16 +22,6 @@ Widget searchBar(BuildContext context) {
               ),
               hintText: S.of(context).searchProduct,
               hintStyle: const TextStyle(color: ColorManager.grey),
-              filled: true,
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              fillColor: ColorManager.lightGrey,
-              border: const OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(5),
-                ),
-              ),
             ),
           ),
         ),
@@ -59,7 +48,6 @@ Widget searchBar(BuildContext context) {
                   children: [
                     const CircleAvatar(
                       radius: 20,
-                      backgroundColor: ColorManager.lightGrey,
                       child: Icon(
                         Icons.shopping_cart_outlined,
                       ),
@@ -92,7 +80,6 @@ Widget searchBar(BuildContext context) {
           flex: 1,
           child: CircleAvatar(
             radius: 20,
-            backgroundColor: ColorManager.lightGrey,
             child: Icon(Icons.notifications_outlined),
           ),
         )
@@ -100,3 +87,4 @@ Widget searchBar(BuildContext context) {
     ),
   );
 }
+//92

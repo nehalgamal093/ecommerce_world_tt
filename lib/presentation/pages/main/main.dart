@@ -101,7 +101,9 @@ class _MainState extends State<Main> {
                           builder: (context) => const AddProduct()));
                 },
                 child: ListTile(
-                  leading: const ImageIcon(AssetImage(AssetsManager.product)),
+                  leading: const ImageIcon(
+                    AssetImage(AssetsManager.product),
+                  ),
                   title: Text(
                     S.of(context).addProdct,
                     style: const TextStyle(fontSize: 15),

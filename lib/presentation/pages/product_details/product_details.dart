@@ -3,6 +3,7 @@ import 'package:world_commerce/models/reviews.dart';
 import 'package:world_commerce/presentation/pages/product_details/custom_widgets/reviews_bar.dart';
 import 'package:world_commerce/presentation/pages/write_review_page/write_review_page.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
+import 'package:world_commerce/presentation/resources/theme_manager.dart';
 
 import '../../../Services/add_to_cart.dart';
 import '../../../Services/get_reviews.dart';
@@ -43,110 +44,101 @@ class ProductDetails extends StatelessWidget {
                   child: Image.network(image)),
               const SizedBox(height: 50.0),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                width: 400,
-                decoration: BoxDecoration(
-                  color: Colors.grey[50],
-                  borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(10),
-                      topLeft: Radius.circular(10)),
-                ),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  child: SizedBox(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            title,
-                            style: const TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
-                            overflow: TextOverflow.visible,
-                          ),
-                          const Icon(Icons.star, color: Colors.yellow)
-                        ],
-                      ),
-                      Text(
-                        description,
-                        style: const TextStyle(fontSize: 14),
-                      ),
-                      Row(
-                        children: [
-                          Text(S.of(context).availableColors),
-                          const SizedBox(width: 10),
-                          SizedBox(
-                            width: 200,
-                            height: 100,
-                            child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              shrinkWrap: true,
-                              children: const [
-                                CircleAvatar(
-                                  backgroundColor: Colors.black,
-                                  radius: 10,
-                                ),
-                                SizedBox(width: 5),
-                                CircleAvatar(
-                                  backgroundColor: Colors.grey,
-                                  radius: 10,
-                                ),
-                                SizedBox(width: 5),
-                                CircleAvatar(
-                                  backgroundColor: Colors.amber,
-                                  radius: 10,
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      reviewsBar(context),
-                      FutureBuilder<ReviewsList>(
-                          future: Reviews().getReviews(),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              var reviews = snapshot.data!.reviews!
-                                  .where((e) => e.productId == id)
-                                  .toList();
-                              return ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: reviews.length,
-                                  itemBuilder: (context, index) {
-                                    return review(
-                                        reviews[index].userReview!.name!,
-                                        reviews[index].comment!);
-                                  });
-                            } else {
-                              return const CircularProgressIndicator();
-                            }
-                          }),
-                      const SizedBox(height: 20),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => WriteReviewPage(
-                                id: id,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                title,
+                                style: const TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.bold),
+                                overflow: TextOverflow.visible,
                               ),
-                            ),
-                          );
-                        },
-                        child: Center(
-                          child: Container(
-                            width: 150,
-                            height: 30,
-                            decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 210, 207, 207),
-                                border: Border.all(color: Colors.black)),
-                            child: Center(
-                              child: Text(S.of(context).writeReview),
-                            ),
+                              const Icon(Icons.star, color: Colors.yellow)
+                            ],
                           ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                    ]),
+                          Text(
+                            description,
+                            style: const TextStyle(fontSize: 14),
+                          ),
+                          Row(
+                            children: [
+                              Text(S.of(context).availableColors),
+                              const SizedBox(width: 10),
+                              SizedBox(
+                                width: 200,
+                                height: 100,
+                                child: ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  children: const [
+                                    CircleAvatar(
+                                      backgroundColor: Colors.black,
+                                      radius: 10,
+                                    ),
+                                    SizedBox(width: 5),
+                                    CircleAvatar(
+                                      backgroundColor: Colors.grey,
+                                      radius: 10,
+                                    ),
+                                    SizedBox(width: 5),
+                                    CircleAvatar(
+                                      backgroundColor: Colors.amber,
+                                      radius: 10,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          reviewsBar(context),
+                          FutureBuilder<ReviewsList>(
+                              future: Reviews().getReviews(),
+                              builder: (context, snapshot) {
+                                if (snapshot.hasData) {
+                                  var reviews = snapshot.data!.reviews!
+                                      .where((e) => e.productId == id)
+                                      .toList();
+                                  return ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: reviews.length,
+                                      itemBuilder: (context, index) {
+                                        return review(
+                                            reviews[index].userReview!.name!,
+                                            reviews[index].comment!);
+                                      });
+                                } else {
+                                  return const CircularProgressIndicator();
+                                }
+                              }),
+                          const SizedBox(height: 20),
+                          Center(
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => WriteReviewPage(
+                                        id: id,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 30),
+                                  child: Text(S.of(context).writeReview),
+                                )),
+                          ),
+                          const SizedBox(height: 20),
+                        ]),
+                  ),
+                ),
               )
             ],
           ),
@@ -156,44 +148,32 @@ class ProductDetails extends StatelessWidget {
         onTap: () {
           AddProductToCart().addToCart(id);
         },
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topRight: Radius.circular(40),
-            topLeft: Radius.circular(40),
-          ),
-          child: BottomAppBar(
-            color: Colors.white,
-            child: Container(
-              padding: const EdgeInsets.all(20),
-              decoration: const BoxDecoration(
-                  color: ColorManager.orangeMain,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20))),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      price,
-                      style: const TextStyle(
-                          color: ColorManager.whiteMain,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Row(
-                      children: [
-                        Text(S.of(context).addToCart,
-                            style: const TextStyle(
-                              color: ColorManager.whiteMain,
-                              fontSize: 20,
-                            )),
-                        const SizedBox(width: 5),
-                        const Icon(Icons.shopping_cart_outlined,
-                            color: ColorManager.whiteMain),
-                      ],
-                    )
-                  ]),
-            ),
+        child: BottomAppBar(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    price,
+                    style: const TextStyle(
+                        color: ColorManager.whiteMain,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Row(
+                    children: [
+                      Text(S.of(context).addToCart,
+                          style: const TextStyle(
+                            color: ColorManager.whiteMain,
+                            fontSize: 20,
+                          )),
+                      const SizedBox(width: 5),
+                      const Icon(Icons.shopping_cart_outlined,
+                          color: ColorManager.whiteMain),
+                    ],
+                  )
+                ]),
           ),
         ),
       ),

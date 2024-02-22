@@ -1,41 +1,20 @@
 import 'package:flutter/material.dart';
 
 Widget skeleton() {
-  return SizedBox(
-    width: 200,
-    height: 200,
-    child: Column(
-      children: [
-        Container(
-          width: 140,
-          height: 150,
-          decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 244, 229, 247),
-              borderRadius: BorderRadius.all(Radius.circular(5))),
-        ),
-        const SizedBox(height: 10),
-        Container(
-          width: 140,
-          height: 30,
-          decoration: const BoxDecoration(
-            color: Color.fromARGB(255, 244, 229, 247),
-            borderRadius: BorderRadius.all(
-              Radius.circular(5),
+  return ListView.builder(
+      itemCount: 3,
+      shrinkWrap: true,
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, snapshot) {
+        return const Padding(
+          padding: EdgeInsets.all(5.0),
+          child: Card(
+            shape: RoundedRectangleBorder(),
+            child: SizedBox(
+              width: 200,
+              height: 200,
             ),
           ),
-        ),
-        const SizedBox(height: 5),
-        Container(
-          width: 140,
-          height: 10,
-          decoration: const BoxDecoration(
-            color: Color.fromARGB(255, 244, 229, 247),
-            borderRadius: BorderRadius.all(
-              Radius.circular(5),
-            ),
-          ),
-        )
-      ],
-    ),
-  );
+        );
+      });
 }
