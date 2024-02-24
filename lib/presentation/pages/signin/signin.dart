@@ -51,9 +51,9 @@ class Signin extends StatelessWidget {
                           ),
                         );
                       },
-                      child: const Text(
-                        StringsManager.forgotPassword,
-                        style: TextStyle(
+                      child: Text(
+                        S.of(context).forgotPassword,
+                        style: const TextStyle(
                             color: ColorManager.grey,
                             decoration: TextDecoration.underline),
                       ),
@@ -70,12 +70,9 @@ class Signin extends StatelessWidget {
                     : Container(),
                 const SizedBox(height: 50),
                 //Welcome title
-                const Text(
-                  StringsManager.welcome,
-                  style: TextStyle(
-                      color: ColorManager.black,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),
+                Text(
+                  S.of(context).welcome,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 Text(
                   S.of(context).pleaseEnterYourData,
@@ -102,12 +99,9 @@ class Signin extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      StringsManager.rememberMe,
-                      style: TextStyle(
-                          color: ColorManager.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold),
+                    Text(
+                      S.of(context).rememberMe,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     Switch(
                         activeTrackColor: ColorManager.green,

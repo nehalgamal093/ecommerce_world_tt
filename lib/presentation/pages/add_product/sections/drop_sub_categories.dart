@@ -26,21 +26,29 @@ class _DropSubCategoriesState extends State<DropSubCategories> {
         if (state.loadingStatus == SubCategoriesStatus.loading) {
           return dropDownSkeleton();
         } else if (state.loadingStatus == SubCategoriesStatus.loaded) {
-          return DropdownButtonFormField(
-              value: subCategoryDropDown,
-              onChanged: (String? newValue) {
-                setState(() {
-                  subCategoryDropDown = newValue!;
-                });
-              },
-              items: state.data.map<DropdownMenuItem<String>>((value) {
-                return DropdownMenuItem<String>(
-                  value: value['_id'],
-                  child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Text(value['name'])),
-                );
-              }).toList());
+          return Theme(
+            data: Theme.of(context).copyWith(
+              canvasColor: Color.fromARGB(255, 43, 35, 63),
+            ),
+            child: DropdownButtonFormField(
+                value: subCategoryDropDown,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    subCategoryDropDown = newValue!;
+                  });
+                },
+                items: state.data.map<DropdownMenuItem<String>>((value) {
+                  return DropdownMenuItem<String>(
+                    value: value['_id'],
+                    child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          value['name'],
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        )),
+                  );
+                }).toList()),
+          );
         } else {
           return Text('error');
         }

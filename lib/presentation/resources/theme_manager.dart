@@ -47,6 +47,7 @@ ThemeData darkTheme() {
         backgroundColor: Color(0xff473C4F),
       ),
       inputDecorationTheme: const InputDecorationTheme(
+        labelStyle: TextStyle(color: Colors.white),
         hintStyle: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.normal,
@@ -83,6 +84,11 @@ ThemeData darkTheme() {
       bottomAppBarTheme: const BottomAppBarTheme(
         color: Color.fromARGB(255, 43, 35, 63),
       ),
+      dropdownMenuTheme: DropdownMenuThemeData(
+          menuStyle: MenuStyle(
+        backgroundColor:
+            MaterialStateProperty.all(Color.fromARGB(255, 43, 35, 63)),
+      )),
       listTileTheme: const ListTileThemeData(iconColor: Colors.white));
 }
 
@@ -121,6 +127,9 @@ ThemeData lightTheme() {
     ),
     iconTheme: const IconThemeData(color: Colors.purple),
     inputDecorationTheme: const InputDecorationTheme(
+      labelStyle: TextStyle(
+        color: Colors.black,
+      ),
       hintStyle: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.normal,

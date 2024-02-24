@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `Welcome`
+  String get welcome {
+    return Intl.message(
+      'Welcome',
+      name: 'welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Special For You`
   String get specialForYou {
     return Intl.message(
@@ -380,10 +390,10 @@ class S {
     );
   }
 
-  /// `Don't Have an Account?`
+  /// `Don't Have an Account? `
   String get dontHavAccount {
     return Intl.message(
-      'Don\'t Have an Account?',
+      'Don\'t Have an Account? ',
       name: 'dontHavAccount',
       desc: '',
       args: [],
@@ -455,6 +465,166 @@ class S {
     return Intl.message(
       'You Signed up Successfully! Now Sign in',
       name: 'signedUpSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username`
+  String get username {
+    return Intl.message(
+      'Username',
+      name: 'username',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone`
+  String get phone {
+    return Intl.message(
+      'Phone',
+      name: 'phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Profile`
+  String get editProfile {
+    return Intl.message(
+      'Edit Profile',
+      name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recent Transactions`
+  String get recentTransactions {
+    return Intl.message(
+      'Recent Transactions',
+      name: 'recentTransactions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Balance`
+  String get balance {
+    return Intl.message(
+      'Balance',
+      name: 'balance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message(
+      'Description',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get price {
+    return Intl.message(
+      'Price',
+      name: 'price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password`
+  String get forgotPassword {
+    return Intl.message(
+      'Forgot Password',
+      name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Need Some Help?`
+  String get needHelp {
+    return Intl.message(
+      'Need Some Help?',
+      name: 'needHelp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lets's Get Started`
+  String get letstart {
+    return Intl.message(
+      'Lets\'s Get Started',
+      name: 'letstart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already Have an Account?`
+  String get alreadyHaveAccount {
+    return Intl.message(
+      'Already Have an Account?',
+      name: 'alreadyHaveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By Connecting your Account Confirm that you Agree with`
+  String get byConnecting {
+    return Intl.message(
+      'By Connecting your Account Confirm that you Agree with',
+      name: 'byConnecting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms and Conditions`
+  String get termsAndConditions {
+    return Intl.message(
+      'Terms and Conditions',
+      name: 'termsAndConditions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up and Continue`
+  String get singupAndContinue {
+    return Intl.message(
+      'Sign up and Continue',
+      name: 'singupAndContinue',
       desc: '',
       args: [],
     );

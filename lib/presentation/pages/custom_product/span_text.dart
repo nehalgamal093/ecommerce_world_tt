@@ -8,11 +8,7 @@ Widget spanText(BuildContext context, String textSpan, String children,
       child: RichText(
         text: TextSpan(
           text: textSpan,
-          style: TextStyle(
-            color: clr,
-            fontSize: 14,
-            height: 1.3,
-          ),
+          style: Theme.of(context).textTheme.bodyMedium,
           children: <TextSpan>[
             TextSpan(
               text: children,

@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
 
-Widget profileLabel(String title) {
-  return Align(
-    alignment: Alignment.centerLeft,
-    child: Text(
-      title,
-      style: const TextStyle(
-          fontSize: 13, fontWeight: FontWeight.w400, color: Colors.black26),
-    ),
-  );
+Widget profileLabel(String title, BuildContext context) {
+  return Text(title, style: Theme.of(context).textTheme.bodyMedium);
 }

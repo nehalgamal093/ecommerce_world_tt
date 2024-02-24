@@ -6,6 +6,7 @@ import 'package:world_commerce/presentation/pages/signin/signin.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 
 import '../../../Services/auth_service.dart';
+import '../../../generated/l10n.dart';
 import '../../resources/strings_manager.dart';
 import '../custom_product/span_text.dart';
 
@@ -35,54 +36,49 @@ class _SignupState extends State<Signup> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      StringsManager.needHelp,
-                      style: TextStyle(
-                          color: ColorManager.grey,
-                          decoration: TextDecoration.underline),
+                      S.of(context).needHelp,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],
                 ),
                 const SizedBox(height: 20),
-                const Text(
-                  StringsManager.start,
-                  style: TextStyle(
-                      color: ColorManager.black,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),
+                Text(
+                  S.of(context).letstart,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
-                const Text(
-                  StringsManager.signupAndContinue,
-                  style: TextStyle(color: ColorManager.grey, fontSize: 15),
+                Text(
+                  S.of(context).singupAndContinue,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 20),
                 InputText(
                   controller: emailController,
-                  labelText: StringsManager.email,
+                  labelText: S.of(context).email,
                   icon: Icons.email_outlined,
                   hintText: 'nehal@email.com',
                   isPassword: false,
                 ),
                 InputText(
                   controller: nameController,
-                  labelText: StringsManager.username,
+                  labelText: S.of(context).username,
                   icon: Icons.person_outline,
                   hintText: 'nehalgamal',
                   isPassword: false,
                 ),
                 InputText(
                   controller: passwordController,
-                  labelText: StringsManager.password,
+                  labelText: S.of(context).password,
                   icon: Icons.lock_outline,
                   hintText: '•••••••',
                   isPassword: true,
                 ),
                 InputText(
                   controller: phoneController,
-                  labelText: StringsManager.phone,
+                  labelText: S.of(context).phone,
                   icon: Icons.person_outline,
                   hintText: 'Phone',
                   isPassword: false,
@@ -125,16 +121,18 @@ class _SignupState extends State<Signup> {
                           color: ColorManager.blue,
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                       child: Center(
-                        child:
-                            context.watch<SignUpBloc>().state.loadingStatus ==
-                                    SignUpStatus.loading
-                                ? const CircularProgressIndicator(
-                                    color: Colors.white,
-                                  )
-                                : const Text(
-                                    StringsManager.signup,
-                                    style: TextStyle(color: Colors.white),
-                                  ),
+                        child: context
+                                    .watch<SignUpBloc>()
+                                    .state
+                                    .loadingStatus ==
+                                SignUpStatus.loading
+                            ? const CircularProgressIndicator(
+                                color: Colors.white,
+                              )
+                            : Text(
+                                S.of(context).siginup,
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
                       ),
                     ),
                   ),
@@ -143,9 +141,9 @@ class _SignupState extends State<Signup> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      StringsManager.alreadyHaveAnAccount,
-                      style: TextStyle(color: ColorManager.grey, fontSize: 14),
+                    Text(
+                      S.of(context).alreadyHaveAccount,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     const SizedBox(width: 3.0),
                     InkWell(
@@ -158,12 +156,9 @@ class _SignupState extends State<Signup> {
                           ),
                         );
                       },
-                      child: const Text(
-                        StringsManager.signin,
-                        style: TextStyle(
-                            color: ColorManager.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold),
+                      child: Text(
+                        S.of(context).login,
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ),
                   ],
@@ -171,8 +166,8 @@ class _SignupState extends State<Signup> {
                 const SizedBox(height: 20),
                 spanText(
                     context,
-                    StringsManager.byConnectingYouAgree,
-                    StringsManager.termsAndCondition,
+                    S.of(context).byConnecting,
+                    S.of(context).termsAndConditions,
                     ColorManager.black,
                     ColorManager.blue),
               ],

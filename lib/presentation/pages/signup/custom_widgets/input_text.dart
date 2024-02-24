@@ -26,10 +26,7 @@ class InputText extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 labelText,
-                style: const TextStyle(
-                    color: ColorManager.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
           ],
@@ -49,15 +46,6 @@ class InputText extends StatelessWidget {
               color: ColorManager.grey,
             ),
             hintText: hintText,
-            hintStyle: const TextStyle(color: ColorManager.grey),
-            filled: true,
-            fillColor: ColorManager.lightGrey,
-            border: const OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.all(
-                Radius.circular(10),
-              ),
-            ),
           ),
         ),
         const SizedBox(height: 5.0)

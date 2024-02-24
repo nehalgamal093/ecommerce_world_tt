@@ -10,6 +10,7 @@ import 'package:world_commerce/presentation/pages/add_product/sections/drop_sub_
 import 'package:world_commerce/presentation/pages/add_product/sections/images_view.dart';
 import 'package:world_commerce/presentation/pages/main/main.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
+import '../../../generated/l10n.dart';
 import '../../../repository/add_product.dart';
 import '../../custom_widgets/top_bar.dart';
 
@@ -53,49 +54,45 @@ class _AddProductState extends State<AddProduct> {
     double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        appBar: topBar('Add product', true, context, true),
+        appBar: topBar(S.of(context).addProdct, true, context, true),
         body: ListView(
-          shrinkWrap: true,
           children: [
-            formField(context, 'Name', nameController,
+            formField(context, S.of(context).name, nameController,
                 const Icon(Icons.add, color: ColorManager.grey)),
-            formField(context, 'Description', descriptionController,
+            formField(context, S.of(context).description, descriptionController,
                 const Icon(Icons.add, color: ColorManager.grey)),
-            formField(context, 'Price', priceController,
+            formField(context, S.of(context).price, priceController,
                 const Icon(Icons.add, color: ColorManager.grey)),
-            DropCategories(),
-            DropSubCategories(),
-            DropBrands(),
+            SizedBox(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                child: DropCategories()),
+            SizedBox(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                child: const DropSubCategories()),
+            SizedBox(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                child: const DropBrands()),
             formField(
                 context,
                 'Price After Discount',
                 priceAfterDiscountController,
                 const Icon(Icons.add, color: ColorManager.grey)),
-            InkWell(
-              onTap: () {
-                takePhoto(ImageSource.gallery);
-                setState(() {});
-              },
-              child: Row(
-                children: [
-                  Container(
-                      width: width * .50,
-                      height: 50,
-                      child: imagesView(context, selectedImages)),
-                  Container(
-                    width: width * .50,
+            Row(
+              children: [
+                SizedBox(
+                    width: width * .60,
                     height: 50,
-                    decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 221, 68, 248)),
-                    child: const Center(
-                      child: Text(
-                        'Upload photos',
-                        style: TextStyle(fontSize: 15, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                    child: imagesView(context, selectedImages)),
+                ElevatedButton(
+                    onPressed: () {
+                      takePhoto(ImageSource.gallery);
+                      setState(() {});
+                    },
+                    child: Text('Upload Photos')),
+              ],
             ),
             formField(
               context,

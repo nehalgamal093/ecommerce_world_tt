@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../resources/color_manager.dart';
-
 Widget profileField(String hintText, bool isSecured, bool readOnly,
     TextEditingController controller, BuildContext context) {
   return TextField(
@@ -9,6 +7,8 @@ Widget profileField(String hintText, bool isSecured, bool readOnly,
     controller: controller,
     obscureText: isSecured ? true : false,
     readOnly: readOnly,
-    decoration: InputDecoration(hintText: hintText),
+    decoration: InputDecoration(
+      hintText: hintText,
+    ),
   );
 }

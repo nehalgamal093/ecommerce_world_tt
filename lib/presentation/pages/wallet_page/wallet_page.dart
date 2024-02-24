@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:world_commerce/presentation/custom_widgets/top_bar.dart';
 
+import '../../../generated/l10n.dart';
+
 class WalletPage extends StatelessWidget {
   const WalletPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: topBar('Wallet', true, context, true),
+      appBar: topBar(S.of(context).wallet, true, context, true),
       body: Column(
         children: [
           Container(
@@ -29,18 +31,18 @@ class WalletPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Balance',
-                  style: TextStyle(color: Colors.white, fontSize: 15),
+                  S.of(context).balance,
+                  style: const TextStyle(color: Colors.white, fontSize: 15),
                 ),
-                Text(
+                const Text(
                   '\$ 2,398,203.0',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 25,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                Row(
+                const SizedBox(height: 10),
+                const Row(
                   children: [
                     Text(
                       'Nehal Gamal',
@@ -61,14 +63,14 @@ class WalletPage extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text(
+                    const Text(
                       'XXX XXX XXX X20',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Image.asset(
                       'assets/icons/visa.png',
                       width: 200,
@@ -92,9 +94,9 @@ Widget transTitle(BuildContext context) {
     margin: const EdgeInsets.all(8),
     padding: const EdgeInsets.all(10),
     width: MediaQuery.of(context).size.width,
-    child: const Text(
-      'Recent Transactions',
-      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+    child: Text(
+      S.of(context).recentTransactions,
+      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
       textAlign: TextAlign.start,
     ),
   );
@@ -105,27 +107,30 @@ Widget listOfTransactions(BuildContext context) {
       shrinkWrap: true,
       itemCount: 4,
       itemBuilder: (context, index) {
-        return Container(
-          margin: const EdgeInsets.all(8),
-          padding: const EdgeInsets.all(20),
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(color: Colors.white),
-          child: Row(
-            children: [
-              CircleAvatar(
-                child: Icon(Icons.account_balance_wallet_outlined),
+        return const Card(
+          margin: EdgeInsets.all(8),
+          child: SizedBox(
+            height: 50,
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    child: Icon(Icons.account_balance_wallet_outlined),
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    '19-11-2023',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  Spacer(),
+                  Text(
+                    '+200 \$',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
-              SizedBox(width: 10),
-              Text(
-                '19-11-2023',
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-              ),
-              Spacer(),
-              Text(
-                '+200 \$',
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-              ),
-            ],
+            ),
           ),
         );
       });

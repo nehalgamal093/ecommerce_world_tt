@@ -1,5 +1,6 @@
 {
     "appTitle":"World Ecommerce",
+    "welcome":"Welcome",
     "specialForYou":"Special For You",
     "searchProduct": "Search Product",
     "pets":"Pets",
@@ -32,13 +33,29 @@
     "wallet":"Wallet",
     "addProdct":"Add Product",
     "signOut":"Sign out",
-    "dontHavAccount":"Don't Have an Account?",
+    "dontHavAccount":"Don't Have an Account? ",
     "pleaseEnterYourData":"Please Enter your data to continue",
     "email":"Email",
     "password":"Password",
     "rememberMe":"Remember Me",
     "login":"Login",
     "siginup":"Sign up",
-    "signedUpSuccessfully": "You Signed up Successfully! Now Sign in"
+    "signedUpSuccessfully": "You Signed up Successfully! Now Sign in",
+    "name":"Name",
+    "username":"Username",
+    "phone":"Phone",
+    "address":"Address",
+    "editProfile":"Edit Profile",
+    "recentTransactions":"Recent Transactions",
+    "balance":"Balance",
+    "description":"Description",
+    "price":"Price",
+    "forgotPassword":"Forgot Password",
+    "needHelp":"Need Some Help?",
+    "letstart":"Lets's Get Started",
+    "alreadyHaveAccount":"Already Have an Account?",
+    "byConnecting":"By Connecting your Account Confirm that you Agree with",
+    "termsAndConditions":"Terms and Conditions",
+    "singupAndContinue":"Sign up and Continue"
     
 }

@@ -6,6 +6,7 @@ import 'package:world_commerce/presentation/pages/edit_account/screens/edit_acco
 import 'package:world_commerce/presentation/resources/assets_manager.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 import '../../../Services/get_user.dart';
+import '../../../generated/l10n.dart';
 import 'custom_widgets/profile_label.dart';
 import 'custom_widgets/skeleton_profile.dart';
 
@@ -34,58 +35,74 @@ class AccountPage extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 30),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CircleAvatar(
-                            radius: 60, child: Image.asset(AssetsManager.cat)),
-                        const Text(
-                          'Nehal Gamal',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        const Text(
-                          '@nehalGamal',
-                          style:
-                              TextStyle(fontSize: 15, color: ColorManager.grey),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: Center(
+                            child: Column(
+                              children: [
+                                CircleAvatar(
+                                    radius: 60,
+                                    child: Image.asset(AssetsManager.cat)),
+                                const Text(
+                                  'Nehal Gamal',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const Text(
+                                  '@nehalGamal',
+                                  style: TextStyle(
+                                      fontSize: 15, color: ColorManager.grey),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                         const SizedBox(height: 40),
-                        ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => EditAccount(
-                                          name: state.data.userName,
-                                          email: state.data.email,
-                                          phone: state.data.phone)));
-                            },
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 50),
-                              child: Text('Edit Profile'),
-                            )),
-                        profileLabel('Name'),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: Center(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => EditAccount(
+                                            name: state.data.userName,
+                                            email: state.data.email,
+                                            phone: state.data.phone)));
+                              },
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 50),
+                                child: Text(S.of(context).editProfile),
+                              ),
+                            ),
+                          ),
+                        ),
+                        profileLabel(S.of(context).name, context),
                         const SizedBox(height: 10),
                         profileField(state.data.userName, false, true,
                             userNameController, context),
                         const SizedBox(height: 15),
-                        profileLabel('Email Address'),
+                        profileLabel(S.of(context).email, context),
                         const SizedBox(height: 10),
                         profileField(state.data.email, false, true,
                             emailController, context),
                         const SizedBox(height: 15),
-                        profileLabel('Username'),
+                        profileLabel(S.of(context).username, context),
                         const SizedBox(height: 10),
                         profileField('@nehalGamal', false, true,
                             userNameController, context),
                         const SizedBox(height: 15),
-                        profileLabel('Phone Number'),
+                        profileLabel(S.of(context).address, context),
                         const SizedBox(height: 10),
                         profileField(state.data.phone, false, true,
                             phoneController, context),
                         const SizedBox(height: 15),
-                        profileLabel('Address'),
+                        profileLabel(S.of(context).address, context),
                         const SizedBox(height: 10),
                         profileField('Milky way St 23 ', false, true,
                             addressController, context),
