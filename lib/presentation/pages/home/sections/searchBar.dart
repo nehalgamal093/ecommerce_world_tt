@@ -8,6 +8,7 @@ import '../../cart_screen/cart_screen.dart';
 
 Widget searchBar(BuildContext context, String role) {
   final role = context.read<GetUserBloc>().state.data.role;
+
   return SizedBox(
     width: MediaQuery.of(context).size.width * .9,
     height: 70,
@@ -45,7 +46,6 @@ Widget searchBar(BuildContext context, String role) {
                     if (state.loadingStatus == ProductsStatus.loading) {
                       return const CircleAvatar(
                         radius: 20,
-                        backgroundColor: Color.fromARGB(255, 244, 229, 247),
                       );
                     } else if (state.loadingStatus == ProductsStatus.loaded) {
                       return Stack(

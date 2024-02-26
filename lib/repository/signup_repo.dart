@@ -1,8 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:world_commerce/Services/auth_service.dart';
 
-import '../models/ResponseModel.dart';
-
 class SingUpRepo {
   AuthService authService = AuthService();
   Future<void> singUp(

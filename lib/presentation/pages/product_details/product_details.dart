@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:world_commerce/Services/get_cart_list.dart';
+import 'package:world_commerce/bloc/get_cart_list/get_cart_list_bloc.dart';
 import 'package:world_commerce/models/reviews.dart';
 import 'package:world_commerce/presentation/pages/product_details/custom_widgets/reviews_bar.dart';
 import 'package:world_commerce/presentation/pages/write_review_page/write_review_page.dart';
@@ -147,6 +150,8 @@ class ProductDetails extends StatelessWidget {
         onTap: () async {
           try {
             await AddProductToCart().addToCart(id);
+            // ignore: use_build_context_synchronously
+            context.read<GetCartListBloc>().add(CartEvent());
             // ignore: use_build_context_synchronously
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               content: Text("Product has been added to your Cart"),

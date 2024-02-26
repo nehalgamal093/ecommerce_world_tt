@@ -26,6 +26,7 @@ class LoginRepo {
         throw Exception(httpErrorHandler(response));
       }
 
+      // ignore: unnecessary_null_comparison
       if (responseModel.token != null) {
         String token = responseModel.token;
         String userId = responseModel.id;

@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:world_commerce/exception/loading_exception.dart';
-import '../models/ResponseModel.dart';
 import 'http_error_handler.dart';
 
 class AuthService {

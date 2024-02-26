@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:world_commerce/Services/get_cart_list.dart';
 import 'package:world_commerce/Services/get_user.dart';
 import 'package:world_commerce/bloc/add_product_bloc/add_product_bloc.dart';
@@ -11,6 +12,7 @@ import 'package:world_commerce/bloc/change_theme_bloc/change_theme_bloc.dart';
 import 'package:world_commerce/bloc/get_cart_list/get_cart_list_bloc.dart';
 import 'package:world_commerce/bloc/get_products_bloc/get_product_bloc.dart';
 import 'package:world_commerce/bloc/get_user_bloc/get_user_bloc.dart';
+import 'package:world_commerce/bloc/get_wishlist_bloc/get_wishlist_bloc.dart';
 import 'package:world_commerce/bloc/like_bloc/like_bloc.dart';
 import 'package:world_commerce/bloc/save_login/save_login_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -25,6 +27,7 @@ import 'package:world_commerce/repository/add_product.dart';
 import 'package:world_commerce/repository/get_brands_list.dart';
 import 'package:world_commerce/repository/get_categories_list.dart';
 import 'package:world_commerce/repository/get_subCategories_list.dart';
+import 'package:world_commerce/repository/get_wishlist.dart';
 import 'package:world_commerce/repository/login_repo.dart';
 import 'package:world_commerce/repository/signup_repo.dart';
 import 'Services/get_products.dart';
@@ -76,6 +79,15 @@ Future<void> main() async {
             return GetCartListBloc(getCartList: GetCartList(loginBloc))
               ..add(
                 CartEvent(),
+              );
+          }),
+          BlocProvider(create: (context) {
+            final loginBloc = BlocProvider.of<LoginBloc>(
+                context); // Access Bloc using BlocProvider.of
+
+            return GetWishlistBloc(getWishList: GetWishList(loginBloc))
+              ..add(
+                WishListEvent(),
               );
           }),
           BlocProvider(

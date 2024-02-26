@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:world_commerce/bloc/add_product_bloc/add_product_bloc.dart';
+
 import 'package:world_commerce/presentation/custom_widgets/form_field.dart';
 import 'package:world_commerce/presentation/pages/add_product/sections/drop_brands.dart';
 import 'package:world_commerce/presentation/pages/add_product/sections/drop_categories.dart';
@@ -82,14 +83,15 @@ class _AddProductState extends State<AddProduct> {
                 const Icon(Icons.add, color: ColorManager.grey)),
             Row(
               children: [
-                SizedBox(
-                    width: width * .60,
-                    height: 50,
-                    child: imagesView(context, selectedImages)),
+                selectedImages == null
+                    ? Text('null0')
+                    : SizedBox(
+                        width: width * .60,
+                        height: 50,
+                        child: imagesView(context, selectedImages)),
                 ElevatedButton(
                     onPressed: () {
                       takePhoto(ImageSource.gallery);
-                      setState(() {});
                     },
                     child: const Text('Upload Photos')),
               ],
@@ -191,7 +193,9 @@ class _AddProductState extends State<AddProduct> {
     final List<XFile> images = await ImagePicker().pickMultiImage();
     if (images.isNotEmpty) {
       for (int i = 0; i < images.length; i++) {
-        selectedImages.add(File(images[i].path));
+        setState(() {
+          selectedImages.add(File(images[i].path));
+        });
       }
     }
   }

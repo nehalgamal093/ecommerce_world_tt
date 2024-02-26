@@ -39,6 +39,7 @@ class WriteReviewPage extends StatelessWidget {
                         onPressed: () async {
                           await Post()
                               .postReview(reviewController.text, rate!, id);
+
                           Navigator.of(context).pop();
                         },
                         child: const Text(
