@@ -7,7 +7,6 @@ import 'package:world_commerce/presentation/resources/color_manager.dart';
 
 import '../../../Services/auth_service.dart';
 import '../../../generated/l10n.dart';
-import '../../resources/strings_manager.dart';
 import '../custom_product/span_text.dart';
 
 class Signup extends StatefulWidget {

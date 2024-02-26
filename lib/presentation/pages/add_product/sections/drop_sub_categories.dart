@@ -28,7 +28,7 @@ class _DropSubCategoriesState extends State<DropSubCategories> {
         } else if (state.loadingStatus == SubCategoriesStatus.loaded) {
           return Theme(
             data: Theme.of(context).copyWith(
-              canvasColor: Color.fromARGB(255, 43, 35, 63),
+              canvasColor: const Color.fromARGB(255, 43, 35, 63),
             ),
             child: DropdownButtonFormField(
                 value: subCategoryDropDown,
@@ -50,7 +50,7 @@ class _DropSubCategoriesState extends State<DropSubCategories> {
                 }).toList()),
           );
         } else {
-          return Text('error');
+          return const Text('error');
         }
       })),
     );

@@ -66,7 +66,7 @@ class _AddProductState extends State<AddProduct> {
             SizedBox(
                 height: 50,
                 width: MediaQuery.of(context).size.width,
-                child: DropCategories()),
+                child: const DropCategories()),
             SizedBox(
                 height: 50,
                 width: MediaQuery.of(context).size.width,
@@ -91,7 +91,7 @@ class _AddProductState extends State<AddProduct> {
                       takePhoto(ImageSource.gallery);
                       setState(() {});
                     },
-                    child: Text('Upload Photos')),
+                    child: const Text('Upload Photos')),
               ],
             ),
             formField(

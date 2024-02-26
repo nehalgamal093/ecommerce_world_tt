@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:world_commerce/Services/get_list.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 

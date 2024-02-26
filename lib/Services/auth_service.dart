@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:world_commerce/exception/loading_exception.dart';
+import '../models/ResponseModel.dart';
 import 'http_error_handler.dart';
 
 class AuthService {
@@ -24,22 +25,23 @@ class AuthService {
 
       if (result['token'] != null) {
         token = result['token'];
+
         SharedPreferences prefs = await SharedPreferences.getInstance();
         var saveLogin = prefs.getBool('saveLogin') ?? false;
-        print('====token ${result['token']}');
+
         if (saveLogin) {
           prefs.setString("token", token!);
         }
+        return result;
       } else {
         null;
       }
 
       if (result.isEmpty) {
-        //  print(errMsg);
         errMsg = result['error'];
         throw LoadingException('Something went wrong');
       }
-      // print(result);
+
       return result;
     } catch (e) {
       rethrow;

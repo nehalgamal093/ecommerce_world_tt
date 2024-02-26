@@ -3,8 +3,6 @@ import 'package:world_commerce/models/reviews.dart';
 import 'package:world_commerce/presentation/pages/product_details/custom_widgets/reviews_bar.dart';
 import 'package:world_commerce/presentation/pages/write_review_page/write_review_page.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
-import 'package:world_commerce/presentation/resources/theme_manager.dart';
-
 import '../../../Services/add_to_cart.dart';
 import '../../../Services/get_reviews.dart';
 import '../../../generated/l10n.dart';
@@ -43,7 +41,7 @@ class ProductDetails extends StatelessWidget {
                   height: 400,
                   child: Image.network(image)),
               const SizedBox(height: 50.0),
-              Container(
+              SizedBox(
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
@@ -131,7 +129,8 @@ class ProductDetails extends StatelessWidget {
                                   );
                                 },
                                 child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 30),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 30),
                                   child: Text(S.of(context).writeReview),
                                 )),
                           ),
@@ -145,8 +144,18 @@ class ProductDetails extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: InkWell(
-        onTap: () {
-          AddProductToCart().addToCart(id);
+        onTap: () async {
+          try {
+            await AddProductToCart().addToCart(id);
+            // ignore: use_build_context_synchronously
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text("Product has been added to your Cart"),
+            ));
+          } catch (e) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text("Something went wrong"),
+            ));
+          }
         },
         child: BottomAppBar(
           child: Padding(

@@ -5,16 +5,20 @@ import '../models/ProductModel.dart';
 
 class GetProducts {
   Future<ProductModel> fetchProducts(int page, String category) async {
-    final response = await http.get(
-      Uri.parse('${dotenv.env['PRODUCT_URL']}?page=$page&category=$category'),
-    );
-    ProductModel productModel =
-        ProductModel.fromJson(json.decode(response.body));
+    try {
+      final response = await http.get(
+        Uri.parse('${dotenv.env['PRODUCT_URL']}?page=$page&category=$category'),
+      );
+      ProductModel productModel =
+          ProductModel.fromJson(json.decode(response.body));
 
-    if (response.statusCode == 200) {
-      return productModel;
-    } else {
-      throw Exception('Failed');
+      if (response.statusCode == 200) {
+        return productModel;
+      } else {
+        throw Exception('Failed');
+      }
+    } catch (e) {
+      throw Exception(e);
     }
   }
 }

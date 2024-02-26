@@ -44,7 +44,7 @@ Future<void> main() async {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (_) => LoginBloc(
+            create: (context) => LoginBloc(
               loginRepo: LoginRepo(),
             ),
           ),
@@ -69,12 +69,15 @@ Future<void> main() async {
                 category: '',
               )),
           ),
-          BlocProvider(
-            create: (_) => GetCartListBloc(getCartList: GetCartList())
+          BlocProvider(create: (context) {
+            final loginBloc = BlocProvider.of<LoginBloc>(
+                context); // Access Bloc using BlocProvider.of
+
+            return GetCartListBloc(getCartList: GetCartList(loginBloc))
               ..add(
                 CartEvent(),
-              ),
-          ),
+              );
+          }),
           BlocProvider(
             create: (_) => IncreasePageBloc(),
           ),
@@ -94,9 +97,14 @@ Future<void> main() async {
             ),
           ),
           BlocProvider(
-            create: (_) => GetUserBloc(
-              getUser: GetUser(),
-            ),
+            create: (context) {
+              final loginBloc = BlocProvider.of<LoginBloc>(
+                  context); // Access Bloc using BlocProvider.of
+
+              return GetUserBloc(
+                getUser: GetUser(loginBloc),
+              );
+            },
           ),
           BlocProvider(
             create: (_) => ChangeThemeBloc(isDark: isDark!)

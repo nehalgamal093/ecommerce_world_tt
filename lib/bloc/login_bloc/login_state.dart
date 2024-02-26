@@ -5,21 +5,25 @@ enum LoginStatus { initial, loading, loaded, error }
 
 class LoginState extends Equatable {
   final LoginStatus loadingStatus;
+  final ResponseModel responseModel;
 
-  const LoginState({
-    required this.loadingStatus,
-  });
+  const LoginState({required this.loadingStatus, required this.responseModel});
 
   factory LoginState.initial() {
-    return const LoginState(loadingStatus: LoginStatus.initial);
+    return LoginState(
+        loadingStatus: LoginStatus.initial,
+        responseModel: ResponseModel(
+            user: UserModel(email: '', role: '', id: ''),
+            token: '',
+            message: '',
+            id: ''));
   }
 
-  LoginState copyWith({
-    LoginStatus? loadingStatus,
-  }) {
+  LoginState copyWith(
+      {LoginStatus? loadingStatus, ResponseModel? responseModel}) {
     return LoginState(
-      loadingStatus: loadingStatus ?? this.loadingStatus,
-    );
+        loadingStatus: loadingStatus ?? this.loadingStatus,
+        responseModel: responseModel ?? this.responseModel);
   }
 
   @override

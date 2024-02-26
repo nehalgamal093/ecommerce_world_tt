@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:world_commerce/bloc/login_bloc/login_bloc.dart';
 import 'package:world_commerce/presentation/custom_widgets/top_bar.dart';
 import 'package:world_commerce/presentation/pages/account_page/custom_widgets/profile_field.dart';
 import 'package:world_commerce/presentation/resources/assets_manager.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
+
 import '../../../../Services/get_user.dart';
 import '../../../../generated/l10n.dart';
+
 import '../../account_page/custom_widgets/profile_label.dart';
 
 class EditAccount extends StatelessWidget {
@@ -22,6 +26,8 @@ class EditAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loginBloc = BlocProvider.of<LoginBloc>(context);
+
     return Scaffold(
       appBar: topBar(S.of(context).editProfile, true, context, false),
       body: SingleChildScrollView(
@@ -82,7 +88,7 @@ class EditAccount extends StatelessWidget {
                     child: Center(
                       child: ElevatedButton(
                           onPressed: () {
-                            GetUser().updateUser(
+                            GetUser(loginBloc).updateUser(
                                 TextEditingController(text: name).text,
                                 TextEditingController(text: email).text,
                                 TextEditingController(text: phone).text);

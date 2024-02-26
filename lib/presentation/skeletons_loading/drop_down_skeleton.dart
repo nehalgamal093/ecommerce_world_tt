@@ -7,7 +7,7 @@ Widget dropDownSkeleton() {
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
         return const Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0),
           child: Card(
             shape: RoundedRectangleBorder(),
             child: SizedBox(

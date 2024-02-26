@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 Widget skeletonProfile() {
-  return Column(
+  return const Column(
     children: [
       CircleAvatar(
         radius: 60,

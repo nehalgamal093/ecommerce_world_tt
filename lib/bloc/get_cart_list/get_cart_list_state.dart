@@ -4,22 +4,22 @@ enum ProductsStatus { initial, loading, loaded, error }
 
 class GetCartListState extends Equatable {
   final ProductsStatus loadingStatus;
-  final ProductCartModel productCartModel;
+  final CartResponseModel cartResponseModel;
 
   const GetCartListState({
     required this.loadingStatus,
-    required this.productCartModel,
+    required this.cartResponseModel,
   });
 
   factory GetCartListState.initial() {
     return GetCartListState(
-      loadingStatus: ProductsStatus.initial,
-      productCartModel: ProductCartModel(products: []),
-    );
+        loadingStatus: ProductsStatus.initial,
+        cartResponseModel: CartResponseModel(
+            message: '', cartModel: CartModel(products: [], userId: '')));
   }
 
   @override
-  List<Object?> get props => [loadingStatus, productCartModel];
+  List<Object?> get props => [loadingStatus, cartResponseModel];
 
   @override
   String toString() =>
@@ -27,11 +27,11 @@ class GetCartListState extends Equatable {
 
   GetCartListState copyWith({
     ProductsStatus? loadingStatus,
-    ProductCartModel? productCartModel,
+    CartResponseModel? cartResponseModel,
   }) {
     return GetCartListState(
       loadingStatus: loadingStatus ?? this.loadingStatus,
-      productCartModel: productCartModel ?? this.productCartModel,
+      cartResponseModel: cartResponseModel ?? this.cartResponseModel,
     );
   }
 }

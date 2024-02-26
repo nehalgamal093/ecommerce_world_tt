@@ -28,7 +28,7 @@ class _DropBrandsState extends State<DropBrands> {
         } else if (state.loadingStatus == BrandsStatus.loaded) {
           return Theme(
             data: Theme.of(context).copyWith(
-              canvasColor: Color.fromARGB(255, 43, 35, 63),
+              canvasColor: const Color.fromARGB(255, 43, 35, 63),
             ),
             child: DropdownButtonFormField(
                 value: brandsDropDown,
@@ -50,7 +50,7 @@ class _DropBrandsState extends State<DropBrands> {
                 }).toList()),
           );
         } else {
-          return Text('error');
+          return const Text('error');
         }
       })),
     );

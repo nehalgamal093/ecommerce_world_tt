@@ -13,7 +13,7 @@ class GetUserState extends Equatable {
   factory GetUserState.initial() {
     return GetUserState(
         loadingStatus: UserStatus.initial,
-        data: User(email: '', phone: '', userName: ''));
+        data: User(email: '', phone: '', userName: '', role: ''));
   }
 
   @override

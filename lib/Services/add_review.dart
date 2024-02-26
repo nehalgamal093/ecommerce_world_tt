@@ -35,7 +35,7 @@ class Post {
 
       return result;
     } catch (e) {
-      print(e);
+      throw Exception('error');
     }
   }
 }

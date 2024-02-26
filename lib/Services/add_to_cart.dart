@@ -33,7 +33,7 @@ class AddProductToCart {
 
       return result;
     } catch (e) {
-      print(e);
+      throw Exception(e);
     }
   }
 }

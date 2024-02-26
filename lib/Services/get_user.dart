@@ -2,22 +2,37 @@ import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-
+import '../bloc/login_bloc/login_bloc.dart';
 import '../exception/loading_exception.dart';
 import '../models/user.dart';
 
 class GetUser {
-  Future<User> getUserData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? id = prefs.getString('userId');
+  final LoginBloc loginBloc;
 
-    final response = await http.get(
-      Uri.parse(dotenv.env['USER_URL'].toString() + id.toString()),
-    );
-    User data = User.fromJson(json.decode(response.body)["result"]);
-    if (response.statusCode == 200) {
-      return data;
-    } else {
+  const GetUser(this.loginBloc);
+  Future<User> getUserData() async {
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // String? id = prefs.getString('userId');
+    try {
+      final String id;
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      if (prefs.getString("userId") == null) {
+        id = loginBloc.state.responseModel.id;
+      } else {
+        id = prefs.getString("userId").toString();
+      }
+
+      final response = await http.get(
+        Uri.parse(dotenv.env['USER_URL'].toString() + id),
+      );
+      User data = User.fromJson(json.decode(response.body)["result"]);
+      if (response.statusCode == 200) {
+        return data;
+      } else {
+        throw Exception('Failed');
+      }
+    } catch (e) {
       throw Exception('Failed');
     }
   }
@@ -35,8 +50,8 @@ class GetUser {
       if (contains) {
         var currentUser = data.where((e) => e['email'] == email).toList();
         var currentEmail = currentUser.map((e) => e['_id']).toList();
+
         prefs.setString('userId', currentEmail[0]);
-        print('data=== ${prefs.getString('userId')}');
       } else {
         prefs.remove('token');
       }
@@ -61,7 +76,7 @@ class GetUser {
       final result = jsonDecode(response.body);
       if (response.statusCode != 200) {
         // print(errMsg);
-        print(result);
+
         // throw Exception(httpErrorHandler(response));
       }
 

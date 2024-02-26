@@ -7,7 +7,8 @@ import 'package:world_commerce/presentation/pages/home/home.dart';
 import 'package:world_commerce/presentation/pages/settings_page/settings_page.dart';
 import 'package:world_commerce/presentation/pages/wallet_page/wallet_page.dart';
 import 'package:world_commerce/presentation/resources/assets_manager.dart';
-import '../../../Services/get_user.dart';
+
+import '../../../bloc/get_user_bloc/get_user_bloc.dart';
 import '../../../generated/l10n.dart';
 import '../signin/signin.dart';
 
@@ -29,14 +30,10 @@ class _MainState extends State<Main> {
     const Icon(Icons.chat, size: 150),
     AccountPage()
   ];
-  @override
-  void initState() {
-    super.initState();
-    GetUser().userExit();
-  }
 
   @override
   Widget build(BuildContext context) {
+    final role = context.read<GetUserBloc>().state.data.role;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Ecommerce World'),
@@ -92,24 +89,26 @@ class _MainState extends State<Main> {
                   ),
                 ),
               ),
-              const Divider(),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AddProduct()));
-                },
-                child: ListTile(
-                  leading: const ImageIcon(
-                    AssetImage(AssetsManager.product),
-                  ),
-                  title: Text(
-                    S.of(context).addProdct,
-                    style: const TextStyle(fontSize: 15),
-                  ),
-                ),
-              ),
+              role == 'admin' ? const Divider() : Container(),
+              role == 'admin'
+                  ? InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const AddProduct()));
+                      },
+                      child: ListTile(
+                        leading: const ImageIcon(
+                          AssetImage(AssetsManager.product),
+                        ),
+                        title: Text(
+                          S.of(context).addProdct,
+                          style: const TextStyle(fontSize: 15),
+                        ),
+                      ),
+                    )
+                  : Container(),
               const Divider(),
               InkWell(
                 onTap: () async {

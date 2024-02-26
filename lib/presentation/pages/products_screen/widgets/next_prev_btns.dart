@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_commerce/bloc/get_products_bloc/get_product_bloc.dart';
-import '../../../../Services/get_products.dart';
-import '../../../../bloc/change_page/increase_page_bloc.dart';
 import '../../../custom_widgets/custom_button.dart';
 import '../../../custom_widgets/disabled_btn.dart';
 
@@ -40,8 +38,6 @@ Widget nextPrev(BuildContext context, String id) {
                 context
                     .read<GetProductBloc>()
                     .add(GetProductsEvent(pageNumber: pagek, category: id));
-                print(
-                    'total pages ${context.read<IncreasePageBloc>().state.pageNumber!}');
               },
               child: customButton('Next', false),
             ),
@@ -57,13 +53,13 @@ Widget nextPrev(BuildContext context, String id) {
               onTap: () {
                 decrement();
 
-                context.read<GetProductBloc>().add(GetProductsEvent(
-                    pageNumber: pagek, category: "6512f4557452b0f914b19229"));
-                print(
-                    'total pages ${context.read<IncreasePageBloc>().state.pageNumber!}');
+                context
+                    .read<GetProductBloc>()
+                    .add(GetProductsEvent(pageNumber: pagek, category: id));
               },
               child: customButton("Prev", true),
             ),
     ],
   );
 }
+//67

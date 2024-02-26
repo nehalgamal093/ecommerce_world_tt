@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_commerce/bloc/get_user_bloc/get_user_bloc.dart';
+import 'package:world_commerce/bloc/login_bloc/login_bloc.dart';
 import 'package:world_commerce/presentation/pages/account_page/custom_widgets/profile_field.dart';
 import 'package:world_commerce/presentation/pages/edit_account/screens/edit_account.dart';
 import 'package:world_commerce/presentation/resources/assets_manager.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
+import 'package:world_commerce/repository/login_repo.dart';
 import '../../../Services/get_user.dart';
 import '../../../generated/l10n.dart';
 import 'custom_widgets/profile_label.dart';
@@ -19,14 +21,15 @@ class AccountPage extends StatelessWidget {
   final TextEditingController addressController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final loginBloc = BlocProvider.of<LoginBloc>(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           width: MediaQuery.of(context).size.width,
           child: BlocProvider(
-            create: (context) =>
-                GetUserBloc(getUser: GetUser())..add(GetUserDataEvent()),
+            create: (context) => GetUserBloc(getUser: GetUser(loginBloc))
+              ..add(GetUserDataEvent()),
             child: BlocBuilder<GetUserBloc, GetUserState>(
               builder: (context, state) {
                 if (state.loadingStatus == UserStatus.loading) {

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:world_commerce/bloc/get_user_bloc/get_user_bloc.dart';
 import '../../../../bloc/get_cart_list/get_cart_list_bloc.dart';
 import '../../../../generated/l10n.dart';
 import '../../../resources/color_manager.dart';
 import '../../cart_screen/cart_screen.dart';
 
-Widget searchBar(BuildContext context) {
+Widget searchBar(BuildContext context, String role) {
+  final role = context.read<GetUserBloc>().state.data.role;
   return SizedBox(
     width: MediaQuery.of(context).size.width * .9,
     height: 70,
@@ -28,51 +30,58 @@ Widget searchBar(BuildContext context) {
         const SizedBox(
           width: 5,
         ),
-        //error here
-        Expanded(
-          flex: 1,
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const CartScreen()));
-            },
-            child: BlocBuilder<GetCartListBloc, GetCartListState>(
-                builder: (context, state) {
-              if (state.loadingStatus == ProductsStatus.loading) {
-                return const CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Color.fromARGB(255, 244, 229, 247),
-                );
-              } else if (state.loadingStatus == ProductsStatus.loaded) {
-                return Stack(
-                  children: [
-                    const CircleAvatar(
-                      radius: 20,
-                      child: Icon(
-                        Icons.shopping_cart_outlined,
-                      ),
-                    ),
-                    Positioned(
-                      top: 1,
-                      child: CircleAvatar(
-                        radius: 8,
-                        backgroundColor: Colors.pink,
-                        child: Text(
-                          state.productCartModel.products!.length.toString(),
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 10),
-                        ),
-                      ),
-                    )
-                  ],
-                );
-              } else {
-                return Container();
-                // return const ErrorScreen();
-              }
-            }),
-          ),
-        ),
+        role == 'user'
+            ? Expanded(
+                flex: 1,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CartScreen()));
+                  },
+                  child: BlocBuilder<GetCartListBloc, GetCartListState>(
+                      builder: (context, state) {
+                    if (state.loadingStatus == ProductsStatus.loading) {
+                      return const CircleAvatar(
+                        radius: 20,
+                        backgroundColor: Color.fromARGB(255, 244, 229, 247),
+                      );
+                    } else if (state.loadingStatus == ProductsStatus.loaded) {
+                      return Stack(
+                        children: [
+                          const CircleAvatar(
+                            radius: 20,
+                            child: Icon(
+                              Icons.shopping_cart_outlined,
+                            ),
+                          ),
+                          state.cartResponseModel.cartModel == null
+                              ? Container()
+                              : Positioned(
+                                  top: 1,
+                                  child: CircleAvatar(
+                                    radius: 8,
+                                    backgroundColor: Colors.pink,
+                                    child: Text(
+                                      state.cartResponseModel.cartModel.products
+                                          .length
+                                          .toString(),
+                                      style: const TextStyle(
+                                          color: Colors.white, fontSize: 10),
+                                    ),
+                                  ),
+                                )
+                        ],
+                      );
+                    } else {
+                      return Container();
+                      // return const ErrorScreen();
+                    }
+                  }),
+                ),
+              )
+            : Container(),
         const SizedBox(
           width: 5,
         ),

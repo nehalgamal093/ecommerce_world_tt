@@ -5,7 +5,7 @@ import '../../../../repository/get_categories_list.dart';
 import '../../../skeletons_loading/drop_down_skeleton.dart';
 
 class DropCategories extends StatefulWidget {
-  DropCategories({super.key});
+  const DropCategories({super.key});
 
   @override
   State<DropCategories> createState() => _DropCategoriesState();
@@ -27,7 +27,7 @@ class _DropCategoriesState extends State<DropCategories> {
           } else if (state.loadingStatus == CategoriesStatus.loaded) {
             return Theme(
               data: Theme.of(context).copyWith(
-                canvasColor: Color.fromARGB(255, 43, 35, 63),
+                canvasColor: const Color.fromARGB(255, 43, 35, 63),
               ),
               child: DropdownButtonFormField(
                   value: dropdownValue,

@@ -23,7 +23,6 @@ class GetProductBloc extends Bloc<GetProductEvent, GetProductState> {
       try {
         ProductModel fromApi =
             await getProducts.fetchProducts(event.pageNumber, event.category);
-        print('page  ${event.pageNumber}');
 
         emit(state.copyWith(
             loadingStatus: ProductStatus.loaded, productModel: fromApi));

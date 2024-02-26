@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:world_commerce/Services/auth_service.dart';
 import 'package:world_commerce/bloc/save_login/save_login_bloc.dart';
 import 'package:world_commerce/presentation/pages/forget_password/forget_password.dart';
 import 'package:world_commerce/presentation/pages/signup/custom_widgets/input_text.dart';
@@ -9,7 +8,6 @@ import 'package:world_commerce/presentation/pages/signup/signup.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 import '../../../bloc/login_bloc/login_bloc.dart';
 import '../../../generated/l10n.dart';
-import '../../resources/strings_manager.dart';
 import '../custom_product/span_text.dart';
 import '../main/main.dart';
 
@@ -17,7 +15,7 @@ class Signin extends StatelessWidget {
   final bool isRegisteredSuccess;
   Signin({super.key, this.isRegisteredSuccess = false});
   final TextEditingController emailController =
-      TextEditingController(text: 'nehal@email.com');
+      TextEditingController(text: 'lalas@email.com');
   final TextEditingController passwordController =
       TextEditingController(text: '123456');
   @override
@@ -143,14 +141,14 @@ class Signin extends StatelessWidget {
                           ),
                         );
                       } else if (state.loadingStatus == LoginStatus.error) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              AuthService.errMsg!,
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        );
+                        // ScaffoldMessenger.of(context).showSnackBar(
+                        //   SnackBar(
+                        //     content: Text(
+                        //       LoginRepo.errMsg!,
+                        //       style: const TextStyle(color: Colors.white),
+                        //     ),
+                        //   ),
+                        // );
                       }
                     },
                     //Button loading when waiting the request

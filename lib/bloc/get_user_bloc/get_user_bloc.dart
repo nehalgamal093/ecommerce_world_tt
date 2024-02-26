@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
 import 'package:world_commerce/models/user.dart';
 
 import '../../Services/get_user.dart';
@@ -11,6 +12,7 @@ part 'get_user_state.dart';
 
 class GetUserBloc extends Bloc<GetUserEvent, GetUserState> {
   final GetUser getUser;
+
   GetUserBloc({required this.getUser}) : super(GetUserState.initial()) {
     on<GetUserDataEvent>(getUserData);
   }
