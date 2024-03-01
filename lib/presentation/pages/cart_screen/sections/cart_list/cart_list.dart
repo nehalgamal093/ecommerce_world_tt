@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:world_commerce/presentation/pages/cart_screen/cart_list/widgets/list_of_products_in_cart.dart';
-import 'package:world_commerce/presentation/pages/cart_screen/cart_list/widgets/proceed_btn.dart';
-import '../../../../generated/l10n.dart';
-import '../../../../models/product_model.dart';
-import '../../../custom_widgets/top_bar.dart';
+import 'package:world_commerce/presentation/pages/cart_screen/sections/cart_list/widgets/list_of_products_in_cart.dart';
+import 'package:world_commerce/presentation/pages/cart_screen/sections/cart_list/widgets/proceed_btn.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../../../models/product_model.dart';
+import '../../../../custom_widgets/top_bar.dart';
 
 class CartListScreen extends StatelessWidget {
   final int itemsCount;

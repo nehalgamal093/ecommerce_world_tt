@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../product_details/product_details.dart';
+import '../../../../product_details/product_details.dart';
 import '../../cart_tile/cart_tile.dart';
 
 Widget navigateToProductDetailsBtn(BuildContext context, String image,

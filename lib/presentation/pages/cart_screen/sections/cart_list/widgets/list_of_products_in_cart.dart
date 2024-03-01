@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../models/product_model.dart';
+import '../../../../../../models/product_model.dart';
 import 'navigate_to_product_details_btn.dart';
 
 Widget listOfProductsInCart(int itemsCount, List<Product?> products) {
@@ -20,4 +20,4 @@ Widget listOfProductsInCart(int itemsCount, List<Product?> products) {
         }),
   );
 }
-//24 ✅
+//23 ✅

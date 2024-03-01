@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:world_commerce/presentation/pages/cart_screen/proceed_bottom_sheet/widgets/product_and_price.dart';
-
-import '../../../../../models/product_model.dart';
+import 'package:world_commerce/presentation/pages/cart_screen/sections/proceed_bottom_sheet/widgets/product_and_price.dart';
+import '../../../../../../models/product_model.dart';
 
 Widget productsList(List<Product?> products) {
   return ListView.builder(
@@ -12,4 +11,4 @@ Widget productsList(List<Product?> products) {
             products[index]!.price.toString());
       });
 }
-//15 ✅
+//14✅

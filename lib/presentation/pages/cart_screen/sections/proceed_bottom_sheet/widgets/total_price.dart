@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../models/product_model.dart';
+import '../../../../../../models/product_model.dart';
 
 Widget totalPriceWidget(List<Product?> products) {
   double totalPrice = 0.0;

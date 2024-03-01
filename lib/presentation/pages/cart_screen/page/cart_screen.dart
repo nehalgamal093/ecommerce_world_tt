@@ -5,7 +5,7 @@ import 'package:world_commerce/bloc/get_cart_list/get_cart_list_bloc.dart';
 import 'package:world_commerce/presentation/pages/error_screen/error_screen.dart';
 import '../../../../Services/get_cart_list.dart';
 import '../../../../bloc/login_bloc/login_bloc.dart';
-import '../cart_list/cart_list.dart';
+import '../sections/cart_list/cart_list.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});

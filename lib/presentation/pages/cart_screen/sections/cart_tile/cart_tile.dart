@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:world_commerce/presentation/pages/cart_screen/cart_tile/widgets/increase_and_decrease_quantity.dart';
-import 'package:world_commerce/presentation/pages/cart_screen/cart_tile/widgets/product_image.dart';
-import 'package:world_commerce/presentation/pages/cart_screen/cart_tile/widgets/product_name.dart';
-import 'package:world_commerce/presentation/pages/cart_screen/cart_tile/widgets/product_price.dart';
+import 'package:world_commerce/presentation/pages/cart_screen/sections/cart_tile/widgets/increase_and_decrease_quantity.dart';
+import 'package:world_commerce/presentation/pages/cart_screen/sections/cart_tile/widgets/product_image.dart';
+import 'package:world_commerce/presentation/pages/cart_screen/sections/cart_tile/widgets/product_name.dart';
+import 'package:world_commerce/presentation/pages/cart_screen/sections/cart_tile/widgets/product_price.dart';
 
 class CartTile extends StatelessWidget {
   final String title;

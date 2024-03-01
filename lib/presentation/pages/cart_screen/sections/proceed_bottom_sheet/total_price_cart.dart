@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:world_commerce/presentation/pages/cart_screen/proceed_bottom_sheet/widgets/products_list.dart';
-import 'package:world_commerce/presentation/pages/cart_screen/proceed_bottom_sheet/widgets/sheet_header.dart';
-import 'package:world_commerce/presentation/pages/cart_screen/proceed_bottom_sheet/widgets/total_price.dart';
-import '../../../../models/product_model.dart';
-import '../../../custom_widgets/main_btn.dart';
+import 'package:world_commerce/presentation/pages/cart_screen/sections/proceed_bottom_sheet/widgets/products_list.dart';
+import 'package:world_commerce/presentation/pages/cart_screen/sections/proceed_bottom_sheet/widgets/sheet_header.dart';
+import 'package:world_commerce/presentation/pages/cart_screen/sections/proceed_bottom_sheet/widgets/total_price.dart';
+import '../../../../../models/product_model.dart';
+import '../../../../custom_widgets/main_btn.dart';
 
 Future<dynamic> totalPriceCard(BuildContext context, List<Product?> products) {
   return showModalBottomSheet(
