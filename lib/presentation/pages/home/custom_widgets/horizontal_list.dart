@@ -27,6 +27,7 @@ Widget horizontalList(List<Product>? dataFromApi) {
               );
             },
             child: CustomProduct(
+                id: dataFromApi[index].id ?? '',
                 title: dataFromApi[index].title ?? '',
                 imgCover: dataFromApi[index].images![0],
                 price: dataFromApi[index].price.toString(),

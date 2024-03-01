@@ -13,8 +13,9 @@ class GetWishlistState extends Equatable {
 
   factory GetWishlistState.initial() {
     return GetWishlistState(
-        wishListStatus: WishListStatus.initial,
-        wishListModel: WishListModel(message: '', likedProducts: []));
+      wishListStatus: WishListStatus.initial,
+      wishListModel: WishListModel(message: '', likedProducts: []),
+    );
   }
 
   @override
@@ -24,10 +25,10 @@ class GetWishlistState extends Equatable {
   String toString() =>
       'LoadingStatusGetProducts(loadingStatus: $wishListStatus)';
 
-  GetWishlistState copyWith({
-    WishListStatus? wishListStatus,
-    WishListModel? wishListModel,
-  }) {
+  GetWishlistState copyWith(
+      {WishListStatus? wishListStatus,
+      WishListModel? wishListModel,
+      String? id}) {
     return GetWishlistState(
       wishListStatus: wishListStatus ?? this.wishListStatus,
       wishListModel: wishListModel ?? this.wishListModel,

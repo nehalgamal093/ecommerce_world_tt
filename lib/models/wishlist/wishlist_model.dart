@@ -7,9 +7,8 @@ class WishListModel {
 
   factory WishListModel.fromJson(Map<String, dynamic> json) {
     return WishListModel(
-      message: json['message'],
-      likedProducts:
-          List.from(json['result']).map((e) => Product.fromJson(e)).toList(),
-    );
+        message: json['message'],
+        likedProducts:
+            List.from(json['result']).map((e) => Product.fromJson(e)).toList());
   }
 }

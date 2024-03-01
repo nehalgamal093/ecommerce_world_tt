@@ -83,6 +83,7 @@ class ProductsScreen extends StatelessWidget {
                                         );
                                       },
                                       child: CustomProduct(
+                                        id: dataFromApi[index].id!,
                                         title: dataFromApi[index].title!,
                                         imgCover: dataFromApi[index].images![0],
                                         price:

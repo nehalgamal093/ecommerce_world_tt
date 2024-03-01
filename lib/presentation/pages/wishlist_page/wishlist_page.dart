@@ -3,13 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_commerce/bloc/get_wishlist_bloc/get_wishlist_bloc.dart';
 import 'package:world_commerce/presentation/pages/wishlist_page/custom_widgets/wishlist_tile.dart';
 import 'package:world_commerce/repository/get_wishlist.dart';
-
 import '../../../bloc/login_bloc/login_bloc.dart';
-import '../../../generated/l10n.dart';
 import '../../../models/Product.dart';
-import '../../custom_widgets/top_bar.dart';
-import '../cart_screen/custom widget/cart_tile.dart';
-import '../cart_screen/sections/total_price_cart.dart';
 import '../error_screen/error_screen.dart';
 import '../product_details/product_details.dart';
 
@@ -50,59 +45,33 @@ class WishList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-          padding: const EdgeInsets.all(5),
-          child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: itemsCount,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ProductDetails(
-                                image: wishlist[index].images![0],
-                                title: wishlist[index].title.toString(),
-                                description:
-                                    wishlist[index].description.toString(),
-                                price: wishlist[index].price.toString(),
-                                id: wishlist[index].id.toString())));
-                  },
-                  child: WishListTile(
-                    title: wishlist[index].title.toString(),
-                    price: wishlist[index].price.toString(),
-                    image: wishlist[index].images![0],
-                  ),
-                );
-              }),
-        ),
-        bottomNavigationBar: itemsCount == 0
-            ? Container()
-            : InkWell(
+      body: Container(
+        padding: const EdgeInsets.all(5),
+        child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: itemsCount,
+            itemBuilder: (context, index) {
+              return InkWell(
                 onTap: () {
-                  totalPriceCard(context, wishlist);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ProductDetails(
+                              image: wishlist[index].images![0],
+                              title: wishlist[index].title.toString(),
+                              description:
+                                  wishlist[index].description.toString(),
+                              price: wishlist[index].price.toString(),
+                              id: wishlist[index].id.toString())));
                 },
-                child: SizedBox(
-                  width: 200,
-                  height: 70,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(40),
-                      topLeft: Radius.circular(40),
-                    ),
-                    child: BottomAppBar(
-                      color: Colors.pink,
-                      child: Center(
-                        child: Text(
-                          S.of(context).proceed,
-                          style: const TextStyle(
-                              fontSize: 20, color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                child: WishListTile(
+                  title: wishlist[index].title.toString(),
+                  price: wishlist[index].price.toString(),
+                  image: wishlist[index].images![0],
                 ),
-              ));
+              );
+            }),
+      ),
+    );
   }
 }

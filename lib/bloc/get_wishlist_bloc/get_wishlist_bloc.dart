@@ -14,12 +14,14 @@ class GetWishlistBloc extends Bloc<GetWishlistEvent, GetWishlistState> {
     on<WishListEvent>(
         (WishListEvent event, Emitter<GetWishlistState> emit) async {
       emit(state.copyWith(wishListStatus: WishListStatus.loading));
+      print('---Loading wishlist');
       try {
         WishListModel wishList = await getWishList.getWishList();
 
         emit(state.copyWith(
             wishListStatus: WishListStatus.loaded, wishListModel: wishList));
       } catch (e) {
+        print(e);
         emit(state.copyWith(wishListStatus: WishListStatus.error));
       }
     });

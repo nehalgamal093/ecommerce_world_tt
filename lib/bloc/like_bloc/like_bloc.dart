@@ -15,5 +15,6 @@ class LikeBloc extends Bloc<LikeEvent, LikeState> {
         favProductStatus: state.favProductStatus == FavoriteStatus.notFavorite
             ? FavoriteStatus.favorite
             : FavoriteStatus.notFavorite));
+    print('status is ${state.favProductStatus}');
   }
 }

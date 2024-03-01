@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:world_commerce/Services/get_cart_list.dart';
 import 'package:world_commerce/Services/get_user.dart';
 import 'package:world_commerce/bloc/add_product_bloc/add_product_bloc.dart';
+import 'package:world_commerce/bloc/add_product_to_wishlist_bloc/add_product_to_wishlist_bloc.dart';
 import 'package:world_commerce/bloc/brands_list_bloc/brands_list_bloc.dart';
 import 'package:world_commerce/bloc/categories_list_bloc/categories_list_bloc.dart';
 import 'package:world_commerce/bloc/change_language_bloc/change_language_bloc.dart';
@@ -13,7 +14,9 @@ import 'package:world_commerce/bloc/get_cart_list/get_cart_list_bloc.dart';
 import 'package:world_commerce/bloc/get_products_bloc/get_product_bloc.dart';
 import 'package:world_commerce/bloc/get_user_bloc/get_user_bloc.dart';
 import 'package:world_commerce/bloc/get_wishlist_bloc/get_wishlist_bloc.dart';
+import 'package:world_commerce/bloc/id_term_bloc/id_term_bloc.dart';
 import 'package:world_commerce/bloc/like_bloc/like_bloc.dart';
+import 'package:world_commerce/bloc/like_unlike_bloc/like_un_lik_bloc.dart';
 import 'package:world_commerce/bloc/save_login/save_login_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:world_commerce/bloc/sign_up_bloc/sign_up_bloc.dart';
@@ -55,6 +58,12 @@ Future<void> main() async {
             create: (_) => SaveLoginBloc(),
           ),
           BlocProvider(
+            create: (context) {
+              final loginBloc = BlocProvider.of<LoginBloc>(context);
+              return LikeUnLikBloc(getWishList: GetWishList(loginBloc));
+            },
+          ),
+          BlocProvider(
             create: (_) => SignUpBloc(
               singUpRepo: SingUpRepo(),
             ),
@@ -89,6 +98,16 @@ Future<void> main() async {
               ..add(
                 WishListEvent(),
               );
+          }),
+          BlocProvider(create: (context) {
+            final loginBloc = BlocProvider.of<LoginBloc>(
+                context); // Access Bloc using BlocProvider.of
+
+            return AddProductToWishlistBloc(
+              getWishList: GetWishList(
+                loginBloc,
+              ),
+            );
           }),
           BlocProvider(
             create: (_) => IncreasePageBloc(),

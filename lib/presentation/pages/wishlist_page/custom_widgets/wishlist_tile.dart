@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:world_commerce/presentation/resources/color_manager.dart';
 
 class WishListTile extends StatelessWidget {
   final String title;
