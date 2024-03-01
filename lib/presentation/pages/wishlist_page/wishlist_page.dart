@@ -27,8 +27,10 @@ class WishListPage extends StatelessWidget {
             return WishList(
                 itemsCount: state.wishListModel.likedProducts.length,
                 wishlist: state.wishListModel.likedProducts);
-          } else {
+          } else if (state.wishListStatus == WishListStatus.error) {
             return const ErrorScreen();
+          } else {
+            return Container();
           }
         }),
       ),
