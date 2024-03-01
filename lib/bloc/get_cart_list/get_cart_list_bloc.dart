@@ -1,9 +1,10 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../Services/get_cart_list.dart';
 import '../../models/cart_model/cart_model.dart';
-import '../../models/cart_model/CartResponseModel.dart';
+import '../../models/cart_model/cart_response_model.dart';
 
 part 'get_cart_list_event.dart';
 part 'get_cart_list_state.dart';

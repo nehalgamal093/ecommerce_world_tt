@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../bloc/login_bloc/login_bloc.dart';
-import '../models/cart_model/CartResponseModel.dart';
+import '../models/cart_model/cart_response_model.dart';
 
 class GetCartList {
   final LoginBloc loginBloc;

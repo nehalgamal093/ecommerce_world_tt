@@ -4,7 +4,7 @@ import 'package:world_commerce/presentation/pages/home/custom_widgets/error.dart
 import 'package:world_commerce/presentation/pages/home/custom_widgets/horizontal_list.dart';
 import '../../../../Services/get_products.dart';
 import '../../../../bloc/get_products_bloc/get_product_bloc.dart';
-import '../../../../models/Product.dart';
+import '../../../../models/product_model.dart';
 import '../../../skeletons_loading/horizontal_skeleton.dart';
 
 Widget productListHome(bool isError) {

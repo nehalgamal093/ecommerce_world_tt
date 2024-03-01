@@ -7,7 +7,7 @@ import 'dart:convert';
 import '../Services/http_error_handler.dart';
 import '../bloc/login_bloc/login_bloc.dart';
 import '../exception/loading_exception.dart';
-import '../models/wishlist/AddToWishListModel.dart';
+import '../models/wishlist/add_to_wishlist_model.dart';
 
 class GetWishList {
   final LoginBloc loginBloc;

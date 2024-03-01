@@ -8,7 +8,7 @@ import 'package:world_commerce/presentation/pages/product_details/product_detail
 import '../../../Services/get_cart_list.dart';
 import '../../../bloc/login_bloc/login_bloc.dart';
 import '../../../generated/l10n.dart';
-import '../../../models/Product.dart';
+import '../../../models/product_model.dart';
 import '../../custom_widgets/top_bar.dart';
 import 'custom widget/cart_tile.dart';
 

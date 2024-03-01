@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:world_commerce/models/wishlist/AddToWishListModel.dart';
+import 'package:world_commerce/models/wishlist/add_to_wishlist_model.dart';
 import 'package:world_commerce/repository/get_wishlist.dart';
 part 'add_product_to_wishlist_event.dart';
 part 'add_product_to_wishlist_state.dart';
@@ -33,15 +33,12 @@ class AddProductToWishlistBloc
 
   FutureOr<void> _removeFromWishlist(
       UnlikeProduct event, Emitter<AddProductToWishlistState> emit) async {
-    // emit(state.copyWith(addToWishlistStatus: AddToWishlistStatus.loading));
-
     emit(state.copyWith(addToWishlistStatus: AddToWishlistStatus.unliked));
     try {
       AddToWishListModel isUnLiked =
           await getWishList.deleteFromWishList(event.id);
       emit(state.copyWith(addToWishListModel: isUnLiked));
     } catch (e) {
-      // emit(state.copyWith(addToWishlistStatus: AddToWishlistStatus.error));
       emit(state.copyWith(addToWishlistStatus: AddToWishlistStatus.liked));
     }
   }

@@ -4,7 +4,7 @@ import 'package:world_commerce/bloc/get_wishlist_bloc/get_wishlist_bloc.dart';
 import 'package:world_commerce/presentation/pages/wishlist_page/custom_widgets/wishlist_tile.dart';
 import 'package:world_commerce/repository/get_wishlist.dart';
 import '../../../bloc/login_bloc/login_bloc.dart';
-import '../../../models/Product.dart';
+import '../../../models/product_model.dart';
 import '../error_screen/error_screen.dart';
 import '../product_details/product_details.dart';
 

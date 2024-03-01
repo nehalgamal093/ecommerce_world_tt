@@ -1,22 +1,17 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:world_commerce/Services/get_products.dart';
-import 'package:world_commerce/models/ProductModel.dart';
+import 'package:world_commerce/models/product_response_model.dart';
 
 part 'get_product_event.dart';
 part 'get_product_state.dart';
 
 class GetProductBloc extends Bloc<GetProductEvent, GetProductState> {
   GetProducts getProducts;
-  // final IncreasePageBloc changePageBloc;
-  // late final StreamSubscription increaseSubscription;
+
   GetProductBloc({required this.getProducts})
       : super(GetProductState.initial()) {
-    // increaseSubscription =
-    //     changePageBloc.stream.listen((IncreasePageState increaseState) {
-    //   add(GetProductsEvent(
-    //       pageNumber: increaseState.pageNumber, category: state.category));
-    // });
     on<GetProductsEvent>(
         (GetProductsEvent event, Emitter<GetProductState> emit) async {
       emit(state.copyWith(loadingStatus: ProductStatus.loading));
@@ -31,9 +26,4 @@ class GetProductBloc extends Bloc<GetProductEvent, GetProductState> {
       }
     });
   }
-  // @override
-  // Future<void> close() {
-  //   increaseSubscription.cancel();
-  //   return super.close();
-  // }
 }

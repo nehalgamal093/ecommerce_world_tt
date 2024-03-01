@@ -20,7 +20,6 @@ class GetWishlistBloc extends Bloc<GetWishlistEvent, GetWishlistState> {
         emit(state.copyWith(
             wishListStatus: WishListStatus.loaded, wishListModel: wishList));
       } catch (e) {
-        print('error from wishlist bloc == ${e}');
         emit(state.copyWith(wishListStatus: WishListStatus.error));
       }
     });

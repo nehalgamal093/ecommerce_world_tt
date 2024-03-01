@@ -12,7 +12,6 @@ class AddProductToWishlistState extends Equatable {
   });
 
   factory AddProductToWishlistState.initial() {
-    print('---initial');
     return AddProductToWishlistState(
       addToWishlistStatus: AddToWishlistStatus.initial,
       addToWishListModel: AddToWishListModel(message: '', productIds: []),

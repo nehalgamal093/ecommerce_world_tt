@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -8,7 +9,6 @@ class IdTermBloc extends Bloc<IdTermEvent, IdTermState> {
   IdTermBloc() : super(IdTermState.initial()) {
     on<IdTerm>((event, emit) {
       emit(state.copyWith(idTerm: event.newId));
-      print('idbloc');
     });
   }
 }

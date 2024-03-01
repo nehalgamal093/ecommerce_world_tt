@@ -1,4 +1,4 @@
-import '../Product.dart';
+import '../product_model.dart';
 
 class CartModel {
   String userId;
