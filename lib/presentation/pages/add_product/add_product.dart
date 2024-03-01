@@ -23,32 +23,26 @@ class AddProduct extends StatefulWidget {
 }
 
 class _AddProductState extends State<AddProduct> {
-  final TextEditingController nameController =
-      TextEditingController(text: 'Nokia x');
+  final TextEditingController nameController = TextEditingController();
 
-  final TextEditingController descriptionController =
-      TextEditingController(text: 'this is description after upload');
+  final TextEditingController descriptionController = TextEditingController();
 
-  final TextEditingController priceController =
-      TextEditingController(text: '100');
+  final TextEditingController priceController = TextEditingController();
 
   final TextEditingController photosController = TextEditingController();
 
   final TextEditingController priceAfterDiscountController =
-      TextEditingController(text: '10');
+      TextEditingController();
 
-  final TextEditingController soldController = TextEditingController(text: '1');
+  final TextEditingController soldController = TextEditingController();
 
-  final TextEditingController ratingAvgController =
-      TextEditingController(text: '2');
+  final TextEditingController ratingAvgController = TextEditingController();
 
-  final TextEditingController ratingCountController =
-      TextEditingController(text: '2');
+  final TextEditingController ratingCountController = TextEditingController();
 
-  final TextEditingController quantityController =
-      TextEditingController(text: '100');
+  final TextEditingController quantityController = TextEditingController();
 
-  List<File> selectedImages = []; // List of selected image
+  List<File> selectedImages = [];
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +79,7 @@ class _AddProductState extends State<AddProduct> {
               children: [
                 // ignore: unnecessary_null_comparison
                 selectedImages == null
-                    ? const Text('null0')
+                    ? Container()
                     : SizedBox(
                         width: width * .60,
                         height: 50,
@@ -201,4 +195,4 @@ class _AddProductState extends State<AddProduct> {
     }
   }
 }
-//203
+//204

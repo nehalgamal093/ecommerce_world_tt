@@ -5,7 +5,7 @@ import 'package:world_commerce/bloc/get_user_bloc/get_user_bloc.dart';
 import '../../../../bloc/get_cart_list/get_cart_list_bloc.dart';
 import '../../../../generated/l10n.dart';
 import '../../../resources/color_manager.dart';
-import '../../cart_screen/cart_screen.dart';
+import '../../cart_screen/page/cart_screen.dart';
 
 Widget searchBar(BuildContext context, String role) {
   final role = context.read<GetUserBloc>().state.data.role;

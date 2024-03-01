@@ -1,68 +1,38 @@
 import 'package:flutter/material.dart';
 
 Widget skeletonProfile() {
-  return const Column(
+  return Column(
     children: [
-      CircleAvatar(
+      customSized(50),
+      const CircleAvatar(
         radius: 60,
       ),
-      SizedBox(height: 10),
-      Card(
-        child: SizedBox(
-          width: 100,
-          height: 30,
-        ),
-      ),
-      SizedBox(height: 10),
-      Card(
-        child: SizedBox(
-          width: 80,
-          height: 30,
-        ),
-      ),
-      SizedBox(height: 50),
-      Card(
-        child: SizedBox(
-          width: 450,
-          height: 50,
-        ),
-      ),
-      SizedBox(height: 30),
-      Card(
-        child: SizedBox(
-          width: 450,
-          height: 50,
-        ),
-      ),
-      SizedBox(height: 30),
-      Card(
-        child: SizedBox(
-          width: 450,
-          height: 50,
-        ),
-      ),
-      SizedBox(height: 30),
-      Card(
-        child: SizedBox(
-          width: 450,
-          height: 50,
-        ),
-      ),
-      SizedBox(height: 30),
-      Card(
-        child: SizedBox(
-          width: 450,
-          height: 50,
-        ),
-      ),
-      SizedBox(height: 30),
-      Card(
-        child: SizedBox(
-          width: 450,
-          height: 50,
-        ),
-      ),
-      SizedBox(height: 30),
+      customSized(10),
+      customCard(100, 30),
+      customSized(10),
+      customCard(80, 30),
+      customSized(50),
+      customCard(450, 50),
+      customSized(30),
+      customCard(450, 50),
+      customSized(30),
+      customCard(450, 50),
+      customSized(30),
+      customCard(450, 50),
     ],
   );
 }
+
+Widget customCard(double width, double height) {
+  return Card(
+    child: SizedBox(
+      width: width,
+      height: height,
+    ),
+  );
+}
+
+Widget customSized(double height) {
+  return SizedBox(height: height);
+}
+//38 ✅
