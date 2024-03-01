@@ -13,24 +13,21 @@ class LikeUnLikBloc extends Bloc<LikeUnLikEvent, LikeUnLikState> {
     on<LikeUnLikEvent>((event, emit) {
       on<LikeUnlike>((LikeUnlike event, Emitter<LikeUnLikState> emit) async {
         emit(state.copyWith(likeUnlikeStatus: LikeUnlikeStatus.loading));
-        print('---Loading wishlist');
+
         try {
           WishListModel wishList = await getWishList.getWishList();
           List<String?> listOfIds =
               wishList.likedProducts.map((e) => e.id).toList();
           if (listOfIds.contains(event.id)) {
-            print('liked');
             emit(state.copyWith(
                 likeUnlikeStatus: LikeUnlikeStatus.liked,
                 wishListModel: wishList));
           } else {
-            print('unliked');
             emit(state.copyWith(
                 likeUnlikeStatus: LikeUnlikeStatus.unliked,
                 wishListModel: wishList));
           }
         } catch (e) {
-          print(e);
           emit(state.copyWith(likeUnlikeStatus: LikeUnlikeStatus.error));
         }
       });

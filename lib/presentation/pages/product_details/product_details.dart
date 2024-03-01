@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:world_commerce/Services/get_cart_list.dart';
 import 'package:world_commerce/bloc/get_cart_list/get_cart_list_bloc.dart';
 import 'package:world_commerce/models/reviews.dart';
 import 'package:world_commerce/presentation/pages/product_details/custom_widgets/reviews_bar.dart';

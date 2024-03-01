@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_commerce/bloc/get_user_bloc/get_user_bloc.dart';
@@ -56,16 +57,23 @@ Widget searchBar(BuildContext context, String role) {
                               Icons.shopping_cart_outlined,
                             ),
                           ),
-                          state.cartResponseModel.cartModel == null
-                              ? Container()
+                          // ignore: unnecessary_null_comparison
+                          state.cartResponseModel.cartModel!.products.isEmpty
+                              ? const Positioned(
+                                  top: 1,
+                                  child: CircleAvatar(
+                                    radius: 8,
+                                    backgroundColor: Colors.transparent,
+                                  ),
+                                )
                               : Positioned(
                                   top: 1,
                                   child: CircleAvatar(
                                     radius: 8,
                                     backgroundColor: Colors.pink,
                                     child: Text(
-                                      state.cartResponseModel.cartModel.products
-                                          .length
+                                      state.cartResponseModel.cartModel!
+                                          .products.length
                                           .toString(),
                                       style: const TextStyle(
                                           color: Colors.white, fontSize: 10),

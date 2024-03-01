@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../Services/get_cart_list.dart';
-import '../../models/cart_model/CartModel.dart';
+import '../../models/cart_model/cart_model.dart';
 import '../../models/cart_model/CartResponseModel.dart';
 
 part 'get_cart_list_event.dart';

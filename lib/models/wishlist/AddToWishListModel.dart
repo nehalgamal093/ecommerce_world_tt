@@ -1,3 +1,4 @@
+// ignore: file_names
 class AddToWishListModel {
   String message;
   List<String> productIds;

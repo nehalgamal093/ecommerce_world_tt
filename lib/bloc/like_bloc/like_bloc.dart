@@ -1,5 +1,6 @@
 import 'dart:async';
 
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -15,6 +16,5 @@ class LikeBloc extends Bloc<LikeEvent, LikeState> {
         favProductStatus: state.favProductStatus == FavoriteStatus.notFavorite
             ? FavoriteStatus.favorite
             : FavoriteStatus.notFavorite));
-    print('status is ${state.favProductStatus}');
   }
 }

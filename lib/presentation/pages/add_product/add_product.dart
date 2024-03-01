@@ -83,8 +83,9 @@ class _AddProductState extends State<AddProduct> {
                 const Icon(Icons.add, color: ColorManager.grey)),
             Row(
               children: [
+                // ignore: unnecessary_null_comparison
                 selectedImages == null
-                    ? Text('null0')
+                    ? const Text('null0')
                     : SizedBox(
                         width: width * .60,
                         height: 50,

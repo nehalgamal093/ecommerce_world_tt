@@ -6,7 +6,6 @@ import 'package:world_commerce/presentation/pages/account_page/custom_widgets/pr
 import 'package:world_commerce/presentation/pages/edit_account/screens/edit_account.dart';
 import 'package:world_commerce/presentation/resources/assets_manager.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
-import 'package:world_commerce/repository/login_repo.dart';
 import '../../../Services/get_user.dart';
 import '../../../generated/l10n.dart';
 import 'custom_widgets/profile_label.dart';

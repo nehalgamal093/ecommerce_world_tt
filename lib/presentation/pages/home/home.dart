@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:world_commerce/bloc/login_bloc/login_bloc.dart';
 import 'package:world_commerce/generated/l10n.dart';
-import 'package:world_commerce/repository/login_repo.dart';
 import '../../../Services/get_user.dart';
 import '../../../bloc/get_user_bloc/get_user_bloc.dart';
 import 'sections/banners.dart';

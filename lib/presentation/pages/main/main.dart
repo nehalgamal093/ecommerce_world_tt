@@ -8,8 +8,6 @@ import 'package:world_commerce/presentation/pages/settings_page/settings_page.da
 import 'package:world_commerce/presentation/pages/wallet_page/wallet_page.dart';
 import 'package:world_commerce/presentation/pages/wishlist_page/wishlist_page.dart';
 import 'package:world_commerce/presentation/resources/assets_manager.dart';
-import 'package:world_commerce/repository/get_wishlist.dart';
-
 import '../../../Services/get_user.dart';
 import '../../../bloc/get_user_bloc/get_user_bloc.dart';
 import '../../../bloc/login_bloc/login_bloc.dart';
@@ -27,7 +25,7 @@ class _MainState extends State<Main> {
   int _selectedIndex = 0;
   final List _pages = [
     const Home(),
-    WishListPage(),
+    const WishListPage(),
     const Icon(Icons.chat, size: 150),
     AccountPage()
   ];

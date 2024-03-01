@@ -4,11 +4,11 @@ import 'package:world_commerce/presentation/resources/assets_manager.dart';
 import '../../../../models/Product.dart';
 import '../../../custom_widgets/main_btn.dart';
 
-Future<dynamic> totalPriceCard(BuildContext context, List<Product> products) {
+Future<dynamic> totalPriceCard(BuildContext context, List<Product?> products) {
   double totalPrice = 0.0;
 
   for (var item in products) {
-    totalPrice += double.parse(item.price.toString());
+    totalPrice += item!.price ?? double.parse(item.price.toString());
   }
 
   return showModalBottomSheet(
@@ -41,8 +41,9 @@ Future<dynamic> totalPriceCard(BuildContext context, List<Product> products) {
                       shrinkWrap: true,
                       itemCount: products.length,
                       itemBuilder: (context, index) {
-                        return productAndPrice(products[index].title.toString(),
-                            products[index].price.toString());
+                        return productAndPrice(
+                            products[index]!.title.toString(),
+                            products[index]!.price.toString());
                       }),
                   const Divider(),
                   Row(
@@ -54,6 +55,7 @@ Future<dynamic> totalPriceCard(BuildContext context, List<Product> products) {
                       ),
                       const Spacer(),
                       Text(
+                        // ignore: unnecessary_null_comparison
                         totalPrice != null ? totalPrice.toString() : '0',
                         style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),

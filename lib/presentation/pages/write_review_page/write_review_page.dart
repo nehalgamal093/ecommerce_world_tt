@@ -4,6 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../../../Services/add_review.dart';
 import '../../resources/color_manager.dart';
 
+// ignore: must_be_immutable
 class WriteReviewPage extends StatelessWidget {
   final String id;
   WriteReviewPage({super.key, required this.id});
@@ -40,6 +41,7 @@ class WriteReviewPage extends StatelessWidget {
                           await Post()
                               .postReview(reviewController.text, rate!, id);
 
+                          // ignore: use_build_context_synchronously
                           Navigator.of(context).pop();
                         },
                         child: const Text(

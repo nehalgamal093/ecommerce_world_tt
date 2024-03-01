@@ -3,6 +3,7 @@ part of 'get_product_bloc.dart';
 
 enum ProductStatus { initial, loading, loaded, error }
 
+// ignore: must_be_immutable
 class GetProductState extends Equatable {
   final ProductStatus loadingStatus;
   ProductModel productModel;

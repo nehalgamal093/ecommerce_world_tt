@@ -29,7 +29,6 @@ class GetWishList {
         headers: {"token": token});
 
     WishListModel data = WishListModel.fromJson(json.decode(response.body));
-    print('Response wishlist ${data.likedProducts}');
     return data;
   }
 
@@ -63,10 +62,11 @@ class GetWishList {
         throw Exception(httpErrorHandler(response));
       }
 
+      // ignore: unnecessary_null_comparison
       if (result == null) {
         throw LoadingException('Something went wrong');
       }
-      print('Result wishlist ${result.productIds}');
+
       return result;
     } catch (e) {
       throw Exception(e);
@@ -103,10 +103,11 @@ class GetWishList {
         throw Exception(httpErrorHandler(response));
       }
 
+      // ignore: unnecessary_null_comparison
       if (result == null) {
         throw LoadingException('Something went wrong');
       }
-      print('Result wishlist ${result.productIds}');
+
       return result;
     } catch (e) {
       throw Exception(e);
