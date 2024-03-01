@@ -4,7 +4,6 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:world_commerce/bloc/add_product_to_wishlist_bloc/add_product_to_wishlist_bloc.dart';
 import 'package:world_commerce/bloc/get_wishlist_bloc/get_wishlist_bloc.dart';
 import 'package:world_commerce/repository/get_wishlist.dart';
-import '../../../bloc/id_term_bloc/id_term_bloc.dart';
 import '../../../bloc/login_bloc/login_bloc.dart';
 
 class CustomProduct extends StatefulWidget {
@@ -28,7 +27,6 @@ class CustomProduct extends StatefulWidget {
 class _CustomProductState extends State<CustomProduct> {
   @override
   Widget build(BuildContext context) {
-    print('idididiid${widget.id}');
     final loginBloc = BlocProvider.of<LoginBloc>(context);
     context.read<GetWishlistBloc>().state.wishListModel;
 

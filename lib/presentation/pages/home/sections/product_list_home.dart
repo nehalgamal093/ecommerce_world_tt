@@ -23,8 +23,10 @@ Widget productListHome(bool isError) {
           return SizedBox(height: 300, child: horizontalSkeleton());
         } else if (state.loadingStatus == ProductStatus.loaded) {
           return horizontalList(dataFromApi);
-        } else {
+        } else if (state.loadingStatus == ProductStatus.error) {
           return errorLoading();
+        } else {
+          return Container();
         }
       },
     ),
