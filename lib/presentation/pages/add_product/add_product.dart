@@ -49,7 +49,7 @@ class _AddProductState extends State<AddProduct> {
     double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        appBar: topBar(S.of(context).addProdct, true, context, true),
+        appBar: topBar(S.of(context).addProdct, true, context, true, false),
         body: ListView(
           children: [
             formField(context, S.of(context).name, nameController,

@@ -90,6 +90,8 @@ flutter:
     - assets/icons/visa.png
     - assets/images/robot.png
     - assets/icons/product.png
+    - assets/icons/live-chat.png
+    - assets/images/chat-background.png
     - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -14,7 +14,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: topBar(S.of(context).settings, true, context, false),
+      appBar: topBar(S.of(context).settings, true, context, false,false),
       body: ListView(
         children: [
           Container(

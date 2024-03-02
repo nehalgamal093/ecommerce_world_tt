@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../Services/auth_service.dart';
 import '../../../../bloc/sign_up_bloc/sign_up_bloc.dart';
 import '../../../../generated/l10n.dart';

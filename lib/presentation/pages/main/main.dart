@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:world_commerce/presentation/pages/account_page/account_page.dart';
 import 'package:world_commerce/presentation/pages/add_product/add_product.dart';
+import 'package:world_commerce/presentation/pages/chat/chat_screen.dart';
 import 'package:world_commerce/presentation/pages/home/home.dart';
 import 'package:world_commerce/presentation/pages/settings_page/settings_page.dart';
 import 'package:world_commerce/presentation/pages/wallet_page/wallet_page.dart';
@@ -117,6 +118,25 @@ class _MainState extends State<Main> {
                             ),
                           )
                         : Container(),
+                    InkWell(
+                      onTap: () async {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const ChatScreen(),
+                          ),
+                        );
+                      },
+                      child: const ListTile(
+                        leading: ImageIcon(
+                          AssetImage(AssetsManager.heart),
+                        ),
+                        title: Text(
+                          'Chat',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                      ),
+                    ),
                     const Divider(),
                     InkWell(
                       onTap: () async {

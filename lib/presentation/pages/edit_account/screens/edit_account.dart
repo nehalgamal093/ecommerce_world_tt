@@ -24,7 +24,7 @@ class EditAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: topBar(S.of(context).editProfile, true, context, false),
+      appBar: topBar(S.of(context).editProfile, true, context, false, false),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),

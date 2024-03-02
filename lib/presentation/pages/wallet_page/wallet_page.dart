@@ -9,7 +9,7 @@ class WalletPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: topBar(S.of(context).wallet, true, context, true),
+      appBar: topBar(S.of(context).wallet, true, context, true, false),
       body: Column(
         children: [
           Container(

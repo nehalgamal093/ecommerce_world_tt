@@ -13,7 +13,7 @@ class AssetsManager {
   static const heart = "$assetsPath/heart.png";
   static const cat = "$assetsPath/cat.png";
   static const robot = "$assetsPath/robot.png";
-
+  static const chat_background = "$assetsPath/chat-background.png";
   //icons
   static const heart100 = "$iconsPath/heart100.png";
   static const message = "$iconsPath/message.png";
@@ -24,4 +24,5 @@ class AssetsManager {
   static const visa = "$iconsPath/visa.png";
   static const product = "$iconsPath/product.png";
   static const store = "$iconsPath/store.png";
+  static const chat = "$iconsPath/live-chat.png";
 }

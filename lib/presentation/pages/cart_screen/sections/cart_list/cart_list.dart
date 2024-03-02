@@ -15,7 +15,7 @@ class CartListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: topBar(S.of(context).myCart, true, context, false),
+      appBar: topBar(S.of(context).myCart, true, context, false, false),
       body: listOfProductsInCart(itemsCount, productsCart),
       bottomNavigationBar: proceedBtn(context, itemsCount, productsCart),
     );
