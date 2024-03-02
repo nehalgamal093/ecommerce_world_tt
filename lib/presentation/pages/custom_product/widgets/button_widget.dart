@@ -5,6 +5,7 @@ import '../../../../bloc/add_product_to_wishlist_bloc/add_product_to_wishlist_bl
 import '../../../../bloc/get_wishlist_bloc/get_wishlist_bloc.dart';
 import '../../../../bloc/login_bloc/login_bloc.dart';
 import '../../../../repository/get_wishlist.dart';
+import 'btn_if_product_liked_or_unliked.dart';
 import 'liked_btn.dart';
 
 Widget buttonWidget(BuildContext context, String id) {
@@ -32,14 +33,8 @@ Widget buttonWidget(BuildContext context, String id) {
                     return Container();
                   } else if (state.addToWishlistStatus ==
                       AddToWishlistStatus.initial) {
-                    List<String?> list = wishlistState
-                        .wishListModel.likedProducts
-                        .map((e) => e.id)
-                        .toList();
-
-                    return list.contains(id)
-                        ? likedBtn(context, id)
-                        : unlikedBtn(context, id);
+                    return btnIfProductLikedOrNotLiked(
+                        wishlistState.wishListModel.likedProducts, context, id);
                   } else if (state.addToWishlistStatus ==
                       AddToWishlistStatus.liked) {
                     return likedBtn(context, id);
@@ -60,4 +55,4 @@ Widget buttonWidget(BuildContext context, String id) {
     ),
   );
 }
-//63✅
+//5✅

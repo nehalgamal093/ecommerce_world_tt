@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:world_commerce/presentation/pages/account_page/custom_widgets/profile_field.dart';
 import 'package:world_commerce/presentation/pages/account_page/custom_widgets/profile_label.dart';
+import 'package:world_commerce/presentation/pages/account_page/custom_widgets/profile_picture.dart';
 import '../../../../generated/l10n.dart';
-import '../../../resources/assets_manager.dart';
+import '../../../../utils/capitalize.dart';
 import '../../edit_account/screens/edit_account.dart';
 
+final TextEditingController emailController = TextEditingController();
+final TextEditingController phoneController = TextEditingController();
+final TextEditingController userNameController = TextEditingController();
+final TextEditingController addressController = TextEditingController();
 Widget profile(
     BuildContext context, String username, String email, String phone) {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController userNameController = TextEditingController();
-  final TextEditingController addressController = TextEditingController();
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 30),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 40),
-        profilePicture(context, username),
+        profilePicture(context, capitalizeName(username)),
         SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Center(
@@ -26,8 +27,10 @@ Widget profile(
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        EditAccount(name: username, email: email, phone: phone),
+                    builder: (context) => EditAccount(
+                        name: capitalizeName(username),
+                        email: email,
+                        phone: phone),
                   ),
                 );
               },
@@ -63,28 +66,4 @@ Widget profile(
     ),
   );
 }
-
-String capitalizeName(String username) {
-  return username[0].toUpperCase() + username.substring(1).toLowerCase();
-}
-
-Widget profilePicture(BuildContext context, String username) {
-  return SizedBox(
-    width: MediaQuery.of(context).size.width,
-    child: Center(
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 60,
-            child: Image.asset(AssetsManager.cat),
-          ),
-          Text(
-            capitalizeName(username),
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
-    ),
-  );
-}
-//90 ✅
+//69 ✅

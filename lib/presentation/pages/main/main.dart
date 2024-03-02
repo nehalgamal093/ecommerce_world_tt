@@ -27,7 +27,7 @@ class _MainState extends State<Main> {
     const Home(),
     const WishListPage(),
     const Icon(Icons.chat, size: 150),
-    AccountPage()
+    const AccountPage()
   ];
 
   @override
