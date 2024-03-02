@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:world_commerce/bloc/save_login/save_login_bloc.dart';
-import 'package:world_commerce/presentation/pages/forget_password/forget_password.dart';
+import 'package:world_commerce/presentation/pages/signin/widgets/do_not_have_account_btn.dart';
+import 'package:world_commerce/presentation/pages/signin/widgets/forgot_password.dart';
+import 'package:world_commerce/presentation/pages/signin/widgets/login_btn.dart';
+import 'package:world_commerce/presentation/pages/signin/widgets/login_success_text.dart';
+import 'package:world_commerce/presentation/pages/signin/widgets/save_login_btn.dart';
 import 'package:world_commerce/presentation/pages/signup/custom_widgets/input_text.dart';
-import 'package:world_commerce/presentation/pages/signup/signup.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
-import '../../../bloc/login_bloc/login_bloc.dart';
 import '../../../generated/l10n.dart';
-import '../custom_product/span_text.dart';
-import '../main/main.dart';
 
 class Signin extends StatelessWidget {
   final bool isRegisteredSuccess;
   Signin({super.key, this.isRegisteredSuccess = false});
-  final TextEditingController emailController =
-      TextEditingController(text: 'lalas@email.com');
-  final TextEditingController passwordController =
-      TextEditingController(text: '123456');
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -25,7 +20,6 @@ class Signin extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         //Starting page
-
         body: SingleChildScrollView(
           child: Container(
             width: width,
@@ -35,39 +29,11 @@ class Signin extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    //forget password leading to forget password page
+                forgotPassword(context),
+                const SizedBox(height: 50),
+                loginSuccessText(isRegisteredSuccess, context),
+                const SizedBox(height: 50),
 
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => ForgetPassword(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        S.of(context).forgotPassword,
-                        style: const TextStyle(
-                            color: ColorManager.grey,
-                            decoration: TextDecoration.underline),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 50),
-                isRegisteredSuccess
-                    ? Text(
-                        S.of(context).signedUpSuccessfully,
-                        style:
-                            const TextStyle(color: Colors.green, fontSize: 17),
-                      )
-                    : Container(),
-                const SizedBox(height: 50),
-                //Welcome title
                 Text(
                   S.of(context).welcome,
                   style: Theme.of(context).textTheme.bodyLarge,
@@ -94,107 +60,13 @@ class Signin extends StatelessWidget {
                   isPassword: true,
                 ),
                 //Remember me switch button
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      S.of(context).rememberMe,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    Switch(
-                        activeTrackColor: ColorManager.green,
-                        value: context
-                                .watch<SaveLoginBloc>()
-                                .state
-                                .saveLoginStatus ==
-                            SaveLoginStatus.save,
-                        onChanged: (val) {
-                          context.read<SaveLoginBloc>().add(SaveEvent());
-                        }),
-                  ],
-                ),
+                saveLoginBtn(context),
                 const SizedBox(height: 20),
                 //Button for logging and accessing the home page if email & password are right
                 // If Email and password not write it will show you snackbar with error message
-                InkWell(
-                  onTap: () async {
-                    context.read<LoginBloc>().add(
-                          Login(
-                              email: emailController.text,
-                              password: passwordController.text),
-                        );
-                    final saveStatus =
-                        context.read<SaveLoginBloc>().state.saveLoginStatus;
-                    SharedPreferences prefs =
-                        await SharedPreferences.getInstance();
-                    prefs.setString('email', emailController.text);
-                    if (saveStatus == SaveLoginStatus.save) {
-                      prefs.setBool("saveLogin", true);
-                    }
-                  },
-                  child: BlocListener<LoginBloc, LoginState>(
-                    listener: (context, state) {
-                      if (state.loadingStatus == LoginStatus.loaded) {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (_) => const Main(),
-                          ),
-                        );
-                      } else if (state.loadingStatus == LoginStatus.error) {
-                        // ScaffoldMessenger.of(context).showSnackBar(
-                        //   SnackBar(
-                        //     content: Text(
-                        //       LoginRepo.errMsg!,
-                        //       style: const TextStyle(color: Colors.white),
-                        //     ),
-                        //   ),
-                        // );
-                      }
-                    },
-                    //Button loading when waiting the request
-                    // if there is an error the loading will stop and show snackbar with error message
-                    child: Container(
-                      padding: const EdgeInsets.all(4),
-                      width: width * .80,
-                      height: 45,
-                      decoration: const BoxDecoration(
-                        color: ColorManager.blue,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                      ),
-                      child: Center(
-                        child: context.watch<LoginBloc>().state.loadingStatus ==
-                                LoginStatus.loading
-                            ? const CircularProgressIndicator(
-                                color: Colors.white,
-                              )
-                            : Text(
-                                S.of(context).login,
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                      ),
-                    ),
-                  ),
-                ),
+                loginBtn(context, emailController, passwordController),
                 const SizedBox(height: 50),
-                //Terms and conditions to read before logging in
-
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const Signup(),
-                      ),
-                    );
-                  },
-                  child: spanText(
-                      context,
-                      S.of(context).dontHavAccount,
-                      S.of(context).siginup,
-                      ColorManager.black,
-                      ColorManager.blue),
-                ),
+                donotHaveAccountBtn(context),
               ],
             ),
           ),
@@ -203,3 +75,4 @@ class Signin extends StatelessWidget {
     );
   }
 }
+//78✅

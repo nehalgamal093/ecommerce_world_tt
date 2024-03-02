@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:world_commerce/bloc/get_products_bloc/get_product_bloc.dart';
-
-import '../../../bloc/change_page/increase_page_bloc.dart';
 import '../../custom_widgets/btn.dart';
 import '../../resources/assets_manager.dart';
 
@@ -33,17 +29,7 @@ class ErrorScreen extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
             ),
             const SizedBox(height: 40),
-            InkWell(
-                onTap: () {
-                  context.read<GetProductBloc>().add(
-                        GetProductsEvent(
-                          pageNumber:
-                              context.read<IncreasePageBloc>().state.pageNumber,
-                          category: '6512f4557452b0f914b19229',
-                        ),
-                      );
-                },
-                child: btn('Try Again'))
+            InkWell(onTap: () {}, child: btn('Try Again'))
           ],
         ),
       ),
