@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../resources/color_manager.dart';
 import '../../resources/strings_manager.dart';
-import '../signup/custom_widgets/input_text.dart';
+import '../signup/widgets/input_text.dart';
 
 class ForgetPassword extends StatelessWidget {
   ForgetPassword({super.key});

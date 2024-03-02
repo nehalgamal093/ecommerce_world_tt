@@ -4,7 +4,7 @@ import 'package:world_commerce/presentation/pages/signin/widgets/forgot_password
 import 'package:world_commerce/presentation/pages/signin/widgets/login_btn.dart';
 import 'package:world_commerce/presentation/pages/signin/widgets/login_success_text.dart';
 import 'package:world_commerce/presentation/pages/signin/widgets/save_login_btn.dart';
-import 'package:world_commerce/presentation/pages/signup/custom_widgets/input_text.dart';
+import 'package:world_commerce/presentation/pages/signup/widgets/input_text.dart';
 import 'package:world_commerce/presentation/resources/color_manager.dart';
 import '../../../generated/l10n.dart';
 

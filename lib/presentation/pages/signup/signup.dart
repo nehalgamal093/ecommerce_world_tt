@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:world_commerce/bloc/sign_up_bloc/sign_up_bloc.dart';
-import 'package:world_commerce/presentation/pages/signup/custom_widgets/input_text.dart';
-import 'package:world_commerce/presentation/pages/signin/signin.dart';
-import 'package:world_commerce/presentation/resources/color_manager.dart';
-
-import '../../../Services/auth_service.dart';
+import 'package:world_commerce/presentation/pages/signup/widgets/already_have_Account_text.dart';
+import 'package:world_commerce/presentation/pages/signup/widgets/input_text.dart';
+import 'package:world_commerce/presentation/pages/signup/widgets/sign_up_btn.dart';
+import 'package:world_commerce/presentation/pages/signup/widgets/terms_and_conditions_text.dart';
 import '../../../generated/l10n.dart';
-import '../custom_product/span_text.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -83,92 +79,12 @@ class _SignupState extends State<Signup> {
                   isPassword: false,
                 ),
                 const SizedBox(height: 20),
-                InkWell(
-                  onTap: () async {
-                    context.read<SignUpBloc>().add(SignupEv(
-                        email: emailController.text,
-                        password: passwordController.text,
-                        phone: phoneController.text,
-                        username: nameController.text));
-                  },
-                  child: BlocListener<SignUpBloc, SignUpState>(
-                    listener: (context, state) {
-                      if (state.loadingStatus == SignUpStatus.loaded) {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (_) => Signin(
-                              isRegisteredSuccess: true,
-                            ),
-                          ),
-                        );
-                      } else if (state.loadingStatus == SignUpStatus.error) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              AuthService.errMsg!,
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        );
-                      }
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(4),
-                      width: MediaQuery.of(context).size.width * .80,
-                      height: 45,
-                      decoration: const BoxDecoration(
-                          color: ColorManager.blue,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Center(
-                        child: context
-                                    .watch<SignUpBloc>()
-                                    .state
-                                    .loadingStatus ==
-                                SignUpStatus.loading
-                            ? const CircularProgressIndicator(
-                                color: Colors.white,
-                              )
-                            : Text(
-                                S.of(context).siginup,
-                                style: Theme.of(context).textTheme.bodyMedium,
-                              ),
-                      ),
-                    ),
-                  ),
-                ),
+                signupBtn(context, emailController, passwordController,
+                    phoneController, nameController),
                 const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      S.of(context).alreadyHaveAccount,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    const SizedBox(width: 3.0),
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => Signin(
-                              isRegisteredSuccess: false,
-                            ),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        S.of(context).login,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    ),
-                  ],
-                ),
+                alreadyHaveAccountText(context),
                 const SizedBox(height: 20),
-                spanText(
-                    context,
-                    S.of(context).byConnecting,
-                    S.of(context).termsAndConditions,
-                    ColorManager.black,
-                    ColorManager.blue),
+                termsAndConditionsText(context)
               ],
             ),
           ),
@@ -177,3 +93,4 @@ class _SignupState extends State<Signup> {
     );
   }
 }
+//96✅
